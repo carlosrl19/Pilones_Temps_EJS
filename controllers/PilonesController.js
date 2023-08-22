@@ -36,7 +36,7 @@ const pilonesController = {
     },
 
     // Pilon's update
-    updateArduino: async (pilonesId, nombre, variedad, finca, etapa, pn, temp_min, temp_max, fecha_ingreso, estado, asignado) => {
+    updateAPilones: async (pilonesId, nombre, variedad, finca, etapa, pn, temp_min, temp_max, fecha_ingreso, estado, asignado) => {
         try {
             const connection = await mysql.createConnection(dbConfig); // DB connection
 
@@ -52,7 +52,7 @@ const pilonesController = {
     },
 
     // Pilon's delete
-    deleteArduino: async (pilonesId) => {
+    deletePilones: async (pilonesId) => {
         try {
             const connection = await mysql.createConnection(dbConfig); // DB connection
 

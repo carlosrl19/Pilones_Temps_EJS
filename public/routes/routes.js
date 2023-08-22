@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const arduinosAPI = require('./arduinos_api'); 
+const pilonesAPI = require('./pilones_api'); 
 
 router.get('/', (req, res) => {
     res.render('home/home');
@@ -31,7 +32,8 @@ router.get('/hum_history', (req, res) => {
     res.render('history/humidity_history');
 });
 
-// API'S
+// API routes
 router.use('/api/arduinos', arduinosAPI);
+router.use('/api/pilones', pilonesAPI);
 
 module.exports = router;

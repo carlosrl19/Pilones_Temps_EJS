@@ -6,7 +6,7 @@ const db = require('../../public/config/database');
 // Pilon's *
 router.get('/', async (req, res) => {
     try {
-        const pilones = await arduinosController.getAllPilones();
+        const pilones = await pilonesController.getAllPilones();
         res.json(pilones);
     } catch (error) {
         console.error(error);
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 router.get('/:pilonId', async (req, res) => {
     try {
         const pilonId = req.params.pilonId;
-        const pilon = await pilonesController.getArduinoById(pilonId);
+        const pilon = await pilonesController.getPilonById(pilonId);
         res.json(pilon);
     } catch (error) {
         console.error(error);

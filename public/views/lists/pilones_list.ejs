@@ -8,7 +8,7 @@
     <body>
         <%- include('../partials/cdn_head/_cdn_head') %>
         <%- include('../partials/navbar/_navbar') %>
-        <%- include('../partials/modals/_modal_arduinos') %>
+        <%- include('../partials/modals/_modal_pilones') %>
 
         <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
             <div class="table-responsive small justify-content-sm-center">
@@ -16,22 +16,29 @@
                     <thead class="table-success">
                         <tr>
                             <th scope="col">Pilon`s name</th>
-                            <th scope="col">Source</th>
                             <th scope="col">Tobacco variety</th>
+                            <th scope="col">Source</th>
+                            <th scope="col">Tobacco stage</th>
+                            <th scope="col">PN</th>
                             <th scope="col">Min allowable temperature</th>
                             <th scope="col">Max allowable temperature</th>
                             <th scope="col">Entry date</th>
-                            <th scope="col">Assigned to</th>
-                            <th scope="col">Pilon State</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Arduino assigned</th>
                             <th scope="col">Options</th>
                         </tr>
                     </thead>
-                    <tbody id="pilonList"></tbody>
+                    <tbody id="pilonList">
+                        <!-- Records will be added here dynamically -->
+                    </tbody>
                 </table>
             </div>
         </main>
 
         <div id="sidebarContainer"></div>
+        
+        <!-- SCRIPTS -->
+        <script src="/resources/js/_pilones_scripts.js"></script>
 
     </body>
 </html>
