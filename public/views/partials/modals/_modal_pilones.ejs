@@ -1,0 +1,227 @@
+<!-- Modal de creación -->
+<div class="modal fade" id="createPilonModal" tabindex="-1" aria-labelledby="createPilonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(58, 150, 226, 0.753);">
+                <h5 class="modal-title" style="color: #ffffff;" id="createPilonModalLabel"><i
+                        class="bi bi-box-arrow-down"></i> Crear nuevo pilón</h5>
+            </div>
+            <div class="modal-body">
+                <form id="createPilonForm" action="/listado-pilones/crear" method="POST">
+
+                    <div class="row mb-3">
+                        <label for="editNombre" class="col-sm-3 col-form-label form-label0">Nombre del pilón</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre" name="nombre" class="form-control"
+                                placeholder="Nombre del pilón" required autofocus><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editFinca" class="col-sm-3 col-form-label form-label0">Finca de procedencia del
+                            pilón</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="finca" name="finca" class="form-control"
+                                placeholder="Finca de procedencia" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editVariedad" class="col-sm-3 col-form-label form-label0">Variedad del
+                            tabaco</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="variedad" name="variedad" class="form-control"
+                                placeholder="Variedad del tabaco" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editEtapa" class="col-sm-3 col-form-label form-label0">Etapa del
+                            tabaco</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="etapa" name="etapa" class="form-control"
+                                placeholder="Etapa del tabaco" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editPN" class="col-sm-3 col-form-label form-label0">PN del
+                            tabaco</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="pn" name="pn" class="form-control" placeholder="PN del tabaco"
+                                required step="0.01"><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editTempMin" class="col-sm-3 col-form-label form-label0">Temperatura mínima
+                            aceptada</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="temp_min" name="temp_min" class="form-control"
+                                placeholder="Temperatura mínima del pilón" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editTempMax" class="col-sm-3 col-form-label form-label0">Temperatura máxima
+                            aceptada</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="temp_max" name="temp_max" class="form-control"
+                                placeholder="Temperatura máxima del pilón" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editEstado" class="col-sm-3 col-form-label form-label0">Estado del pilón</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="estado" name="estado" class="form-control" placeholder="Estado"
+                                value="En proceso" readonly required><br>
+                        </div>
+                    </div>
+
+                    <button id="createPilonButton" class="btn btn-primary"
+                        style="background: rgba(58, 150, 226, 0.753); border: 0px;" type="submit">Guardar nuevo
+                        pilón</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de edición -->
+<div class="modal fade" id="editPilonModal" tabindex="-1" aria-labelledby="editPilonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background:  #721065;">
+                <h5 class="modal-title" style="color: #ffffff;" id="editPilonModalLabel"><i
+                        class="bi bi-pencil-square"></i>
+                    Editar pilón</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editPilonForm">
+                    <input type="hidden" id="pilonId" name="pilonId">
+                    <div class="row mb-3">
+                        <label for="editNombre" class="col-sm-3 col-form-label form-label0">Nombre del pilón</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editNombre" name="editNombre" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editFinca" class="col-sm-3 col-form-label form-label0">Finca de procedencia</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editFinca" name="editFinca" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editVariedad" class="col-sm-3 col-form-label form-label0">Categoría del
+                            tabaco</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editVariedad" name="editVariedad" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editEtapa" class="col-sm-3 col-form-label form-label0">Etapa del
+                            tabaco</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="editEtapa" name="editEtapa" class="form-control"
+                                placeholder="Etapa del tabaco" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editPN" class="col-sm-3 col-form-label form-label0">PN del
+                            tabaco</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="editPN" name="editPN" class="form-control"
+                                placeholder="PN del tabaco" required step="0.01"><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editTempMin" class="col-sm-3 col-form-label form-label0">Temperatura mínima del
+                            pilón</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="editTempMin" name="editTempMin" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editTempMax" class="col-sm-3 col-form-label form-label0">Temperatura máxima del
+                            pilón</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="editTempMax" name="editTempMax" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editEstado" class="col-sm-3 col-form-label form-label0">Estado del pilón</label>
+                        <div class="col-sm-9">
+                            <select id="editEstado" name="editEstado" required class="form-control">
+                                <option value="En proceso">En proceso</option>
+                                <option value="Finalizado">Finalizado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="updatePilonButton" class="btn btn-primary"
+                        style="background-color:  #851376; border: 0px;" type="submit">Actualizar
+                        pilón</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de eliminación -->
+<div class="modal fade" id="deletePilonModal" tabindex="-1" aria-labelledby="deletePilonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(201, 0, 0, 0.753);">
+                <h5 class="modal-title" style="color: #ffffff;" id="deletePilonModalLabel"><i class="bi bi-trash3"></i>
+                    Eliminar</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>¿Seguro que deseas eliminar este pilón?</strong>
+                    <br>Esta acción es irreversible y eliminará todo lo referente a este pilón y las temperaturas del
+                    mismo.</a><br>
+                <br><button id="deletePilonButton" class="btn btn-primary"
+                    style="background-color: rgba(201, 0, 0, 0.753);  border: 0px;" type="button"
+                    onclick="deletePilon()">Eliminar Pilón</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de éxito -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(44, 201, 44, 0.753); color: #ffffff;">
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El pilón se creó correctamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de error -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+                <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="errorModalMessage">No se pudo eliminar el pilón. Por favor, inténtalo de nuevo más tarde.</p>
+            </div>
+        </div>
+    </div>
+</div>

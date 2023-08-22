@@ -1,0 +1,207 @@
+html,
+body {
+  height: 100%;
+  font-size: 18px;
+}
+
+.container {
+  width: 80%;
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card.pulsate {
+  animation: pulseAnimation 1s infinite;
+}
+
+body {
+  text-align: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Verdana", sans-serif;
+  font-size: 30px;
+}
+
+.grafica {
+  margin-top: 2%;
+}
+
+.temp {
+  text-align: center;
+  margin-top: 10%;
+  font-size: 48px;
+  color: #490c41;
+}
+
+.cardTemp {
+  width: 70%;
+  border: #ffffff;
+}
+
+.DropLote {
+  width: 38%;
+}
+
+.searcher {
+  width: 270px;
+}
+
+.barra a:hover {
+  background-color: gray;
+  color: black;
+}
+
+.containerHistorial {
+  width: 80%;
+}
+
+.tableHT {
+  margin: 2%;
+}
+
+.containerHT {
+  width: 2%;
+}
+
+* {
+  -webkit-user-select: none;
+  /* Para navegadores basados en WebKit (Chrome, Safari) */
+  -moz-user-select: none;
+  /* Para navegadores basados en Gecko (Firefox) */
+  -ms-user-select: none;
+  /* Para navegadores basados en Edge */
+  user-select: none;
+  /* Para navegadores estándar */
+}
+
+.Navbar {
+  background: linear-gradient(to right, #490c41, #6e1462, #490c41);
+}
+
+.nav-link:hover {
+  color: #fff;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.849);
+}
+
+.form-label0 {
+  color: rgb(109, 107, 107);
+}
+
+.dt-buttons {
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  font-size: small;
+}
+
+.btnExcel{
+  background-color: #0e7a32;
+  color: #ffffff;
+}
+.btnExcel:hover{
+  background-color: #119b3f;
+  color: #ffffff;
+}
+.btnImgen{
+  background-color: #d18135;
+  border: 0px;
+  margin-left: 10px;
+  color: #ffffff;
+}
+.btnImgen:hover{
+  background-color: #f89e49;
+  color: #ffffff;
+}
+.btnPrint{
+  background-color: rgb(124, 124, 124);
+  color: #ffffff;
+}
+.btnPrint:hover{
+  background-color: rgb(145, 144, 144);
+  color: #ffffff;
+}
+.BTN{
+  background-color: #6e1462;
+  border: 0px;
+}
+.BTN:hover{
+  background-color: #6e1462;
+  border: 0px;
+}
+
+.form-check-input {
+  margin-right: 5px;
+}
+
+.check {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  appearance: none;
+  background-color: #bbb;
+  transition: all .3s;
+ }
+ 
+ .check::before {
+  content: '';
+  position: absolute;
+  border: solid #fff;
+  display: block;
+  width: .3em;
+  height: .6em;
+  border-width: 0 .2em .2em 0;
+  z-index: 1;
+  opacity: 0;
+  right: calc(50% - .3em);
+  top: calc(50% - .6em);
+  transform: rotate(0deg);
+  transition: all .3s;
+  transform-origin: center center;
+ }
+ 
+ .check:checked {
+  animation: a .3s ease-in forwards;
+  background-color: rgb(120, 190, 120);
+ }
+ 
+ .check:checked::before {
+  opacity: 1;
+  transform: rotate(405deg);
+ }
+ 
+ @keyframes a {
+  0% {
+   opacity: 1;
+   transform: scale(1) rotateY(0deg);
+  }
+ 
+  50% {
+   opacity: 0;
+   transform: scale(.8) rotateY(180deg);
+  }
+ 
+  100% {
+   opacity: 1;
+   transform: scale(1) rotateY(360deg);
+  }
+ }

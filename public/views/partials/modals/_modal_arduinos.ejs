@@ -1,0 +1,164 @@
+<!-- Modal de creación -->
+<div class="modal fade" id="createArduinoModal" tabindex="-1" aria-labelledby="createArduinoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(58, 150, 226, 0.753);">
+                <h5 class="modal-title" style="color: #ffffff;" id="createArduinoModal"><i
+                        class="bi bi-box-arrow-down"></i> Create new arduino</h5>
+            </div>
+            <div class="modal-body">
+                <form id="createPilonForm" action="/listado-arduinos/crear" method="POST">
+
+                    <div class="row mb-3">
+                        <label for="nombre" class="col-sm-3 col-form-label form-label0">Nombre del
+                            Arduino</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre" name="nombre" class="form-control"
+                                placeholder="Arduino's name" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="direccion_bits" class="col-sm-3 col-form-label form-label0">DS18B20</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="direccion_bits" name="direccion_bits" class="form-control"
+                                minlength="16" maxlength="16" placeholder="Direción del sensor de temperatura"
+                                required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="pilon_encargado" class="col-sm-3 col-form-label form-label0">Arduino's pilon</label>
+                        <div class="col-sm-9">
+                            <select id="pilon_encargado" name="pilon_encargado" class="form-control" required>
+                                <!-- Aquí se generará dinámicamente las opciones del select con los pilones -->
+                            </select><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="arduino_port" class="col-sm-3 col-form-label form-label0">Connected to</label>
+                        <div class="col-sm-9">
+                            <select id="arduino_port" name="arduino_port" required class="form-control">
+                                <option value="/dev/ttyACM0">/dev/ttyACM0</option>
+                                <option value="/dev/ttyACM1">/dev/ttyACM1</option>
+                                <option value="/dev/ttyACM2">/dev/ttyACM2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="createPilonButton" class="btn btn-primary"
+                        style="background: rgba(58, 150, 226, 0.753); border: 0px;" type="submit">Save 
+                        pilón</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de edición -->
+<div class="modal fade" id="editArduinoModal" tabindex="-1" aria-labelledby="editArduinoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #5f1155, #6e1462, #9e1c8d);">
+                <h5 class="modal-title" style="color: #ffffff;" id="editArduinoModalLabel"><i
+                        class="bi bi-pencil-square just"></i>Update arduino</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editArduinoForm">
+                    <input type="hidden" id="arduinoId" name="arduinoId">
+
+                    <div class="row mb-3">
+                        <label for="editNombre" class="col-sm-3 col-form-label form-label0">Arduino's name</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editNombre" name="editNombre" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editDireccion" class="col-sm-3 col-form-label form-label0">DS18B20</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editDireccion" name="editDireccion" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editPilonEncargado" class="col-sm-3 col-form-label form-label0">Arduino's pilon</label>
+                        <div class="col-sm-9">
+                            <select id="editPilonEncargado" name="editPilonEncargado" class="form-control" required>
+                                <!-- Opciones de pilones se generarán dinámicamente aquí -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="EditPort" class="col-sm-3 col-form-label form-label0">Connected to</label>
+                        <div class="col-sm-9">
+                            <select id="EditPort" name="EditPort" required class="form-control">
+                                <option value="/dev/ttyACM0">/dev/ttyACM0</option>
+                                <option value="/dev/ttyACM1">/dev/ttyACM1</option>
+                                <option value="/dev/ttyACM2">/dev/ttyACM2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="updateArduinoButton" class="btn btn-primary"
+                        style="background-color:  #721065; border: 0px;" type="submit">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de eliminación -->
+<div class="modal fade" id="deleteArduinoModal" tabindex="-1" aria-labelledby="deleteArduinoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #890d0d, #890d0dc0, #c90000c0);"">
+                <h5 class="modal-title" style="color: #ffffff;" id="deleteArduinoModalLabel"><i
+                        class="bi bi-trash3"></i> Delete</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>Are you sure you want to remove this arduino?</strong>
+                    <br>This action is irreversible and will delete everything related to this arduino and the temperatures obtained from it.
+                    temperatures obtained from it.</a><br>
+                <br><button id="deleteArduinoButton" class="btn btn-primary"
+                    style="background-color: rgba(201, 0, 0, 0.753);  border: 0px;" type="button"
+                    onclick="deleteArduino()">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de éxito -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>El arduino se creó correctamente.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de error -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+                <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>The Arduino could not be created. Please try again later.</p>
+            </div>
+        </div>
+    </div>
+</div>
