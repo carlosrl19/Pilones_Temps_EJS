@@ -1,5 +1,5 @@
 .card {
-  width: 350px;
+  width: 380px;
   height: 235px;
   position: relative;
   padding: 25px;
@@ -138,12 +138,12 @@
   color: rgba(87, 77, 51, 0.33);
 }
 
-.temp {
+.display_temp {
   position: absolute;
   left: 25px;
   bottom: 12px;
-  font-weight: 700;
-  font-size: 64px;
+  font-weight: 550;
+  font-size: 54px;
   line-height: 77px;
   color: rgba(87, 77, 51, 1);
 }

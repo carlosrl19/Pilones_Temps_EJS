@@ -12,9 +12,19 @@
         </div>
     </div>
 
-    <span class="temp">55 °F</span>
+    <span class="display_temp"></span>
 
     <div class="temp-scale">
         <span>Fahrenheit</span>
     </div>
 </div>
+
+<script>
+    const socket = io(); // Conectar al servidor mediante Socket.io
+
+    // Escuchar el evento 'temperature' enviado por el servidor
+    socket.on('temperature', (data) => {
+        const temperatureDisplay = document.querySelector('.display_temp');
+        temperatureDisplay.textContent = `${data}°C`; // Actualizar el contenido
+    });
+</script>
