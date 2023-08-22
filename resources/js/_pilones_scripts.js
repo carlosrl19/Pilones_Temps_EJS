@@ -4,6 +4,7 @@ $(document).ready(function () {
     $.get("/api/pilones", function (data) {
         // Iterar sobre los registros y mostrarlos en la tabla
         data.forEach(function (pilon) {
+            const fechaIngreso = new Date(pilon.fecha_ingreso).toISOString().split('T')[0]; // UTC format
             $("#pilonList").append(`
                 <tr>
                     <td>${pilon.nombre}</td>
@@ -13,7 +14,7 @@ $(document).ready(function () {
                     <td>${pilon.pn}</td>
                     <td>${pilon.temp_min}</td>
                     <td>${pilon.temp_max}</td>
-                    <td>${pilon.fecha_ingreso}</td>
+                    <td>${fechaIngreso}</td>
                     <td>${pilon.estado}</td>
                     <td>${pilon.asignado}</td>
                     <td>
@@ -80,10 +81,10 @@ $(document).ready(function () {
         });
 
         // Al hacer clic en el botón "Save Changes" del modal
-        $("#updatePilonButton").on("click", function (event) {
+        $("#updatePilonButton").on("click", async function (event) {
             event.preventDefault();
 
-            const pilonId = $(this).data("id"); // Obtiene el ID del arduino desde el atributo personalizado
+            const pilonId = $(this).data("id");
             const nombre = $("#editNombre").val();
             const finca = $("#editFinca").val();
             const variedad = $("#editVariedad").val();
@@ -93,29 +94,36 @@ $(document).ready(function () {
             const temp_max = $("#editTempMax").val();
             const estado = $("#editEstado").val();
 
-            // Realiza una llamada PUT a la API para actualizar la información del pilon
-            $.ajax({
-                url: `/api/pilones/${pilonId}`,
-                method: "PUT",
-                data: {
-                    nombre: nombre,
-                    finca: finca,
-                    variedad: variedad,
-                    etapa: etapa,
-                    pn: pn,
-                    temp_min: temp_min,
-                    temp_max: temp_max,
-                    estado: estado,
-                },
-                
-                success: function (response) {
+            const requestBody = {
+                nombre,
+                finca,
+                variedad,
+                etapa,
+                pn,
+                temp_min,
+                temp_max,
+                estado,
+            };
+
+            try {
+                const response = await fetch(`/api/pilones/${pilonId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(requestBody),
+                });
+
+                if (response.ok) {
                     $("#editPilonModal").modal("hide");
                     location.reload();
-                },
-                error: function (error) {
-                    console.error("Error updating pilon:", error);
+                } else {
+                    const errorData = await response.json();
+                    console.error("Error updating pilon:", errorData);
                 }
-            });
+            } catch (error) {
+                console.error("Error updating pilon:", error);
+            }
         });
     });
 });
