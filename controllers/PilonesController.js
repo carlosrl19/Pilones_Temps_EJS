@@ -38,22 +38,21 @@ const pilonesController = {
     // Pilon's update
     updatePilones: async (pilonId, nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado) => {
         try {
-
-            // Logs to verify data
-            console.log("Valores recibidos en la función de actualización:");
-            console.log("Nombre:", nombre);
-            console.log("Finca:", finca);
-            console.log("PN:", pn);
-            console.log("Variedad:", variedad);
-            console.log("Etapa:", etapa);
-            console.log("TempMin:", temp_min);
-            console.log("TempMax:", temp_max);
-            console.log("Estado:", estado);
-
             const connection = await mysql.createConnection(dbConfig); // DB connection
 
-            const updateQuery = 'UPDATE pilones SET nombre = ?, variedad = ?, finca = ?, etapa = ?, pn = ?, temp_min = ?, temp_max = ?, estado = ? WHERE id = ?'; // Execute request
-            await connection.execute(updateQuery, [nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado]);
+            const updateQuery = `
+                UPDATE pilones
+                SET nombre = ?,
+                    variedad = ?,
+                    finca = ?,
+                    etapa = ?,
+                    pn = ?,
+                    temp_min = ?,
+                    temp_max = ?,
+                    estado = ?
+                WHERE id = ?`;
+
+            await connection.execute(updateQuery, [nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado, pilonId]);
             connection.end(); // Cierra la conexión
 
             // Add pilones update logic in pilones table if this is neccesary
