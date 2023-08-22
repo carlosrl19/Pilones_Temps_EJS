@@ -98,15 +98,16 @@ $(document).ready(function () {
                 url: `/api/pilones/${pilonId}`,
                 method: "PUT",
                 data: {
-                    nombre,
-                    finca,
-                    variedad,
-                    etapa,
-                    pn,
-                    temp_min,
-                    temp_max,
-                    estado,
+                    nombre: nombre,
+                    finca: finca,
+                    variedad: variedad,
+                    etapa: etapa,
+                    pn: pn,
+                    temp_min: temp_min,
+                    temp_max: temp_max,
+                    estado: estado,
                 },
+                
                 success: function (response) {
                     $("#editPilonModal").modal("hide");
                     location.reload();

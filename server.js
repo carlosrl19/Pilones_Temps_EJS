@@ -14,6 +14,9 @@ app.set('views', path.join(__dirname, 'public/views'));
 app.use('/resources', express.static(path.join(__dirname, 'resources')));
 app.set('view engine', 'ejs');
 
+// Add this line to parse JSON in request bodies
+app.use(express.json());
+
 // Database connection to views and controllers
 app.use((req, res, next) => {
   req.db = db;
@@ -29,8 +32,16 @@ app.use('/graphics_history', routes);
 app.use('/temp_history', routes);
 app.use('/hum_history', routes);
 
-// Create a SerialPort instance with the path to your Arduino and baud rate
-const arduinoPort = new SerialPort({ path:'/dev/ttyACM0', baudRate: 9600 });
+
+/*
+---------------------------------------------------
+
+######################################
+*   ARDUINO CONFIGURATION - SERVER   *
+######################################
+
+*/
+const arduinoPort = new SerialPort({ path:'/dev/ttyACM0', baudRate: 9600 }); // Create a SerialPort instance with the path to your Arduino and baud rate
 
 let incompleteData = ''; // Variable para almacenar los datos incompletos recibidos del puerto serie
 
@@ -49,6 +60,7 @@ arduinoPort.on('data', (data) => {
 
   incompleteData = lines[lines.length - 1];
 });
+// ---------------------------------------------------
 
 // Start the server
 http.listen(port, () => {

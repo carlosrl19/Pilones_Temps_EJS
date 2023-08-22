@@ -40,12 +40,13 @@ const arduinosController = {
         try {
             const connection = await mysql.createConnection(dbConfig); // DB connection
 
-            const updateQuery = 'UPDATE arduinos SET nombre = ?, direccion_bits = ?, pilon_encargado = ?, arduino_port = ? WHERE id = ?'; // Execute request
+            const updateQuery = 'UPDATE arduinos SET nombre = ?, direccion_bits = ?, pilon_encargado = ?, arduino_port = ? WHERE id = ?';
             await connection.execute(updateQuery, [nombre, direccion_bits, pilon_encargado, arduino_port, arduinoId]);
 
-            connection.end(); // Cierra la conexión
+            connection.end();
 
-            // Add arduinos update logic in pilones table if this is neccesary
+            // Add more logic if it's needed
+
         } catch (error) {
             throw new Error('Error updating arduino: ' + error.message);
         }

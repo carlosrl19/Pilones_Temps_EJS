@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Humidity history</title>
+    <%- include('../partials//cdn_head/_cdn_head') %>
+</head>
+
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+
+        <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+            <div class="table-responsive small">
+                <table id="myTable" class="display table table-striped table-sm table-bordered">
+                    <thead class="table-success">
+                        <tr>
+                            <th scope="col">Pilón</th>
+                            <th scope="col">Reading date</th>
+                            <th scope="col">Reading time</th>
+                            <th scope="col">Reading unit</th>
+                            <th scope="col">Readings</th>
+                            <th scope="col">Reading mode</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- SCRIPTS -->
+        <script src="/resources/js/_arduino_scripts.js"></script>
+</body>
+
+</html>
