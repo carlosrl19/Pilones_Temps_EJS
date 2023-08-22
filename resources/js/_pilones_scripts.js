@@ -29,7 +29,29 @@ $(document).ready(function () {
 
         // Event handler para el botón Delete
         $(".delete-btn").on("click", function () {
+            const pilonId = $(this).data("id");
+            const deletePilonButton = document.getElementById('deletePilonButton');
+            deletePilonButton.setAttribute('data-pilon-id', pilonId);
             $("#deletePilonModal").modal("show");
+        });
+
+        // Al hacer clic en el botón "Eliminar Pilón" del modal de eliminación
+        $("#deletePilonButton").on("click", function () {
+            const pilonId = $(this).data("pilon-id");
+
+            fetch(`/api/pilones/${pilonId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        throw new Error('Error al eliminar el pilón.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         });
 
         // Edit modal opening
@@ -73,7 +95,7 @@ $(document).ready(function () {
 
             // Realiza una llamada PUT a la API para actualizar la información del pilon
             $.ajax({
-                url: `/api/pilones/${pilonesId}`, // Aquí se incluye el ID en la URL
+                url: `/api/pilones/${pilonId}`,
                 method: "PUT",
                 data: {
                     nombre,

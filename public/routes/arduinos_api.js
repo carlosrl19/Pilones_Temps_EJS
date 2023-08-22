@@ -45,4 +45,16 @@ router.put('/:arduinoId', async (req, res) => {
     }
 });
 
+// Arduino's DELETE
+router.delete('/:arduinoId', async (req, res) => {
+    try {
+        const arduinoId = req.params.arduinoId;
+        const result = await arduinosController.deleteArduino(arduinoId);
+        res.json({ message: 'Arduino deleted', rowsAffected: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error deleting Arduino', details: error.message });
+    }    
+});
+
 module.exports = router;

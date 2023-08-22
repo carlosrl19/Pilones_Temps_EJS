@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
         res.json(pilones);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Error al obtener los registros de pilones' });
+        res.status(500).json({ error: 'Error in obtaining pylon records' });
     }
 });
 
@@ -23,6 +23,18 @@ router.get('/:pilonId', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error fetching Pilon', details: error.message });
+    }    
+});
+
+// Pilon's DELETE
+router.delete('/:pilonId', async (req, res) => {
+    try {
+        const pilonId = req.params.pilonId;
+        const result = await pilonesController.deletePilones(pilonId);
+        res.json({ message: 'Pilon deleted', rowsAffected: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error deleting Pilon', details: error.message });
     }    
 });
 

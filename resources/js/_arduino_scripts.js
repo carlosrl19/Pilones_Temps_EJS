@@ -10,7 +10,7 @@ $(document).ready(function () {
                     <td>${arduino.direccion_bits}</td>
                     <td>${arduino.arduino_port}</td>
                     <td>
-                    <button class="btn btn-primary btn-sm edit-btn" data-id="${arduino.id}" data-toggle="modal" data-target="#editArduinoModal">Edit</button>
+                        <button class="btn btn-primary btn-sm edit-btn" data-id="${arduino.id}" data-toggle="modal" data-target="#editArduinoModal">Edit</button>
                         <button class="btn btn-danger btn-sm delete-btn" data-id="${arduino.id}" data-toggle="modal" data-target="#deleteArduinoModal">Delete</button>
                     </td>
                 </tr>
@@ -22,7 +22,29 @@ $(document).ready(function () {
 
         // Event handler para el botón Delete
         $(".delete-btn").on("click", function () {
+            const arduinoId = $(this).data("id");
+            const deleteArduinoButton = document.getElementById('deleteArduinoButton');
+            deleteArduinoButton.setAttribute('data-arduino-id', arduinoId);
             $("#deleteArduinoModal").modal("show");
+
+            // Al hacer clic en el botón "Eliminar Pilón" del modal de eliminación
+            $("#deleteArduinoButton").on("click", function () {
+                const arduinoId = $(this).data("arduino-id");
+
+                fetch(`/api/arduinos/${arduinoId}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            location.reload();
+                        } else {
+                            throw new Error('Error al eliminar el arduino.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
         });
 
         // Edit modal opening
