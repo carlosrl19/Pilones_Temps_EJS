@@ -23,20 +23,25 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/temp_history" id="resumen"></i>
+                    <a class="nav-link" href="/temp_history" id="temp_history"></i>
                         Temperature history
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/hum_history" id="resumen"></i>
+                    <a class="nav-link" href="/hum_history" id="hum_history"></i>
                         Humidity history
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/graphics_history" id="graficos">
+                    <a class="nav-link" href="/graphics_history" id="graphics_history">
                         Graphics history</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- Scripts to disable context menu -->
+<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+</script>

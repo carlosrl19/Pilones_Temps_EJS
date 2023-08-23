@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const arduinosController = require('./../../controllers/ArduinoController');
-const db = require('../../public/config/database');
+const arduinosController = require('../../controllers/ArduinoController');
+const db = require('../config/database');
 
 // Arduino's *
 router.get('/', async (req, res) => {

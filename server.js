@@ -60,6 +60,20 @@ arduinoPort.on('data', (data) => {
 
   incompleteData = lines[lines.length - 1];
 });
+
+/*---------------------------
+P U E R T O S - C O N F I G S
+-----------------------------*/
+
+// Puerto dev/ttyACM0
+arduinoPort.on('open', () => {
+  console.log('Serial port opened');
+});
+
+arduinoPort.on('error', (err) => {
+  console.error('Serial port error:', err.message);
+});
+
 // ---------------------------------------------------
 
 // Start the server

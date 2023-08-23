@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const pilonesController = require('./../../controllers/PilonesController');
-const db = require('../../public/config/database');
+const pilonesController = require('../../controllers/PilonesController');
+const db = require('../config/database');
 
 // Pilon's *
 router.get('/', async (req, res) => {

@@ -1,8 +1,9 @@
 // routes.js
 const express = require('express');
 const router = express.Router();
-const arduinosAPI = require('./arduinos_api'); 
-const pilonesAPI = require('./pilones_api'); 
+const arduinosAPI = require('./_arduinos_api'); 
+const pilonesAPI = require('./_pilones_api'); 
+const temperaturesAPI = require('./_temperatures_api');
 
 router.get('/', (req, res) => {
     res.render('home/home');
@@ -35,5 +36,6 @@ router.get('/hum_history', (req, res) => {
 // API routes
 router.use('/api/arduinos', arduinosAPI);
 router.use('/api/pilones', pilonesAPI);
+router.use('/api/temperatures', temperaturesAPI);
 
 module.exports = router;
