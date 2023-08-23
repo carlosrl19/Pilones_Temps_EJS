@@ -124,8 +124,9 @@ h2 {
 .btnImgen{
   background-color: #d18135;
   border: 0px;
-  margin-left: 10px;
+  margin-top: 12%;
   color: #ffffff;
+  font-size: 16px;
 }
 .btnImgen:hover{
   background-color: #f89e49;

@@ -6,7 +6,7 @@ var myChart;
 
 // Función para obtener los datos filtrados por ID de pilón
 function obtenerDatosFiltrados(pilonId, fechaInicial, fechaFinal) {
-    var url = "api/temperaturas/" + pilonId + "?fechaInicial=" + fechaInicial + "&fechaFinal=" + fechaFinal;
+    var url = "api/temperatures/" + pilonId + "?fechaInicial=" + fechaInicial + "&fechaFinal=" + fechaFinal;
 
     return fetch(url)
         .then(function (response) {
@@ -127,8 +127,9 @@ fetch("api/pilones")
         // Agregar las opciones al select de pilones
         data.forEach(function (pilon) {
             var option = document.createElement("option");
+            const fechaIngreso = new Date(pilon.fecha_ingreso).toISOString().split('T')[0]; // UTC format
             option.value = pilon.id;
-            option.textContent = pilon.nombre + ' - ' + pilon.finca + ' - ' + pilon.variedad;
+            option.textContent = pilon.nombre + ' - ' + pilon.finca + ' - ' + fechaIngreso +' - ' + pilon.variedad;
             selectPilon.appendChild(option);
         });
     })
@@ -142,27 +143,6 @@ actualizarGrafica();
 // Export graphics to images
 function exportToImage() {
     var canvas = document.getElementById("myChart");
-    var selectElement = document.getElementById("selectPilon");
-    var startDateElement = document.getElementById("fechaInicialSelector");
-    var endDateElement = document.getElementById("fechaFinalSelector");
-
-    var pilonName = selectElement.value;
-    var startDate = startDateElement.value;
-    var endDate = endDateElement.value;
-
-    var context = canvas.getContext("2d");
-
-    // Dibujar el nombre del pilón
-    context.font = "12px Arial";
-    context.fillText("Pilón: " + pilonName, 90, 20);
-
-    // Dibujar la fecha inicial
-    context.font = "12px Arial";
-    context.fillText("Fecha inicial: " + startDate, 150, 20);
-
-    // Dibujar la fecha final
-    context.font = "12px Arial";
-    context.fillText("Fecha final: " + endDate, 300, 20);
 
     var imageData = canvas.toDataURL("image/png");
     var link = document.createElement("a");

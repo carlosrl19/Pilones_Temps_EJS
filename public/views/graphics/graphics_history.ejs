@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Humidity history</title>
+    <title>Temperature history</title>
     <%- include('../partials//cdn_head/_cdn_head') %>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.css">
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
@@ -13,25 +13,25 @@
 <body>
     <%- include('../partials/navbar/_navbar') %>
 
-        <div class="container-fluid mt-5">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col text-center">
-                    <div class="text-center">Pilon's list</div>
-                    <div class="d-flex justify-content-center mb-3">
-                        <select id="selectPilon" class="form-select" style="width: 65%;">
+                    <!-- <div class="text-center">Pilon's name | Farm | Entry date | Varriety</div>-->
+                    <div class="d-flex justify-content-center mb-3 mt-3">
+                        <select id="selectPilon" class="form-select">
                             <!-- Options will be dynamically added here -->
                         </select>
                     </div>
                 </div>
                 <div class="col text-center">
-                    <div class="text-center">Start date</div>
-                    <div class="d-flex justify-content-center mb-3">
+                    <!-- <div class="text-center">Start date</div>-->
+                    <div class="d-flex justify-content-center mb-3 mt-3">
                         <input type="date" id="fechaInicialSelector" class="form-control" style="width: 45%;">
                     </div>
                 </div>
                 <div class="col text-center">
-                    <div class="text-center">Final date</div>
-                    <div class="d-flex justify-content-center mb-3">
+                    <!-- <div class="text-center">Final date</div>-->
+                    <div class="d-flex justify-content-center mb-3 mt-3">
                         <input type="date" id="fechaFinalSelector" class="form-control" style="width: 45%;">
                     </div>
                 </div>
@@ -45,7 +45,7 @@
 
             <div class="row">
                 <div class="col-lg-12 mt-5">
-                    <canvas id="myChart" style="width: 100%; height: 650px;"></canvas>
+                    <canvas id="myChart" style="min-width: 100%; max-width: 100%; min-height: 700px; max-height: 700px;"></canvas>
                 </div>
             </div>
         </div>
