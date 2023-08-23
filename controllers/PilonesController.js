@@ -31,7 +31,7 @@ const pilonesController = {
             }
             return results[0];
         } catch (error) {
-            throw new Error('Error fetching pilon: ' + error.message);
+            throw new Error('Error fetching pilón: ' + error.message);
         }
     },
 
@@ -57,7 +57,7 @@ const pilonesController = {
 
             // Add pilones update logic in pilones table if this is neccesary
         } catch (error) {
-            throw new Error('Error updating pilon: ' + error.message);
+            throw new Error('Error updating pilón: ' + error.message);
         }
     },
 
@@ -73,7 +73,7 @@ const pilonesController = {
 
             return result.affectedRows; // Devuelve la cantidad de filas eliminadas
         } catch (error) {
-            throw new Error('Error deleting pilon: ' + error.message);
+            throw new Error('Error deleting pilón: ' + error.message);
         }
     },
 

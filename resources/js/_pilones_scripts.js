@@ -1,25 +1,25 @@
-// pilon entries content table
+// pilón entries content table
 $(document).ready(function () {
     // Realizar la llamada a la API para obtener los registros
     $.get("/api/pilones", function (data) {
         // Iterar sobre los registros y mostrarlos en la tabla
-        data.forEach(function (pilon) {
-            const fechaIngreso = new Date(pilon.fecha_ingreso).toISOString().split('T')[0]; // UTC format
+        data.forEach(function (pilón) {
+            const fechaIngreso = new Date(pilón.fecha_ingreso).toISOString().split('T')[0]; // UTC format
             $("#pilonList").append(`
                 <tr>
-                    <td>${pilon.nombre}</td>
-                    <td>${pilon.variedad}</td>
-                    <td>${pilon.finca}</td>
-                    <td>Stage ${pilon.etapa}</td>
-                    <td>${pilon.pn}</td>
-                    <td>${pilon.temp_min}</td>
-                    <td>${pilon.temp_max}</td>
+                    <td>${pilón.nombre}</td>
+                    <td>${pilón.variedad}</td>
+                    <td>${pilón.finca}</td>
+                    <td>Stage ${pilón.etapa}</td>
+                    <td>${pilón.pn}</td>
+                    <td>${pilón.temp_min}</td>
+                    <td>${pilón.temp_max}</td>
                     <td>${fechaIngreso}</td>
-                    <td>${pilon.estado}</td>
-                    <td>${pilon.asignado}</td>
+                    <td>${pilón.estado}</td>
+                    <td>${pilón.asignado}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm edit-btn" data-id="${pilon.id}" data-toggle="modal" data-target="#editPilonModal">Edit</button>
-                        <button class="btn btn-danger btn-sm delete-btn" data-id="${pilon.id}" data-toggle="modal" data-target="#deletePilonModal">Delete</button>
+                        <button class="btn btn-primary btn-sm edit-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal">Edit</button>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#deletePilonModal">Delete</button>
                     </td>
                 </tr>
             `);
@@ -32,13 +32,13 @@ $(document).ready(function () {
         $(".delete-btn").on("click", function () {
             const pilonId = $(this).data("id");
             const deletePilonButton = document.getElementById('deletePilonButton');
-            deletePilonButton.setAttribute('data-pilon-id', pilonId);
+            deletePilonButton.setAttribute('data-pilón-id', pilonId);
             $("#deletePilonModal").modal("show");
         });
 
         // Al hacer clic en el botón "Eliminar Pilón" del modal de eliminación
         $("#deletePilonButton").on("click", function () {
-            const pilonId = $(this).data("pilon-id");
+            const pilonId = $(this).data("pilón-id");
 
             fetch(`/api/pilones/${pilonId}`, {
                 method: 'DELETE'
@@ -58,19 +58,19 @@ $(document).ready(function () {
         // Edit modal opening
         $(".edit-btn").on("click", function () {
             const pilonId = $(this).data("id");
-            console.log('Selected pilon with ID', pilonId);
+            console.log('Selected pilón with ID', pilonId);
 
-            // Realiza una llamada a la API para obtener la información del pilon
-            $.get(`/api/pilones/${pilonId}`, function (pilon) {
-                // Llena los campos del formulario de edición con la información del pilon
-                $("#editNombre").val(pilon.nombre);
-                $("#editFinca").val(pilon.finca);
-                $("#editVariedad").val(pilon.variedad);
-                $("#editEtapa").val(pilon.etapa);
-                $("#editPN").val(pilon.pn);
-                $("#editTempMin").val(pilon.temp_min);
-                $("#editTempMax").val(pilon.temp_max);
-                $("#editEstado").val(pilon.estado);
+            // Realiza una llamada a la API para obtener la información del pilón
+            $.get(`/api/pilones/${pilonId}`, function (pilón) {
+                // Llena los campos del formulario de edición con la información del pilón
+                $("#editNombre").val(pilón.nombre);
+                $("#editFinca").val(pilón.finca);
+                $("#editVariedad").val(pilón.variedad);
+                $("#editEtapa").val(pilón.etapa);
+                $("#editPN").val(pilón.pn);
+                $("#editTempMin").val(pilón.temp_min);
+                $("#editTempMax").val(pilón.temp_max);
+                $("#editEstado").val(pilón.estado);
 
                 // Muestra el modal de edición
                 $("#editPilonModal").modal("show");
@@ -119,10 +119,10 @@ $(document).ready(function () {
                     location.reload();
                 } else {
                     const errorData = await response.json();
-                    console.error("Error updating pilon:", errorData);
+                    console.error("Error updating pilón:", errorData);
                 }
             } catch (error) {
-                console.error("Error updating pilon:", error);
+                console.error("Error updating pilón:", error);
             }
         });
     });

@@ -112,6 +112,16 @@ h2 {
   padding-bottom: 5px;
   font-size: small;
 }
+.btnCreate{
+  background-color: #56a1cf;
+  color: #ffffff;
+  font-size: small;
+  border: transparent;
+  padding: 8px;
+  margin-top: 4px;
+  margin-left: -4%;
+  border-radius: 10px 0 0 10px;
+}
 
 .btnExcel{
   background-color: #0e7a32;

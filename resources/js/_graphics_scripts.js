@@ -125,11 +125,11 @@ fetch("api/pilones")
     })
     .then(function (data) {
         // Agregar las opciones al select de pilones
-        data.forEach(function (pilon) {
+        data.forEach(function (pilón) {
             var option = document.createElement("option");
-            const fechaIngreso = new Date(pilon.fecha_ingreso).toISOString().split('T')[0]; // UTC format
-            option.value = pilon.id;
-            option.textContent = pilon.nombre + ' - ' + pilon.finca + ' - ' + fechaIngreso +' - ' + pilon.variedad;
+            const fechaIngreso = new Date(pilón.fecha_ingreso).toISOString().split('T')[0]; // UTC format
+            option.value = pilón.id;
+            option.textContent = pilón.nombre + ' - ' + pilón.finca + ' - ' + fechaIngreso +' - ' + pilón.variedad;
             selectPilon.appendChild(option);
         });
     })

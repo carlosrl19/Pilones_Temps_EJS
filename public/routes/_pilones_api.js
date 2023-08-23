@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
         res.json(pilones);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Error in obtaining pylon records' });
+        res.status(500).json({ error: 'Error in obtaining pilón records' });
     }
 });
 
@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
 router.get('/:pilonId', async (req, res) => {
     try {
         const pilonId = req.params.pilonId;
-        const pilon = await pilonesController.getPilonById(pilonId);
-        res.json(pilon);
+        const pilón = await pilonesController.getPilonById(pilonId);
+        res.json(pilón);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error fetching Pilon', details: error.message });
