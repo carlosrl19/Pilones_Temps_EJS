@@ -8,11 +8,9 @@
                         class="bi bi-box-arrow-down"></i> Create new arduino</h5>
             </div>
             <div class="modal-body">
-                <form id="createPilonForm" action="/listado-arduinos/crear" method="POST">
-
+                <form id="createPilonForm" action="/api/arduinos" method="POST">
                     <div class="row mb-3">
-                        <label for="nombre" class="col-sm-3 col-form-label form-label0">Nombre del
-                            Arduino</label>
+                        <label for="nombre" class="col-sm-3 col-form-label form-label0">Arduino's name</label>
                         <div class="col-sm-9">
                             <input type="text" id="nombre" name="nombre" class="form-control"
                                 placeholder="Arduino's name" required><br>
@@ -20,10 +18,10 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="direccion_bits" class="col-sm-3 col-form-label form-label0">DS18B20</label>
+                        <label for="direccion_bits" class="col-sm-3 col-form-label form-label0">DS18B20 Sensor</label>
                         <div class="col-sm-9">
                             <input type="text" id="direccion_bits" name="direccion_bits" class="form-control"
-                                minlength="16" maxlength="16" placeholder="Direción del sensor de temperatura"
+                                minlength="16" maxlength="16" placeholder="Example: 28BEFD79970003CA"
                                 required><br>
                         </div>
                     </div>
@@ -32,8 +30,10 @@
                         <label for="pilon_encargado" class="col-sm-3 col-form-label form-label0">Arduino's pilón</label>
                         <div class="col-sm-9">
                             <select id="pilon_encargado" name="pilon_encargado" class="form-control" required>
-                                <!-- Aquí se generará dinámicamente las opciones del select con los pilones -->
-                            </select><br>
+                                <option value="" selected disabled>Select a pilón</option>
+                                <!-- Aquí los pilones serán agregados por el script -->
+                            </select>                            
+                            <br>
                         </div>
                     </div>
 

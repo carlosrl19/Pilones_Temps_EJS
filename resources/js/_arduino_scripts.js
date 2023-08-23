@@ -97,5 +97,42 @@ $(document).ready(function () {
                 }
             });
         });
+
+
+        // Al hacer clic en el botón "Save pilón" del modal de creación
+        $("#createPilonButton").on("click", function (event) {
+            event.preventDefault();
+
+            const nombre = $("#nombre").val();
+            const direccion_bits = $("#direccion_bits").val();
+            const pilon_encargado = $("#pilon_encargado").val();
+            const arduino_port = $("#arduino_port").val();
+
+            // Realiza una llamada POST a la API para crear un nuevo Arduino
+            $.ajax({
+                url: "/arduinos", // Ruta para la creación de arduinos
+                method: "POST",
+                data: {
+                    nombre,
+                    direccion_bits,
+                    pilon_encargado,
+                    arduino_port
+                },
+                success: function (response) {
+                    location.reload();
+                },
+                error: function (error) {
+                    console.error("Error creating Arduino:", error);
+                }
+            });
+        });
+
+        // Realizar la llamada a la API para obtener los registros de pilones
+        $.get("/api/pilones", function (data) {
+            // Iterar sobre los registros y mostrarlos en el select
+            data.forEach(function (pilon) {
+                $("#pilon_encargado").append(`<option value="${pilon.id}">${pilon.nombre}</option>`);
+            });
+        });
     });
 });

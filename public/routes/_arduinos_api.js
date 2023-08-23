@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const arduinosController = require('../../controllers/ArduinoController');
+const pilonesController = require('../../controllers/PilonesController');
 const db = require('../config/database');
 
 // Arduino's *
@@ -23,6 +24,21 @@ router.get('/:arduinoId', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error fetching Arduino', details: error.message });
+    }
+});
+
+// POST create a new Arduino
+router.post('/arduinos', async (req, res) => {
+    try {
+        const { nombre, direccion_bits, pilon_encargado, arduino_port } = req.body;
+        await arduinosController.createArduino(nombre, direccion_bits, pilon_encargado, arduino_port);
+        
+        const pilones = await pilonesController.getAllPilones();
+
+        res.render('lists/arduino_list', { pilones });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error creating arduino', details: error.message });
     }
 });
 
