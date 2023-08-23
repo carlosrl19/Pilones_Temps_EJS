@@ -38,6 +38,7 @@ const arduinosController = {
     // Arduino's create
     createArduino: async (nombre, direccion_bits, pilon_encargado, arduino_port) => {
         try {
+            console.log("Creating Arduino with values:", nombre, direccion_bits, pilon_encargado, arduino_port);
             const connection = await mysql.createConnection(dbConfig); // DB connection
 
             // Insertar en la tabla "arduinos"

@@ -36,7 +36,7 @@ CREATE TABLE humedad (
     fecha_lectura DATE,
     hora_lectura TIME,
     lectura FLOAT,
-    FOREIGN KEY (pilon_encargado) REFERENCES pilones(id)
+    FOREIGN KEY (pilon_encargado) REFERENCES pilones(id) ON DELETE CASCADE
 );
 
 -- Crear la tabla arduinos
@@ -49,12 +49,25 @@ CREATE TABLE arduinos (
     FOREIGN KEY (pilon_encargado) REFERENCES pilones(id)
 );
 
-SELECT * from pilones;
+SELECT * from pilones;	
+SELECT * from temperaturas;
 
-INSERT INTO arduinos (nombre, direccion_bits, pilon_encargado, arduino_port) VALUES ('Arduino 04', '28BEFD79970003CF', '108', '/dev/ttyACM0');
+INSERT INTO arduinos (nombre, direccion_bits, pilon_encargado, arduino_port)
+VALUES
+    ('Arduino 03', '28BEFD79970003AA', 1, '/dev/ttyACM0'),
+    ('Arduino 04', '28BEFD79970004CA', 2, '/dev/ttyACM0'),
+    ('Arduino 05', '28BEFD79970005CA', 3, '/dev/ttyACM0'),
+    ('Arduino 06', '28BEFD79970006CA', 4, '/dev/ttyACM0'),
+    ('Arduino 07', '28BEFD79970007CA', 5, '/dev/ttyACM0'),
+    ('Arduino 08', '28BEFD79970008CA', 6, '/dev/ttyACM0'),
+    ('Arduino 09', '28BEFD79970009CA', 7, '/dev/ttyACM0'),
+    ('Arduino 10', '28BEFD79970010CA', 8, '/dev/ttyACM0');
+
 
 INSERT INTO pilones (nombre, variedad, finca, etapa, pn, temp_min, temp_max, fecha_ingreso, estado, asignado)
 VALUES
+    ('Pilón 01', 'Variedad 2', 'DEF', 2, 6000, 55, 85, CURDATE(), 'En proceso', ''),
+    ('Pilón 02', 'Variedad 2', 'DEF', 2, 6000, 55, 85, CURDATE(), 'En proceso', ''),
     ('Pilón 03', 'Variedad 2', 'DEF', 2, 6000, 55, 85, CURDATE(), 'En proceso', ''),
     ('Pilón 04', 'Variedad 3', 'GHI', 3, 7000, 60, 90, CURDATE(), 'En proceso', ''),
     ('Pilón 05', 'Variedad 4', 'JKL', 4, 8000, 65, 95, CURDATE(), 'En proceso', ''),

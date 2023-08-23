@@ -28,7 +28,7 @@ router.get('/:arduinoId', async (req, res) => {
 });
 
 // POST create a new Arduino
-router.post('/arduinos', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const { nombre, direccion_bits, pilon_encargado, arduino_port } = req.body;
         await arduinosController.createArduino(nombre, direccion_bits, pilon_encargado, arduino_port);

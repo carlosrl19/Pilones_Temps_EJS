@@ -110,7 +110,7 @@ $(document).ready(function () {
 
             // Realiza una llamada POST a la API para crear un nuevo Arduino
             $.ajax({
-                url: "/arduinos", // Ruta para la creación de arduinos
+                url: "/api/arduinos", // Ruta para la creación de arduinos
                 method: "POST",
                 data: {
                     nombre,
