@@ -41,6 +41,28 @@
                         FAQs
                     </a>
                 </li>
+
+                <!-- If ? show some things -->
+                <% if (currentUrl==='/pilones_list' ) { %>
+                    <li class="nav-item">
+                        <a>
+                            <button type="button" class="nav-link px-2" style="color: #87e7ff;" data-bs-toggle="modal"
+                                data-bs-target="#createPilonModal"><i class="bi bi-patch-plus"></i> Add new pilón
+                            </button>
+                        </a>
+                    </li>
+                    <% } %>
+
+                        <% if (currentUrl==='/arduino_list' ) { %>
+                            <li class="nav-item">
+                                <a>
+                                    <button type="button" class="nav-link px-2" style="color: #87ff8d;"
+                                        data-bs-toggle="modal" data-bs-target="#createArduinoModal"><i
+                                            class="bi bi-patch-plus"></i> Add new
+                                        arduino</button>
+                                </a>
+                            </li>
+                            <% } %>
             </ul>
         </div>
     </div>

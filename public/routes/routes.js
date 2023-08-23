@@ -6,31 +6,31 @@ const pilonesAPI = require('./_pilones_api');
 const temperaturesAPI = require('./_temperatures_api');
 
 router.get('/', (req, res) => {
-    res.render('home/home');
+    res.render('home/home', { currentUrl: req.originalUrl });
 });
 
 router.get('/individual_arduino', (req, res) => {
-    res.render('home/individual_home');
+    res.render('home/individual_home', { currentUrl: req.originalUrl });
 });
 
-router.get('/pilones_list', (req, res) => {
-    res.render('lists/pilones_list');
+router.get('/pilones_list', async (req, res) => {
+    res.render('lists/pilones_list', { currentUrl: req.originalUrl });
 });
 
 router.get('/arduino_list', async (req, res) => {
-    res.render('lists/arduino_list');
+    res.render('lists/arduino_list', { currentUrl: req.originalUrl });
 });
 
 router.get('/temp_history', (req, res) => {
-    res.render('history/temp_history');
+    res.render('history/temp_history', { currentUrl: req.originalUrl });
 });
 
 router.get('/graphics_history', (req, res) => {
-    res.render('graphics/graphics_history');
+    res.render('graphics/graphics_history', { currentUrl: req.originalUrl });
 });
 
 router.get('/hum_history', (req, res) => {
-    res.render('history/humidity_history');
+    res.render('history/humidity_history', { currentUrl: req.originalUrl });
 });
 
 // API routes

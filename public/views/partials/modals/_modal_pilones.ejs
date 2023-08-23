@@ -7,8 +7,7 @@
                         class="bi bi-box-arrow-down"></i> Add new pilón</h5>
             </div>
             <div class="modal-body">
-                <form id="createPilonForm" action="/listado-pilones/crear" method="POST">
-
+                <form id="createPilonForm" action="/api/arduinos" method="POST">
                     <div class="row mb-3">
                         <label for="editNombre" class="col-sm-3 col-form-label form-label0">Pilon's name</label>
                         <div class="col-sm-9">
@@ -20,8 +19,8 @@
                     <div class="row mb-3">
                         <label for="editFinca" class="col-sm-3 col-form-label form-label0">Farm source</label>
                         <div class="col-sm-9">
-                            <input type="text" id="finca" name="finca" class="form-control"
-                                placeholder="Example: FLM" required><br>
+                            <input type="text" id="finca" name="finca" class="form-control" placeholder="Example: FLM"
+                                required><br>
                         </div>
                     </div>
 
@@ -36,8 +35,8 @@
                     <div class="row mb-3">
                         <label for="editEtapa" class="col-sm-3 col-form-label form-label0">Tobacco stage</label>
                         <div class="col-sm-9">
-                            <input type="number" id="etapa" name="etapa" class="form-control"
-                                placeholder="Example: 1" required><br>
+                            <input type="number" id="etapa" name="etapa" class="form-control" placeholder="Example: 1"
+                                required><br>
                         </div>
                     </div>
 
@@ -50,7 +49,8 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="editTempMin" class="col-sm-3 col-form-label form-label0">Minimun accepted temperature</label>
+                        <label for="editTempMin" class="col-sm-3 col-form-label form-label0">Minimun accepted
+                            temperature</label>
                         <div class="col-sm-9">
                             <input type="number" id="temp_min" name="temp_min" class="form-control"
                                 placeholder="Example: 90" required><br>
@@ -58,7 +58,8 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="editTempMax" class="col-sm-3 col-form-label form-label0">Maximum accepted temperature</label>
+                        <label for="editTempMax" class="col-sm-3 col-form-label form-label0">Maximum accepted
+                            temperature</label>
                         <div class="col-sm-9">
                             <input type="number" id="temp_max" name="temp_max" class="form-control"
                                 placeholder="Example: 95" required><br>
@@ -132,14 +133,16 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="editTempMin" class="col-sm-3 col-form-label form-label0">Minimun accepted temperature</label>
+                        <label for="editTempMin" class="col-sm-3 col-form-label form-label0">Minimun accepted
+                            temperature</label>
                         <div class="col-sm-9">
                             <input type="number" id="editTempMin" name="editTempMin" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="editTempMax" class="col-sm-3 col-form-label form-label0">Maximum accepted temperature</label>
+                        <label for="editTempMax" class="col-sm-3 col-form-label form-label0">Maximum accepted
+                            temperature</label>
                         <div class="col-sm-9">
                             <input type="number" id="editTempMax" name="editTempMax" class="form-control" required>
                         </div>
@@ -173,7 +176,8 @@
             </div>
             <div class="modal-body">
                 <a><strong>Are you sure you want to remove this pilón?</strong>
-                    <br>This action is irreversible and will delete everything related to this pilón and the temperatures stored in it.
+                    <br>This action is irreversible and will delete everything related to this pilón and the
+                    temperatures stored in it.
                     temperatures obtained from it.</a><br>
                 <br><button id="deletePilonButton" class="btn btn-primary"
                     style="background-color: rgba(201, 0, 0, 0.753);  border: 0px;" type="button"

@@ -35,6 +35,30 @@ const arduinosController = {
         }
     },
 
+    // Arduino's create
+    createArduino: async (nombre, direccion_bits, pilon_encargado, arduino_port) => {
+        try {
+            const connection = await mysql.createConnection(dbConfig); // DB connection
+
+            // Insertar en la tabla "arduinos"
+            const insertQuery = 'INSERT INTO arduinos (nombre, direccion_bits, pilon_encargado, arduino_port) VALUES (?, ?, ?, ?)';
+            const [insertResult] = await connection.execute(insertQuery, [nombre, direccion_bits, pilon_encargado, arduino_port]);
+
+            const arduinoId = insertResult.insertId; // Obtener el ID del arduino recién insertado
+
+            // Actualizar la columna "asignado" en la tabla "pilones" con el ID del arduino
+            const updateQuery = 'UPDATE pilones SET asignado = ? WHERE id = ?';
+            await connection.execute(updateQuery, [arduinoId, pilon_encargado]);
+
+            connection.end(); // Cierra la conexión
+
+            // Add more logic if it's needed
+
+        } catch (error) {
+            throw new Error('Error creating arduino: ' + error.message);
+        }
+    },
+
     // Arduino's update
     updateArduino: async (arduinoId, nombre, direccion_bits, pilon_encargado, arduino_port) => {
         try {
