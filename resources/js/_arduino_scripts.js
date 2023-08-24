@@ -108,9 +108,14 @@ $(document).ready(function () {
             const pilon_encargado = $("#pilon_encargado").val();
             const arduino_port = $("#arduino_port").val();
 
+            console.log("Nombre:", nombre);
+            console.log("Direccion Bits:", direccion_bits);
+            console.log("Pilón Encargado:", pilon_encargado);
+            console.log("Arduino Port:", arduino_port);
+
             // Realiza una llamada POST a la API para crear un nuevo Arduino
             $.ajax({
-                url: "/api/arduinos", // Ruta para la creación de arduinos
+                url: "/arduinos/create", // Ruta para la creación de arduinos
                 method: "POST",
                 data: {
                     nombre,
