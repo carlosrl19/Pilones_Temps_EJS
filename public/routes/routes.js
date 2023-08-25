@@ -36,9 +36,13 @@ router.get('/hum_history', (req, res) => {
 router.get('/FAQ', (req, res) => {
     res.render('faqs/faqs', { currentUrl: req.originalUrl });
 });
+
 // API routes
 router.use('/api/arduinos', arduinosAPI);
 router.use('/api/pilones', pilonesAPI);
 router.use('/api/temperatures', temperaturesAPI);
+
+// POST routes
+router.post('/api/arduinos/arduino_list', arduinosAPI);
 
 module.exports = router;

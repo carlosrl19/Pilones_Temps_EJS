@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const arduinosController = require('../../controllers/ArduinoController');
-const pilonesController = require('../../controllers/PilonesController');
 const db = require('../config/database');
 
 // Arduino's *
@@ -15,6 +14,20 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Arduino's CREATE
+router.post('/', async (req, res) => {
+    try {
+        const { nombre, direccion_bits, pilon_encargado, arduino_port } = req.body;
+
+        const newArduinoId = await arduinosController.createArduino(nombre, direccion_bits, pilon_encargado, arduino_port);
+
+        res.status(201).json({ message: 'Arduino created', insertedId: newArduinoId });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error creating Arduino', details: error.message });
+    }
+});
+
 // Arduino's WHERE ID
 router.get('/:arduinoId', async (req, res) => {
     try {
@@ -24,21 +37,6 @@ router.get('/:arduinoId', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error fetching Arduino', details: error.message });
-    }
-});
-
-// POST create a new Arduino
-router.post('/arduinos/create', async (req, res) => {
-    try {
-        const { nombre, direccion_bits, pilon_encargado, arduino_port } = req.body;
-        await arduinosController.createArduino(nombre, direccion_bits, pilon_encargado, arduino_port);
-        
-        const pilones = await pilonesController.getAllPilones();
-
-        res.render('lists/arduino_list', { pilones });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Error creating arduino', details: error.message });
     }
 });
 
@@ -69,8 +67,14 @@ router.delete('/:arduinoId', async (req, res) => {
         res.json({ message: 'Arduino deleted', rowsAffected: result });
     } catch (error) {
         console.error(error);
+
+        // Extern keys validations
+        if (error.message.includes('Cannot delete or update a parent row')) {
+            return res.status(400).json({ error: 'Unable to remove the Arduino due to foreign key constraint.' });
+        }
+
         res.status(500).json({ error: 'Error deleting Arduino', details: error.message });
-    }    
+    }
 });
 
 module.exports = router;

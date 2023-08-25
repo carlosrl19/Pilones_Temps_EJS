@@ -98,9 +98,7 @@ $(document).ready(function () {
             });
         });
 
-
-        // Al hacer clic en el botón "Save pilón" del modal de creación
-        $("#createPilonButton").on("click", function (event) {
+        $("#createArduinoForm").submit(function (event) {
             event.preventDefault();
 
             const nombre = $("#nombre").val();
@@ -108,35 +106,39 @@ $(document).ready(function () {
             const pilon_encargado = $("#pilon_encargado").val();
             const arduino_port = $("#arduino_port").val();
 
-            console.log("Nombre:", nombre);
-            console.log("Direccion Bits:", direccion_bits);
-            console.log("Pilón Encargado:", pilon_encargado);
-            console.log("Arduino Port:", arduino_port);
-
             // Realiza una llamada POST a la API para crear un nuevo Arduino
-            $.ajax({
-                url: "/arduinos/create", // Ruta para la creación de arduinos
-                method: "POST",
-                data: {
+            fetch(`/api/arduinos`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
                     nombre,
                     direccion_bits,
                     pilon_encargado,
                     arduino_port
-                },
-                success: function (response) {
-                    location.reload();
-                },
-                error: function (error) {
-                    console.error("Error creating Arduino:", error);
-                }
-            });
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        throw new Error('Error al crear el arduino.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         });
 
-        // Realizar la llamada a la API para obtener los registros de pilones
+        // Cargar opciones de pilones al select
         $.get("/api/pilones", function (data) {
-            // Iterar sobre los registros y mostrarlos en el select
+            const pilonSelect = document.getElementById("pilon_encargado");
             data.forEach(function (pilon) {
-                $("#pilon_encargado").append(`<option value="${pilon.id}">${pilon.nombre}</option>`);
+                const option = document.createElement("option");
+                option.value = pilon.id;
+                option.textContent = pilon.nombre;
+                pilonSelect.appendChild(option);
             });
         });
     });
