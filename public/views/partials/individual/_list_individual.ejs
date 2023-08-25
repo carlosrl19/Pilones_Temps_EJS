@@ -1,23 +1,17 @@
-<div class="container mt-4">
-    <div class="dropdown mt-4">
-        <div class="select" data-toggle="modal" data-target="#myModal">
-            <span>Choose a pilón to save temperature</span>
-            <i class="fa fa-chevron-left"></i>
-        </div>
-        <input type="hidden" name="gender">
-    </div>
-    <span class="msg"></span>
-</div>
-
-<!-- Modal -->
+<!-- SAVE DATA MODAL -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px;">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Choose a pilón to save temperature:</h5>
+            <div class="modal-header" style="background: linear-gradient(to right, #1a4467f0, #266293ce, #3a96e2c0);">
+                <h5 class="modal-title" style="color: #ffffff;" id="exampleModalLongTitle">Choose a pilón to save
+                    temperature:</h5>
             </div>
             <div class="modal-body">
                 <form>
+                    <div class="form-group searchInput">
+                        <input type="text" id="searchInput" class="form-control"
+                            placeholder="Search a especific pilón in database">
+                    </div><br>
                     <div class="form-group">
                         <div class="checkbox-list" id="pilonCheckboxList">
                             <!-- Pilones checkboxes will be generated here dynamically -->
@@ -25,44 +19,18 @@
                     </div>
                 </form>
             </div>
+
             <div class="modal-footer">
-                <p class="text-muted">Choose a pilón to save temperature.</p>
+                <p>
+                    <button id="createPilonButton" class="btn btn-primary"
+                        style="background: #266293ce; border: 0px; border-radius: 15px;" type="submit">Save temperature
+                        and humidity </button>
+                </p>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('span:contains("Choose a pilón to save temperature")').click(function () {
-            $('#myModal').modal('show');
-        });
 
-        // Call the API to get the list of pilones
-        $.get("/api/pilones", function (data) {
-            const pilonCheckboxList = $("#pilonCheckboxList");
-
-            // Generate checkboxes for each pilón
-            data.forEach(function (pilon) {
-                const checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                checkbox.name = "opcion";
-                checkbox.value = pilon.id; // Set the pilon's ID as the checkbox value
-
-                const label = document.createElement("label");
-                label.textContent = pilon.nombre; // Use the pilon's name
-
-                const div = document.createElement("div");
-                div.appendChild(checkbox);
-                div.appendChild(label);
-
-                pilonCheckboxList.append(div);
-            });
-
-            // Handle checkbox selection
-            $("input[name='opcion']").on("change", function () {
-                $("input[name='opcion']").not(this).prop("checked", false);
-            });
-        });
-    });
 </script>

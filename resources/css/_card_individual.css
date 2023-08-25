@@ -1,11 +1,11 @@
 .card {
   width: 380px;
-  height: 235px;
+  height: 475px;
   position: relative;
   padding: 25px;
-  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #fff8b1 0%, rgba(255, 255, 255, 0) 71.88%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #FFFFFF;
+  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3ed3cc6 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
   box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.03), 0px 39px 39px rgba(0, 0, 0, 0.05), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 23px;
+  border-radius: 25px;
   transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
   cursor: pointer;
   float: center;
@@ -15,7 +15,11 @@
   display: flex;
 }
 
-.card-container{
+.card2 {
+  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #3cd8f3c6 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
+}
+
+.card-container {
   display: flex;
 }
 
@@ -83,6 +87,44 @@
   z-index: 5;
 }
 
+.right-front2 {
+  width: 45px;
+  height: 45px;
+  border-radius: 50% 50% 50% 0%;
+  background-color: #fffc00;
+  display: inline-block;
+  margin-left: -25px;
+  z-index: 5;
+}
+
+.left-front2 {
+  width: 65px;
+  height: 65px;
+  border-radius: 50% 50% 0% 50%;
+  background-color: #fffc00;
+  display: inline-block;
+  z-index: 5;
+}
+
+.right-back2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 50% 50% 0%;
+  background-color: #fffc00;
+  display: inline-block;
+  margin-left: -20px;
+  z-index: 5;
+}
+
+.left-back2 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0% 50%;
+  background-color: #fffc00;
+  display: inline-block;
+  z-index: 5;
+}
+
 .sun {
   width: 120px;
   height: 120px;
@@ -94,6 +136,20 @@
 }
 
 .sunshine {
+  animation: sunshines 2s infinite;
+}
+
+.sun2 {
+  width: 120px;
+  height: 120px;
+  background: -webkit-linear-gradient(to right, #309bd1, #45baf4);
+  background: linear-gradient(to right, #309bd1, #45baf4);
+  border-radius: 150px 0px 150px 150px;
+  display: inline;
+  position: absolute;
+}
+
+.sunshine2 {
   animation: sunshines 2s infinite;
 }
 
@@ -144,7 +200,8 @@
   color: rgba(87, 77, 51, 0.33);
 }
 
-.display_temp, .display_hum {
+.display_temp,
+.display_hum {
   position: absolute;
   left: 25px;
   bottom: 12px;
@@ -155,8 +212,8 @@
 }
 
 .temp-scale {
-  width: 80px;
-  height: 36px;
+  width: 90px;
+  height: 46px;
   position: absolute;
   right: 25px;
   bottom: 25px;
@@ -169,7 +226,28 @@
 
 .temp-scale span {
   font-weight: 700;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 134.49%;
-  color: rgba(87, 77, 51, 0.66);
+  color: rgba(87, 77, 51, 0.834);
+}
+
+.searchInput {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.checkbox-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.checkbox-list label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  transform: scale(1.7);
 }

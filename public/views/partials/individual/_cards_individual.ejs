@@ -2,40 +2,40 @@
     <div class="card">
         <div class="container">
             <div class="cloud front">
-                <span class="left-front"></span>
-                <span class="right-front"></span>
+                <span class="left-front2"></span>
+                <span class="right-front2"></span>
             </div>
             <span class="sun sunshine"></span>
             <span class="sun"></span>
             <div class="cloud back">
-                <span class="left-back"></span>
-                <span class="right-back"></span>
+                <span class="left-back2"></span>
+                <span class="right-back2"></span>
             </div>
         </div>
-    
+
         <span class="display_temp"></span>
-    
+
         <div class="temp-scale">
             <span>Fahrenheit</span>
         </div>
     </div>
 
-    <div class="card">
+    <div class="card card2">
         <div class="container">
             <div class="cloud front">
                 <span class="left-front"></span>
                 <span class="right-front"></span>
             </div>
-            <span class="sun sunshine"></span>
-            <span class="sun"></span>
+            <span class="sun2 sunshine2"></span>
+            <span class="sun2"></span>
             <div class="cloud back">
                 <span class="left-back"></span>
                 <span class="right-back"></span>
             </div>
         </div>
-    
+
         <span class="display_hum"></span>
-    
+
         <div class="temp-scale">
             <span>Relative</span>
         </div>
@@ -49,16 +49,23 @@
     socket.on('sensorData', (data) => {
         const temperatureDisplay = document.querySelector('.display_temp');
         const humidityDisplay = document.querySelector('.display_hum');
-        
-        // Assuming data is in the format: "Temperature: 24.50 C, Humidity: 73.60 %"
+
+        // Data format => "Temperature: 24.50 C, Humidity: 73.60 %"
         const parts = data.split(', ');
-        const temperaturePart = parts[0];
-        const humidityPart = parts[1];
-        
-        const temperature = temperaturePart.split(':')[1].trim();
-        const humidity = humidityPart.split(':')[1].trim();
-        
-        temperatureDisplay.textContent = `${temperature}`; // Update the temperature content
-        humidityDisplay.textContent = `${humidity}`; // Update the humidity content
+        if (parts.length === 2) {
+            const temperaturePart = parts[0];
+            const humidityPart = parts[1];
+
+            const temperatureKeyValue = temperaturePart.split(':');
+            const humidityKeyValue = humidityPart.split(':');
+
+            if (temperatureKeyValue.length === 2 && humidityKeyValue.length === 2) {
+                const temperature = temperatureKeyValue[1].trim();
+                const humidity = humidityKeyValue[1].trim();
+
+                temperatureDisplay.textContent = `${temperature}°`;
+                humidityDisplay.textContent = `${humidity}`;
+            }
+        }
     });
 </script>
