@@ -125,5 +125,50 @@ $(document).ready(function () {
                 console.error("Error updating pilón:", error);
             }
         });
+
+        // Add pilón creation form submit event
+        $("#createPilonForm").submit(async function (event) {
+            event.preventDefault();
+
+            const nombre = $("#nombre").val();
+            const finca = $("#finca").val();
+            const variedad = $("#variedad").val();
+            const etapa = $("#etapa").val();
+            const pn = $("#pn").val();
+            const temp_min = $("#temp_min").val();
+            const temp_max = $("#temp_max").val();
+            const estado = $("#estado").val();
+
+            const requestBody = {
+                nombre,
+                finca,
+                variedad,
+                etapa,
+                pn,
+                temp_min,
+                temp_max,
+                estado,
+            };
+
+            try {
+                const response = await fetch('/api/pilones', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestBody),
+                });
+
+                if (response.ok) {
+                    $("#successModal").modal("show");
+                    location.reload(); // Refresh the page after success
+                } else {
+                    const errorData = await response.json();
+                    console.error('Error creating pilón:', errorData);
+                }
+            } catch (error) {
+                console.error('Error creating pilón:', error);
+            }
+        });
     });
 });

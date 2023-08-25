@@ -7,7 +7,7 @@
                         class="bi bi-box-arrow-down"></i> Add new pilón</h5>
             </div>
             <div class="modal-body">
-                <form id="createPilonForm" action="/api/arduinos" method="POST">
+                <form id="createPilonForm">
                     <div class="row mb-3">
                         <label for="editNombre" class="col-sm-3 col-form-label form-label0">Pilon's name</label>
                         <div class="col-sm-9">
@@ -74,9 +74,8 @@
                         </div>
                     </div>
 
-                    <button id="createPilonButton" class="btn btn-primary"
-                        style="background: #266293ce; border: 0px;" type="submit">Save new
-                        pilón</button>
+                    <button id="createPilonButton" class="btn btn-primary" style="background: #266293ce; border: 0px;"
+                        type="submit">Save new pilón</button>
                 </form>
             </div>
         </div>
@@ -149,11 +148,11 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="editEstado" class="col-sm-3 col-form-label form-label0">Pilon's state</label>
+                        <label for="editEstado" class="col-sm-3 col-form-label form-label0">Estado del pilón</label>
                         <div class="col-sm-9">
                             <select id="editEstado" name="editEstado" required class="form-control">
                                 <option value="En proceso">In process</option>
-                                <option value="Finalizado">Finalizado</option>
+                                <option value="Finalizado">Finished</option>
                             </select>
                         </div>
                     </div>

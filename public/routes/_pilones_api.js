@@ -26,6 +26,19 @@ router.get('/:pilonId', async (req, res) => {
     }    
 });
 
+// Pilon's CREATE
+router.post('/', async (req, res) => {
+    try {
+        const { nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado } = req.body;
+
+        await pilonesController.createPilon(nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado);
+        res.status(201).json({ message: 'Pilon created' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error creating Pilon', details: error.message });
+    }
+});
+
 // Pilon's UPDATE
 router.put('/:pilonId', async (req, res) => {
     try {

@@ -35,6 +35,23 @@ const pilonesController = {
         }
     },
 
+    // Pilon's create
+    createPilon: async (nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado) => {
+        try {
+            const connection = await mysql.createConnection(dbConfig);
+
+            const insertQuery = `
+            INSERT INTO pilones (nombre, variedad, finca, etapa, pn, temp_min, temp_max, fecha_ingreso, estado)
+            VALUES (?, ?, ?, ?, ?, ?, ?, CURDATE(), ?)`;
+
+            await connection.execute(insertQuery, [nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado]);
+
+            connection.end();
+        } catch (error) {
+            throw new Error('Error creating pilón: ' + error.message);
+        }
+    },
+
     // Pilon's update
     updatePilones: async (pilonId, nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado) => {
         try {
