@@ -54,7 +54,7 @@ arduinoPort.on('data', (data) => {
   for (const line of lines) {
     const trimmedLine = line.trim();
     if (trimmedLine !== '') {
-      io.emit('temperature', trimmedLine); // Emitir el evento 'temperature' a todos los clientes conectados
+      io.emit('sensorData', trimmedLine); // Emit the 'sensorData' event to all connected clients
     }
   }
 

@@ -1,18 +1,11 @@
 <div class="container mt-4">
     <div class="dropdown mt-4">
-        <div class="select" data-toggle="modal" data-target="#successModal">
+        <div class="select" data-toggle="modal" data-target="#myModal">
             <span>Choose a pilón to save temperature</span>
             <i class="fa fa-chevron-left"></i>
         </div>
         <input type="hidden" name="gender">
-        <ul class="dropdown-menu" id="lote">
-            <li id="Pilon 01">Pilon 01</li>
-            <li id="Pilon 02">Pilon 02</li>
-            <li id="Pilon 03">Pilon 03</li>
-            <li id="Pilon 04">Pilon 04</li>
-        </ul>
     </div>
-
     <span class="msg"></span>
 </div>
 
@@ -21,24 +14,16 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Pilon's list</h5>
-                </button>
+                <h5 class="modal-title" id="exampleModalLongTitle">Choose a pilón to save temperature:</h5>
             </div>
             <div class="modal-body">
-                <input type="checkbox" name="opcion" value="1" onclick="deseleccionarOtros(this)"><hr>
-                <input type="checkbox" name="opcion" value="2" onclick="deseleccionarOtros(this)">
-                <input type="checkbox" name="opcion" value="3" onclick="deseleccionarOtros(this)">
-
-                <script>
-                    function deseleccionarOtros(checkbox) {
-                        var checkboxes = document.getElementsByName("opcion");
-                        for (var i = 0; i < checkboxes.length; i++) {
-                            if (checkboxes[i] !== checkbox) {
-                                checkboxes[i].checked = false;
-                            }
-                        }
-                    }
-                </script>
+                <form>
+                    <div class="form-group">
+                        <div class="checkbox-list" id="pilonCheckboxList">
+                            <!-- Pilones checkboxes will be generated here dynamically -->
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <p class="text-muted">Choose a pilón to save temperature.</p>
@@ -51,6 +36,33 @@
     $(document).ready(function () {
         $('span:contains("Choose a pilón to save temperature")').click(function () {
             $('#myModal').modal('show');
+        });
+
+        // Call the API to get the list of pilones
+        $.get("/api/pilones", function (data) {
+            const pilonCheckboxList = $("#pilonCheckboxList");
+
+            // Generate checkboxes for each pilón
+            data.forEach(function (pilon) {
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "opcion";
+                checkbox.value = pilon.id; // Set the pilon's ID as the checkbox value
+
+                const label = document.createElement("label");
+                label.textContent = pilon.nombre; // Use the pilon's name
+
+                const div = document.createElement("div");
+                div.appendChild(checkbox);
+                div.appendChild(label);
+
+                pilonCheckboxList.append(div);
+            });
+
+            // Handle checkbox selection
+            $("input[name='opcion']").on("change", function () {
+                $("input[name='opcion']").not(this).prop("checked", false);
+            });
         });
     });
 </script>

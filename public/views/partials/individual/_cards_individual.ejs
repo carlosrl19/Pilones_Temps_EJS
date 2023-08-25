@@ -1,30 +1,64 @@
-<div class="card">
-    <div class="container">
-        <div class="cloud front">
-            <span class="left-front"></span>
-            <span class="right-front"></span>
+<div class="card-container">
+    <div class="card">
+        <div class="container">
+            <div class="cloud front">
+                <span class="left-front"></span>
+                <span class="right-front"></span>
+            </div>
+            <span class="sun sunshine"></span>
+            <span class="sun"></span>
+            <div class="cloud back">
+                <span class="left-back"></span>
+                <span class="right-back"></span>
+            </div>
         </div>
-        <span class="sun sunshine"></span>
-        <span class="sun"></span>
-        <div class="cloud back">
-            <span class="left-back"></span>
-            <span class="right-back"></span>
+    
+        <span class="display_temp"></span>
+    
+        <div class="temp-scale">
+            <span>Fahrenheit</span>
         </div>
     </div>
 
-    <span class="display_temp"></span>
-
-    <div class="temp-scale">
-        <span>Fahrenheit</span>
+    <div class="card">
+        <div class="container">
+            <div class="cloud front">
+                <span class="left-front"></span>
+                <span class="right-front"></span>
+            </div>
+            <span class="sun sunshine"></span>
+            <span class="sun"></span>
+            <div class="cloud back">
+                <span class="left-back"></span>
+                <span class="right-back"></span>
+            </div>
+        </div>
+    
+        <span class="display_hum"></span>
+    
+        <div class="temp-scale">
+            <span>Relative</span>
+        </div>
     </div>
 </div>
 
 <script>
-    const socket = io(); // Conectar al servidor mediante Socket.io
+    const socket = io(); // Connect to the server using Socket.io
 
-    // Escuchar el evento 'temperature' enviado por el servidor
-    socket.on('temperature', (data) => {
+    // Listen for the 'sensorData' event sent by the server
+    socket.on('sensorData', (data) => {
         const temperatureDisplay = document.querySelector('.display_temp');
-        temperatureDisplay.textContent = `${data}°F`; // Actualizar el contenido
+        const humidityDisplay = document.querySelector('.display_hum');
+        
+        // Assuming data is in the format: "Temperature: 24.50 C, Humidity: 73.60 %"
+        const parts = data.split(', ');
+        const temperaturePart = parts[0];
+        const humidityPart = parts[1];
+        
+        const temperature = temperaturePart.split(':')[1].trim();
+        const humidity = humidityPart.split(':')[1].trim();
+        
+        temperatureDisplay.textContent = `${temperature}`; // Update the temperature content
+        humidityDisplay.textContent = `${humidity}`; // Update the humidity content
     });
 </script>

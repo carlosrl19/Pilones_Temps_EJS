@@ -36,16 +36,6 @@ fetch('/api/temperatures')
                         }
                     }
                 ],
-                /*language: {
-                    zeroRecords: 'No se han encontrado datos almacenados en la base de datos.',
-                    lengthMenu: 'Mostrar _MENU_ entradas',
-                    info: 'Mostrando _START_ al _END_ de _TOTAL_ entradas',
-                    paginate: {
-                        previous: 'Anterior',
-                        next: 'Siguiente',
-                    },
-                    search: 'Buscar',
-                }*/
             });
         });
     })
