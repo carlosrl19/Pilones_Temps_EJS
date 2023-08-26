@@ -2,7 +2,7 @@ const dbConfig = {
   host: 'localhost',
   user: 'root',
   password: 'password',
-  database: 'Arduino'
+  database: 'pilones_temps'
 };
 
 module.exports = dbConfig;

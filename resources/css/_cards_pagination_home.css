@@ -1,0 +1,88 @@
+.info_footer p::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 18px;
+    border: 1px solid #7331917c;
+    border-radius: 3px;
+    background-color: #ffffff;
+    margin-right: 5px;
+}
+
+.info_footer {
+    position: absolute;
+    bottom: 0;
+    min-width: 100%;
+    height: auto;
+    background-color: #a1a1a170;
+}
+
+.info_footer p {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10%;
+    grid-gap: 5em;
+    margin-top: 2em;
+}
+
+.card__content {
+    text-align: left;
+    font-size: 15px;
+}
+
+.card {
+    margin-bottom: -4em;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #dbdbdb5d;
+    border-radius: 5px;
+    padding-top: 5px;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 20px;
+}
+
+.pagination>a,
+.pagination>span {
+    color: #383838;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    margin: 0 2px 5px;
+    min-width: 20px;
+    padding: 0 10px;
+    height: 40px;
+    text-decoration: none;
+    position: relative;
+    border-radius: 5px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.pagination>span {
+    pointer-events: none;
+}
+
+.pagination svg {
+    height: 24px;
+    width: 24px;
+}
+
+.pagination>a.page-active {
+    background: #901a80;
+    color: #fff;
+}
+
+.pagination>a:hover {
+    background: #ad209b;
+    color: #fff;
+}

@@ -1,38 +1,52 @@
 <!-- CREATION MODAL -->
 <div class="modal fade" id="createArduinoModal" tabindex="-1" aria-labelledby="createArduinoModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
         <div class="modal-content">
-            <div class="modal-header" style="background: linear-gradient(to right, #165455f0, #207c7ef0, #2a9ea0f0);">
+            <div class="modal-header" style="background: linear-gradient(to right, #114344f0, #207c7ef0, #2a9ea0f0);">
                 <h5 class="modal-title" style="color: #ffffff;" id="createArduinoModal"><i
                         class="bi bi-box-arrow-down"></i> Create new arduino</h5>
             </div>
             <div class="modal-body">
                 <form id="createArduinoForm">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Arduino's name</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Example: Arduino 05" required>
+
+                    <div class="row mb-3">
+                        <label for="nombre" class="col-sm-3 col-form-label form-label0">Arduino's name</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre" class="form-control" placeholder="Example: Arduino 05"
+                                required><br>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="direccion_bits" class="form-label">DS18B20 Sensor</label>
-                        <input type="text" class="form-control" id="direccion_bits" placeholder="Example: 38BEFD79970003CB" minlength="16" maxlength="16"
-                            required>
+
+                    <div class="row mb-3">
+                        <label for="direccion_bits" class="col-sm-3 col-form-label form-label0">DS18B20 Sensor</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="direccion_bits" class="form-control"
+                                placeholder="Example: 38BEFD79970003CB" required><br>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="pilon_encargado" class="form-label">Assigned pilón</label>
-                        <select class="form-control" id="pilon_encargado" required>
-                            <!-- Opciones de pilones cargadas dinámicamente -->
-                        </select>
+
+                    <div class="row mb-3">
+                        <label for="pilon_encargado" class="col-sm-3 col-form-label form-label0">Assigned pilón</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="pilon_encargado" required>
+                                <!-- Opciones de pilones cargadas dinámicamente -->
+                            </select>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="arduino_port" class="form-label">Connected to</label>
-                        <select class="form-control" id="arduino_port" required>
-                            <option value="/dev/ttyACM0">/dev/ttyACM0</option>
-                            <option value="/dev/ttyACM1">/dev/ttyACM1</option>
-                            <option value="/dev/ttyACM2">/dev/ttyACM2</option>
-                            <!-- ... y así sucesivamente -->
-                        </select>
+
+                    <div class="row mb-3">
+                        <label for="arduino_port" class="col-sm-3 col-form-label form-label0">Connected to</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="arduino_port" required>
+                                <option value="/dev/ttyACM0">/dev/ttyACM0</option>
+                                <option value="/dev/ttyACM1">/dev/ttyACM1</option>
+                                <option value="/dev/ttyACM2">/dev/ttyACM2</option>
+                                <!-- ... Add more PC Ports if its necessary -->
+                            </select>
+                        </div>
                     </div>
+
                     <button class="btn btn-success" data-toggle="modal" data-target="#createArduinoModal"
                         style="background: #207c7ef0; border: 0px;">Save new arduino</button>
                 </form>
@@ -43,11 +57,11 @@
 
 <!-- UPDATE MODAL -->
 <div class="modal fade" id="editArduinoModal" tabindex="-1" aria-labelledby="editArduinoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
         <div class="modal-content">
             <div class="modal-header" style="background: linear-gradient(to right, #5f1155, #6e1462, #9e1c8d);">
                 <h5 class="modal-title" style="color: #ffffff;" id="editArduinoModalLabel"><i
-                        class="bi bi-pencil-square just"></i>Update arduino</h5>
+                        class="bi bi-pencil-square just"></i> Update arduino</h5>
             </div>
             <div class="modal-body">
                 <form id="editArduinoForm">
