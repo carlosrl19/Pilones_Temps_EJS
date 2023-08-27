@@ -1,6 +1,6 @@
 const paginationContainer = document.querySelector('.pagination');
 const container = document.querySelector('.card-container');
-const cardsPerPage = 18;
+const cardsPerPage = 27;
 
 fetch('/api/pilones')
     .then(response => response.json())
