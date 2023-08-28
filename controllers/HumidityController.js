@@ -18,6 +18,26 @@ const humiditiesController = {
         }
     },
 
+    getHumiditiesByPilonId: async (pilonId, fechaInicial, fechaFinal) => {
+        try {
+            const connection = await mysql.createConnection(dbConfig);
+            let query = 'SELECT * FROM humidities WHERE pilon_encargado = ?';
+            let params = [pilonId];
+
+            // Verificar si se proporcionaron las fechas de inicio y fin
+            if (fechaInicial && fechaFinal) {
+                query += ' AND fecha_lectura BETWEEN ? AND ?';
+                params.push(fechaInicial, fechaFinal);
+            }
+
+            const [results] = await connection.execute(query, params);
+            connection.end();
+            return results;
+        } catch (error) {
+            throw new Error('Error getting filtered humidity data: ' + error.message);
+        }
+    },
+
     saveHumidity: async (humidity, pilonId) => {
         try {
             const connection = await mysql.createConnection(dbConfig);

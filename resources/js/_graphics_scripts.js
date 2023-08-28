@@ -35,14 +35,14 @@ function crearGrafico(labels, data, fechas) {
                     {
                         label: "Temperatures",
                         data: data,
-                        backgroundColor: "rgba(84, 197, 255, 0.3)",
-                        borderColor: "rgba(0, 124, 188, 0.6)",
+                        backgroundColor: "rgba(255, 184, 115, 0.2)",
+                        borderColor: "rgba(255, 184, 115, 0.8)",
                         pointStyle: 'circle',
                         pointRadius: 6,
                         pointHoverRadius: 15,
                         fill: {
                             target: "origin",
-                            above: "rgba(84, 197, 255, 0.1)",
+                            above: "rgba(255, 184, 115, 0.2)",
                         },
                     },
                 ],
@@ -88,6 +88,7 @@ function actualizarGrafica() {
 
     // Verificar si se ha seleccionado un pilón
     if (pilonId) {
+
         // Formatear las fechas en formato AAAA-MM-DD
         var formattedFechaInicial = fechaInicial ? fechaInicial : null;
         var formattedFechaFinal = fechaFinal ? fechaFinal : null;
@@ -127,9 +128,8 @@ fetch("api/pilones")
         // Agregar las opciones al select de pilones
         data.forEach(function (pilón) {
             var option = document.createElement("option");
-            const fechaIngreso = new Date(pilón.fecha_ingreso).toISOString().split('T')[0]; // UTC format
             option.value = pilón.id;
-            option.textContent = pilón.nombre + ' - ' + pilón.finca + ' - ' + fechaIngreso +' - ' + pilón.variedad;
+            option.textContent = pilón.nombre + ' - ' + pilón.finca;
             selectPilon.appendChild(option);
         });
     })

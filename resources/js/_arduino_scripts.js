@@ -60,6 +60,22 @@ $(document).ready(function () {
                 $("#editPilonEncargado").val(arduino.pilon_encargado);
                 $("#EditPort").val(arduino.arduino_port);
 
+                // Cargar opciones de pilones al select de edición
+                $.get("/api/pilones", function (data) {
+                    const pilonSelect = document.getElementById("editPilonEncargado");
+                    pilonSelect.innerHTML = ""; // Limpiar opciones anteriores
+
+                    data.forEach(function (pilon) {
+                        const option = document.createElement("option");
+                        option.value = pilon.id;
+                        option.textContent = pilon.nombre;
+                        pilonSelect.appendChild(option);
+                    });
+
+                    // Establecer el valor seleccionado en el select
+                    pilonSelect.value = arduino.pilon_encargado;
+                });
+
                 // Muestra el modal de edición
                 $("#editArduinoModal").modal("show");
 

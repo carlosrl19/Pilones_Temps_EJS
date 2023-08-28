@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>Temperature history</title>
-    <%- include('../partials//cdn_head/_cdn_head') %>
+    <%- include('../partials/cdn_head/_cdn_head') %>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.css">
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+        <link rel="stylesheet" href="resources/css/_graphics.css">
 </head>
 
 <body>
@@ -16,7 +17,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col text-center">
-                    <!-- <div class="text-center">Pilón's name | Farm | Entry date | Varriety</div>-->
                     <div class="d-flex justify-content-center mb-3 mt-3">
                         <select id="selectPilon" class="form-select">
                             <!-- Options will be dynamically added here -->
@@ -24,15 +24,13 @@
                     </div>
                 </div>
                 <div class="col text-center">
-                    <!-- <div class="text-center">Start date</div>-->
                     <div class="d-flex justify-content-center mb-3 mt-3">
-                        <input type="date" id="fechaInicialSelector" class="form-control" style="width: 45%;">
+                        <input type="date" id="fechaInicialSelector" class="form-control">
                     </div>
                 </div>
                 <div class="col text-center">
-                    <!-- <div class="text-center">Final date</div>-->
                     <div class="d-flex justify-content-center mb-3 mt-3">
-                        <input type="date" id="fechaFinalSelector" class="form-control" style="width: 45%;">
+                        <input type="date" id="fechaFinalSelector" class="form-control">
                     </div>
                 </div>
                 <div class="col text-center">
@@ -42,10 +40,13 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="container container_graphics">
             <div class="row">
                 <div class="col-lg-12 mt-5">
-                    <canvas id="myChart" style="min-width: 100%; max-width: 100%; min-height: 700px; max-height: 700px;"></canvas>
+                    <canvas id="myChart"
+                        style="min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></canvas>
                 </div>
             </div>
         </div>

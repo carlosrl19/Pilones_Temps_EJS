@@ -13,6 +13,21 @@ router.get('/', async (req, res) => {
     }
 });
 
+// GET humidities filtered by pilonId and optional date range
+router.get('/:pilonId', async (req, res) => {
+    const pilonId = req.params.pilonId;
+    const fechaInicial = req.query.fechaInicial;
+    const fechaFinal = req.query.fechaFinal;
+
+    try {
+        const humidities = await humiditiesController.getHumiditiesByPilonId(pilonId, fechaInicial, fechaFinal);
+        res.json(humidities);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error getting filtered humidity data', details: error.message });
+    }
+});
+
 // Humidity POST
 router.post('/save_hum', async (req, res) => {
     const pilonId = req.body.pilonId;
