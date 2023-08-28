@@ -1,6 +1,6 @@
-CREATE DATABASE Arduino;
+CREATE DATABASE pilones_temps;
 
-use Arduino;
+use pilones_temps;
 
 -- Crear la tabla pilones
 CREATE TABLE pilones (
@@ -49,9 +49,6 @@ CREATE TABLE arduinos (
     FOREIGN KEY (pilon_encargado) REFERENCES pilones(id)
 );
 
-SELECT * from pilones;	
-SELECT * from temperaturas;
-
 INSERT INTO arduinos (nombre, direccion_bits, pilon_encargado, arduino_port)
 VALUES
     ('Arduino 03', '28BEFD79970003AA', 1, '/dev/ttyACM0'),
@@ -62,17 +59,3 @@ VALUES
     ('Arduino 08', '28BEFD79970008CA', 6, '/dev/ttyACM0'),
     ('Arduino 09', '28BEFD79970009CA', 7, '/dev/ttyACM0'),
     ('Arduino 10', '28BEFD79970010CA', 8, '/dev/ttyACM0');
-
-
-INSERT INTO pilones (nombre, variedad, finca, etapa, pn, temp_min, temp_max, fecha_ingreso, estado, asignado)
-VALUES
-    ('Pilón 01', 'Variedad 2', 'DEF', 2, 6000, 55, 85, CURDATE(), 'En proceso', ''),
-    ('Pilón 02', 'Variedad 2', 'DEF', 2, 6000, 55, 85, CURDATE(), 'En proceso', ''),
-    ('Pilón 03', 'Variedad 2', 'DEF', 2, 6000, 55, 85, CURDATE(), 'En proceso', ''),
-    ('Pilón 04', 'Variedad 3', 'GHI', 3, 7000, 60, 90, CURDATE(), 'En proceso', ''),
-    ('Pilón 05', 'Variedad 4', 'JKL', 4, 8000, 65, 95, CURDATE(), 'En proceso', ''),
-    ('Pilón 06', 'Variedad 5', 'MNO', 5, 9000, 70, 100, CURDATE(), 'En proceso', ''),
-    ('Pilón 07', 'Variedad 6', 'PQR', 6, 10000, 75, 105, CURDATE(), 'En proceso', ''),
-    ('Pilón 08', 'Variedad 7', 'STU', 7, 11000, 80, 110, CURDATE(), 'En proceso', ''),
-    ('Pilón 09', 'Variedad 8', 'VWX', 8, 12000, 85, 115, CURDATE(), 'En proceso', ''),
-    ('Pilón 10', 'Variedad 9', 'YZA', 9, 13000, 90, 120, CURDATE(), 'En proceso', '')

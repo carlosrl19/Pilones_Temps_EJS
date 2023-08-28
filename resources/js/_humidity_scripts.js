@@ -1,4 +1,4 @@
-fetch('/api/temperatures')
+fetch('/api/humidities')
     .then((response) => response.json())
     .then((data) => {
         const tableBody = document.getElementById('tableBody');
@@ -11,7 +11,7 @@ fetch('/api/temperatures')
       <td>${row.nombre}</td>
       <td>${fechaLectura}</td>
       <td>${row.hora_lectura}</td>
-      <td>${lecturaRedondeada} C°</td>`;
+      <td>${lecturaRedondeada} %</td>`;
             tableBody.appendChild(newRow);
         });
 

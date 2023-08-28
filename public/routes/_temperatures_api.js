@@ -28,8 +28,19 @@ router.get('/:pilonId', async (req, res) => {
     }
 });
 
-module.exports = router;
+// Temperature POST
+router.post('/save_temp', async (req, res) => {
+    const pilonId = req.body.pilonId;
+    const temperature = req.body.temperature;
 
-// Add other API endpoints as needed
+    try {
+        await temperaturesController.saveTemperature(pilonId, temperature);
+
+        res.json({ message: 'Temperature saved successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error saving temperature', details: error.message });
+    }
+});
 
 module.exports = router;

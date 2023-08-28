@@ -161,7 +161,7 @@ $(document).ready(function () {
 
                 if (response.ok) {
                     $("#successModal").modal("show");
-                    location.reload(); // Refresh the page after success
+                    location.reload();
                 } else {
                     const errorData = await response.json();
                     console.error('Error creating pilón:', errorData);

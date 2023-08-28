@@ -1,12 +1,11 @@
 $(document).ready(function () {
     $('button:contains("Show pilones list and save")').click(function () {
-        $('#myModal').modal('show');
+        $('#pilonList').modal('show');
     });
 
     const pilonCheckboxList = $("#pilonCheckboxList");
     const searchInput = $("#searchInput");
 
-    // Call the API to get the list of pilones
     $.get("/api/pilones", function (data) {
         const generateCheckboxes = function (pilons) {
             pilonCheckboxList.empty(); // Clear previous content
@@ -18,7 +17,7 @@ $(document).ready(function () {
                 checkbox.value = pilon.id; // Set the pilon's ID as the checkbox value
 
                 const label = document.createElement("label");
-                label.textContent = pilon.nombre; // Use the pilon's name
+                label.textContent = pilon.nombre + ' - ' + pilon.finca; // Use the pilon's name
 
                 const div = document.createElement("div");
                 div.appendChild(checkbox);
@@ -31,12 +30,10 @@ $(document).ready(function () {
         // Generate checkboxes for initial data
         generateCheckboxes(data);
 
-        // Handle checkbox selection
         $("input[name='opcion']").on("change", function () {
             $("input[name='opcion']").not(this).prop("checked", false);
         });
 
-        // Handle search input
         searchInput.on("input", function () {
             const searchTerm = searchInput.val().toLowerCase();
             const filteredPilons = data.filter(function (pilon) {
@@ -45,5 +42,91 @@ $(document).ready(function () {
             });
             generateCheckboxes(filteredPilons);
         });
+    });
+
+    function saveTemperatureAndHumidityData(selectedPilonId, temperature, humidity) {
+        const temperatureData = {
+            pilonId: temperature,
+            temperature: parseFloat(selectedPilonId),
+        };
+    
+        const humidityData = {
+            pilonId: humidity, 
+            humidity: parseFloat(selectedPilonId), 
+        };
+
+        $.ajax({
+            url: '/api/temperatures/save_temp',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(temperatureData),
+            success: function (response) {
+                console.log('Temperature saved:', response);
+            },
+            error: function (error) {
+                console.error('Error saving temperature:', error);
+            }
+        });
+
+        $.ajax({
+            url: '/api/humidities/save_hum',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(humidityData),
+            success: function (response) {
+                console.log('Humidity saved:', response);
+            },
+            error: function (error) {
+                console.error('Error saving humidity:', error);
+            }
+        });
+    }
+
+    $("#save_Temp_Hum").click(function () {
+        const selectedPilonId = $("input[name='opcion']:checked").val();
+        const temperatureValue = $(".display_temp").text().replace('C°', '');
+        const humidityValue = $(".display_hum").text().replace('%', '');
+    
+        if (!selectedPilonId) {
+            alert("Por favor, selecciona un pilón.");
+            return;
+        }
+    
+        if (!temperatureValue || !humidityValue) {
+            alert("Datos de temperatura y humedad no disponibles.");
+            return;
+        }
+    
+        console.log("ID de Pilon seleccionado:", selectedPilonId);
+        console.log("Temperatura a guardar:", temperatureValue);
+        console.log("Humedad a guardar:", humidityValue);
+    
+        saveTemperatureAndHumidityData(selectedPilonId, temperatureValue, humidityValue);
+        $("#pilonList").modal("hide");
+        $("#successModal").modal("show");
+    });    
+
+    const socket = io();
+
+    socket.on('sensorData', (data) => {
+        const temperatureDisplay = document.querySelector('.display_temp');
+        const humidityDisplay = document.querySelector('.display_hum');
+
+        const parts = data.split(', ');
+        if (parts.length === 2) {
+            const temperaturePart = parts[0];
+            const humidityPart = parts[1];
+
+            const temperatureKeyValue = temperaturePart.split(':');
+            const humidityKeyValue = humidityPart.split(':');
+
+            if (temperatureKeyValue.length === 2 && humidityKeyValue.length === 2) {
+                const temperature = temperatureKeyValue[1].trim();
+                const humidity = humidityKeyValue[1].trim();
+
+                temperatureDisplay.textContent = `${temperature}°`;
+                humidityDisplay.textContent = `${humidity}`;
+            }
+        }
     });
 });

@@ -1,6 +1,6 @@
 const paginationContainer = document.querySelector('.pagination');
 const container = document.querySelector('.card-container');
-const cardsPerPage = 27;
+const cardsPerPage = 16;
 
 fetch('/api/pilones')
     .then(response => response.json())
@@ -15,7 +15,7 @@ fetch('/api/pilones')
             const cardContent = `
         <h3 class="card__title">${pilon.nombre}</h3>
         <p class="card__content">
-          ${'Farm source: ' + pilon.finca}<br>
+          ${'Property: ' + pilon.finca}<br>
           ${'Variety: ' + pilon.variedad}<br>
           ${'PN: ' + pilon.pn}<br>
           ${'Temp. min: ' + pilon.temp_min}<br>

@@ -38,6 +38,24 @@ const temperaturesController = {
         }
     },
 
+    saveTemperature: async (temperature, pilonId) => {
+        try {
+            const connection = await mysql.createConnection(dbConfig);
+
+            const insertTemperatureQuery = 'INSERT INTO temperaturas (pilon_encargado, fecha_lectura, hora_lectura, unidad, lectura, modo_lectura) VALUES (?, CURDATE(), CURTIME(), "Celsius", ?, "Manual")';
+            const temperatureValues = [pilonId, temperature];
+
+            const [results] = await connection.execute(insertTemperatureQuery, temperatureValues);
+
+            connection.end();
+            console.log('Temperature saved to the database');
+            return results;
+        } catch (error) {
+            console.error('Error saving temperature to the database:', error);
+            throw new Error('Error saving temperature to the database');
+        }
+    },
+
     // Add other functions as needed
 };
 

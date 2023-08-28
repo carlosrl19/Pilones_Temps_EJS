@@ -3,7 +3,7 @@
     bottom: 0;
     min-width: 100%;
     height: auto;
-    background-color: #a1a1a170;
+    background-color: #e8e8e870;
 }
 
 .info_footer p {
@@ -15,10 +15,10 @@
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(9, 10%);
-    grid-gap: 5em;
+    grid-template-columns: repeat(8, 10%);
+    grid-gap: 5.5em;
     margin-top: 2em;
-    margin-left: 25px;
+    margin-left: 35px;
 }
 
 .card__content {
@@ -35,7 +35,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background-color: #dbdbdb5d;
+    background-color: #dbdbdb1c;
     border-radius: 5px;
     padding-top: 7px;
     margin-left: 20%;
