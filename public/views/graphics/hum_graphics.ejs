@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Temperature history</title>
+    <title>Humidity graphics</title>
     <%- include('../partials/cdn_head/_cdn_head') %>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.css">
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col text-center">
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn dt-buttons btnImgen" onclick="exportToImage()">Export to
+                        <button type="button" class="btn dt-buttons btnImgenHum" id="exportToImage" onclick="exportToImage()">Export to
                             image</button>
                     </div>
                 </div>
@@ -52,6 +52,6 @@
         </div>
 
         <!-- SCRIPTS -->
-        <script src="/resources/js/_graphics_scripts.js"></script>
+        <script src="/resources/js/_hum_graphics_scripts.js"></script>
 
 </html>

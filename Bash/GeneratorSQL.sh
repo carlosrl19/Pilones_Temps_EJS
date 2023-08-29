@@ -13,8 +13,8 @@ echo "" > $archivo_sql
 echo "USE pilones_temps;" >> $archivo_sql
 
 # Inicializar variables
-pilon_inicio=151
-variedad_inicio=151
+pilon_inicio=0
+variedad_inicio=0
 pn_inicio=1200
 temp_min_inicio=55
 temp_max_inicio=57

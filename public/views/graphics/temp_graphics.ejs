@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Temperature graphics</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/Chart.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+        <link rel="stylesheet" href="resources/css/_graphics.css">
+</head>
+
+<body>
+    <%- include('../partials/navbar/_navbar') %>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="d-flex justify-content-center mb-3 mt-3">
+                        <select id="selectPilon" class="form-select">
+                            <!-- Options will be dynamically added here -->
+                        </select>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="d-flex justify-content-center mb-3 mt-3">
+                        <input type="date" id="fechaInicialSelector" class="form-control">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="d-flex justify-content-center mb-3 mt-3">
+                        <input type="date" id="fechaFinalSelector" class="form-control">
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn dt-buttons btnImgen" id="exportToImage" onclick="exportToImage()">Export to
+                            image</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container container_graphics">
+            <div class="row">
+                <div class="col-lg-12 mt-5">
+                    <canvas id="myChart"
+                        style="min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCRIPTS -->
+        <script src="/resources/js/_temps_graphics_scripts.js"></script>
+
+</html>

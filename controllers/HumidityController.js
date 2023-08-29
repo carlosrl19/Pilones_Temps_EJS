@@ -21,7 +21,7 @@ const humiditiesController = {
     getHumiditiesByPilonId: async (pilonId, fechaInicial, fechaFinal) => {
         try {
             const connection = await mysql.createConnection(dbConfig);
-            let query = 'SELECT * FROM humidities WHERE pilon_encargado = ?';
+            let query = 'SELECT * FROM humedad WHERE pilon_encargado = ?';
             let params = [pilonId];
 
             // Verificar si se proporcionaron las fechas de inicio y fin

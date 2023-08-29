@@ -49,10 +49,10 @@ $(document).ready(function () {
             pilonId: temperature,
             temperature: parseFloat(selectedPilonId),
         };
-    
+
         const humidityData = {
-            pilonId: humidity, 
-            humidity: parseFloat(selectedPilonId), 
+            pilonId: humidity,
+            humidity: parseFloat(selectedPilonId),
         };
 
         $.ajax({
@@ -86,25 +86,29 @@ $(document).ready(function () {
         const selectedPilonId = $("input[name='opcion']:checked").val();
         const temperatureValue = $(".display_temp").text().replace('C°', '');
         const humidityValue = $(".display_hum").text().replace('%', '');
-    
+
         if (!selectedPilonId) {
-            alert("Por favor, selecciona un pilón.");
+            const errorModalBody = $("#errorModal").find(".modal-body");
+            errorModalBody.html("Please select a pilón if you want to store temperatures and humidity of one.");
+            $('#pilonList').modal('hide');
+            $("#errorModal").modal("show");
             return;
         }
-    
+
         if (!temperatureValue || !humidityValue) {
-            alert("Datos de temperatura y humedad no disponibles.");
+            $('#pilonList').modal('hide');
+            $("#errorModal").modal("show");
             return;
         }
-    
+
         console.log("ID de Pilon seleccionado:", selectedPilonId);
         console.log("Temperatura a guardar:", temperatureValue);
         console.log("Humedad a guardar:", humidityValue);
-    
+
         saveTemperatureAndHumidityData(selectedPilonId, temperatureValue, humidityValue);
         $("#pilonList").modal("hide");
         $("#successModal").modal("show");
-    });    
+    });
 
     const socket = io();
 

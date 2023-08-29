@@ -22,8 +22,11 @@ router.get('/arduino_list', async (req, res) => {
 router.get('/temp_history', (req, res) => {
     res.render('history/temp_history', { currentUrl: req.originalUrl });
 });
-router.get('/graphics_history', (req, res) => {
-    res.render('graphics/graphics_history', { currentUrl: req.originalUrl });
+router.get('/temperature_graphics_history', (req, res) => {
+    res.render('graphics/temp_graphics', { currentUrl: req.originalUrl });
+});
+router.get('/humidity_graphics_history', (req, res) => {
+    res.render('graphics/hum_graphics', { currentUrl: req.originalUrl });
 });
 router.get('/hum_history', (req, res) => {
     res.render('history/humidity_history', { currentUrl: req.originalUrl });

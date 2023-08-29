@@ -1,8 +1,5 @@
-// pilón entries content table
 $(document).ready(function () {
-    // Realizar la llamada a la API para obtener los registros
     $.get("/api/pilones", function (data) {
-        // Iterar sobre los registros y mostrarlos en la tabla
         data.forEach(function (pilón) {
             const fechaIngreso = new Date(pilón.fecha_ingreso).toISOString().split('T')[0]; // UTC format
             $("#pilonList").append(`
@@ -25,18 +22,17 @@ $(document).ready(function () {
             `);
         });
 
-        // Inicializar DataTables después de agregar los registros
         $('#myTable').DataTable();
 
-        // Event handler para el botón Delete
-        $(".delete-btn").on("click", function () {
+        // DELETE BUTTON
+        $("#pilonList").on("click", ".delete-btn", function () {
             const pilonId = $(this).data("id");
             const deletePilonButton = document.getElementById('deletePilonButton');
             deletePilonButton.setAttribute('data-pilón-id', pilonId);
             $("#deletePilonModal").modal("show");
         });
 
-        // Al hacer clic en el botón "Eliminar Pilón" del modal de eliminación
+        // On click
         $("#deletePilonButton").on("click", function () {
             const pilonId = $(this).data("pilón-id");
 
@@ -55,14 +51,12 @@ $(document).ready(function () {
                 });
         });
 
-        // Edit modal opening
-        $(".edit-btn").on("click", function () {
+        // UPDATE MODAL
+        $("#pilonList").on("click", ".edit-btn", function () {
             const pilonId = $(this).data("id");
             console.log('Selected pilón with ID', pilonId);
 
-            // Realiza una llamada a la API para obtener la información del pilón
             $.get(`/api/pilones/${pilonId}`, function (pilón) {
-                // Llena los campos del formulario de edición con la información del pilón
                 $("#editNombre").val(pilón.nombre);
                 $("#editFinca").val(pilón.finca);
                 $("#editVariedad").val(pilón.variedad);
@@ -72,15 +66,12 @@ $(document).ready(function () {
                 $("#editTempMax").val(pilón.temp_max);
                 $("#editEstado").val(pilón.estado);
 
-                // Muestra el modal de edición
                 $("#editPilonModal").modal("show");
-
-                // Adjunta el ID del arduino al botón "Save Changes" como atributo personalizado
                 $("#updatePilonButton").data("id", pilonId);
             });
         });
 
-        // Al hacer clic en el botón "Save Changes" del modal
+        // On click
         $("#updatePilonButton").on("click", async function (event) {
             event.preventDefault();
 
@@ -126,7 +117,7 @@ $(document).ready(function () {
             }
         });
 
-        // Add pilón creation form submit event
+        // CREATE MODAL
         $("#createPilonForm").submit(async function (event) {
             event.preventDefault();
 

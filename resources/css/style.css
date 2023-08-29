@@ -88,8 +88,15 @@ h2 {
   /* Para navegadores estándar */
 }
 
-.Navbar {
-  background: linear-gradient(to right, #490c41, #6e1462, #490c41);
+.dropdown-toggle-navbar{
+  text-decoration: none;
+  color: #ffffffd8;
+}
+
+.dropdown-toggle-navbar:hover{
+  color: #fff;
+  font-weight: bold;
+
 }
 
 .nav-link:hover {
@@ -98,7 +105,7 @@ h2 {
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.849);
+  color: #ffffffd8;
 }
 
 .form-label0 {
@@ -131,17 +138,6 @@ h2 {
   background-color: #119b3f;
   color: #ffffff;
 }
-.btnImgen{
-  background-color: #d18135;
-  border: 0px;
-  margin-top: 12%;
-  color: #ffffff;
-  font-size: 16px;
-}
-.btnImgen:hover{
-  background-color: #f89e49;
-  color: #ffffff;
-}
 .btnPrint{
   background-color: rgb(124, 124, 124);
   color: #ffffff;
@@ -149,14 +145,6 @@ h2 {
 .btnPrint:hover{
   background-color: rgb(145, 144, 144);
   color: #ffffff;
-}
-.BTN{
-  background-color: #6e1462;
-  border: 0px;
-}
-.BTN:hover{
-  background-color: #6e1462;
-  border: 0px;
 }
 
 .form-check-input {

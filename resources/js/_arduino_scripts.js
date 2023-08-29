@@ -1,8 +1,5 @@
-// Arduino entries content table
 $(document).ready(function () {
-    // Realizar la llamada a la API para obtener los registros
     $.get("/api/arduinos", function (data) {
-        // Iterar sobre los registros y mostrarlos en la tabla
         data.forEach(function (arduino) {
             $("#arduinosList").append(`
                 <tr>
@@ -17,38 +14,38 @@ $(document).ready(function () {
             `);
         });
 
-        // Inicializar DataTables después de agregar los registros
         $('#myTable').DataTable();
 
-        // Event handler para el botón Delete
-        $(".delete-btn").on("click", function () {
+
+        // Event handler para el botón Delete (delegación de eventos)
+        $("#arduinosList").on("click", ".delete-btn", function () {
             const arduinoId = $(this).data("id");
             const deleteArduinoButton = document.getElementById('deleteArduinoButton');
             deleteArduinoButton.setAttribute('data-arduino-id', arduinoId);
             $("#deleteArduinoModal").modal("show");
+        });
 
-            // Al hacer clic en el botón "Eliminar Pilón" del modal de eliminación
-            $("#deleteArduinoButton").on("click", function () {
-                const arduinoId = $(this).data("arduino-id");
+        // On click del botón Delete dentro del modal
+        $("#deleteArduinoButton").on("click", function () {
+            const arduinoId = $(this).data("arduino-id");
 
-                fetch(`/api/arduinos/${arduinoId}`, {
-                    method: 'DELETE'
+            fetch(`/api/arduinos/${arduinoId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        throw new Error('Error al eliminar el arduino.');
+                    }
                 })
-                    .then(response => {
-                        if (response.ok) {
-                            location.reload();
-                        } else {
-                            throw new Error('Error al eliminar el arduino.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-            });
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         });
 
         // Edit modal opening
-        $(".edit-btn").on("click", function () {
+        $("#arduinosList").on("click", ".edit-btn", function () {
             const arduinoId = $(this).data("id");
             console.log('Selected arduino with ID', arduinoId);
 
@@ -84,7 +81,7 @@ $(document).ready(function () {
             });
         });
 
-        // Al hacer clic en el botón "Save Changes" del modal
+        // On click del botón "Save Changes" del modal de edición
         $("#updateArduinoButton").on("click", function (event) {
             event.preventDefault();
 
@@ -114,6 +111,7 @@ $(document).ready(function () {
             });
         });
 
+        // Al enviar el formulario de creación
         $("#createArduinoForm").submit(function (event) {
             event.preventDefault();
 

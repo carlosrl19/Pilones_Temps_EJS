@@ -1,7 +1,33 @@
-.container_graphics{
+.container_graphics {
     max-width: 80%;
 }
 
-.container-fluid{
+.container-fluid {
     max-width: 50%;
+}
+
+.btnImgen {
+    background-color: #d18135;
+    border: 0px;
+    margin-top: 12%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.btnImgen:hover {
+    background-color: #f89e49;
+    color: #ffffff;
+}
+
+.btnImgenHum {
+    background-color: #359bd1;
+    border: 0px;
+    margin-top: 12%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.btnImgenHum:hover {
+    background-color: #59c5ff;
+    color: #ffffff;
 }
