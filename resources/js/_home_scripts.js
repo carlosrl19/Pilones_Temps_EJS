@@ -22,10 +22,13 @@ fetch('/api/pilones')
           ${'Temp. max: ' + pilon.temp_max}<br>
         </p>
         <div class="card__date">${new Date(pilon.fecha_ingreso).toISOString().slice(0, 10)}</div>
+        <div class="card__footer">78 ºC | 25%</div>
       `;
 
             card.innerHTML = cardContent;
             container.appendChild(card);
+
+            card.classList.add('card', `pilon-${pilon.id}`);
         }
 
         const totalPages = Math.ceil(pilones.length / cardsPerPage);

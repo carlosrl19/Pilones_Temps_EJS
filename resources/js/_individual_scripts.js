@@ -84,8 +84,8 @@ $(document).ready(function () {
 
     $("#save_Temp_Hum").click(function () {
         const selectedPilonId = $("input[name='opcion']:checked").val();
-        const temperatureValue = $(".display_temp").text().replace('C°', '');
-        const humidityValue = $(".display_hum").text().replace('%', '');
+        const temperatureValue = parseFloat($(".display_temp").text().replace('C°', ''));
+        const humidityValue = parseFloat($(".display_hum").text().replace('%', ''));
 
         if (!selectedPilonId) {
             const errorModalBody = $("#errorModal").find(".modal-body");
@@ -95,7 +95,17 @@ $(document).ready(function () {
             return;
         }
 
-        if (!temperatureValue || !humidityValue) {
+        if (isNaN(temperatureValue)) {
+            const errorModalBody = $("#errorModal").find(".modal-body");
+            errorModalBody.html("Invalid temperature value. Please, try it again.");
+            $('#pilonList').modal('hide');
+            $("#errorModal").modal("show");
+            return;
+        }
+
+        if (isNaN(humidityValue)) {
+            const errorModalBody = $("#errorModal").find(".modal-body");
+            errorModalBody.html("Invalid humidity value. Please, try it again.");
             $('#pilonList').modal('hide');
             $("#errorModal").modal("show");
             return;

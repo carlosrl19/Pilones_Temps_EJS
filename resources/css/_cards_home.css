@@ -17,6 +17,13 @@
     border: 4px solid #b8b8b83d;
   }
   
+  .card__footer{
+    font-size: 22px;
+    color: rgb(2, 2, 20);
+    border: 4px solid #d6d6d6;
+    box-shadow: 8px 8px 0px rgba(62, 62, 62, 0.09);
+    border-radius: 20px;
+  }
   .card > * + * {
     margin-top: 1.1em;
   }

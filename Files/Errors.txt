@@ -1,0 +1,21 @@
+
+###################################
+#     Validations in proccess     #
+###################################
+
+---> A R D U I N O S <---
+
+-- Creating an Arduino with same name:
+
+Error: Error creating arduino: Duplicate entry 'Arduino 02' for key 'nombre'
+    at Object.createArduino (/home/carlos/Code/Test Projects/Pilones_Temps/controllers/ArduinoController.js:53:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /home/carlos/Code/Test Projects/Pilones_Temps/public/routes/_arduinos_api.js:22:30
+
+-- Creating an Arduino with same DS18B20 code:
+
+Error: Error creating arduino: Duplicate entry '28BEFD79970003CB' for key 'direccion_bits'
+    at Object.createArduino (/home/carlos/Code/Test Projects/Pilones_Temps/controllers/ArduinoController.js:53:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /home/carlos/Code/Test Projects/Pilones_Temps/public/routes/_arduinos_api.js:22:30
+
