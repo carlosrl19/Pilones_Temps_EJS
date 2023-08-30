@@ -10,10 +10,26 @@ span.choose {
     display: inherit;
 }
 
-.checkbox-list{
-    overflow-y: auto; 
+.checkbox-list {
+    overflow-y: auto;
     height: 600px;
     width: 100%;
+}
+
+.checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.checkbox-list label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    transform: scale(2.09);
 }
 
 /*

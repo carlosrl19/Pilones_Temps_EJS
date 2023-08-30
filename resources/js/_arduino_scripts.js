@@ -16,8 +16,7 @@ $(document).ready(function () {
 
         $('#myTable').DataTable();
 
-
-        // Event handler para el botón Delete (delegación de eventos)
+        // DELETE
         $("#arduinosList").on("click", ".delete-btn", function () {
             const arduinoId = $(this).data("id");
             const deleteArduinoButton = document.getElementById('deleteArduinoButton');
@@ -25,7 +24,7 @@ $(document).ready(function () {
             $("#deleteArduinoModal").modal("show");
         });
 
-        // On click del botón Delete dentro del modal
+        // DELETE => On click
         $("#deleteArduinoButton").on("click", function () {
             const arduinoId = $(this).data("arduino-id");
 
@@ -44,23 +43,20 @@ $(document).ready(function () {
                 });
         });
 
-        // Edit modal opening
+        // UPDATE
         $("#arduinosList").on("click", ".edit-btn", function () {
             const arduinoId = $(this).data("id");
             console.log('Selected arduino with ID', arduinoId);
 
-            // Realiza una llamada a la API para obtener la información del Arduino
             $.get(`/api/arduinos/${arduinoId}`, function (arduino) {
-                // Llena los campos del formulario de edición con la información del Arduino
                 $("#editNombre").val(arduino.nombre);
                 $("#editDireccion").val(arduino.direccion_bits);
                 $("#editPilonEncargado").val(arduino.pilon_encargado);
                 $("#EditPort").val(arduino.arduino_port);
 
-                // Cargar opciones de pilones al select de edición
                 $.get("/api/pilones", function (data) {
                     const pilonSelect = document.getElementById("editPilonEncargado");
-                    pilonSelect.innerHTML = ""; // Limpiar opciones anteriores
+                    pilonSelect.innerHTML = "";
 
                     data.forEach(function (pilon) {
                         const option = document.createElement("option");
@@ -69,31 +65,26 @@ $(document).ready(function () {
                         pilonSelect.appendChild(option);
                     });
 
-                    // Establecer el valor seleccionado en el select
                     pilonSelect.value = arduino.pilon_encargado;
                 });
 
-                // Muestra el modal de edición
                 $("#editArduinoModal").modal("show");
-
-                // Adjunta el ID del arduino al botón "Save Changes" como atributo personalizado
                 $("#updateArduinoButton").data("id", arduinoId);
             });
         });
 
-        // On click del botón "Save Changes" del modal de edición
+        // UPDATE => On click
         $("#updateArduinoButton").on("click", function (event) {
             event.preventDefault();
 
-            const arduinoId = $(this).data("id"); // Obtiene el ID del arduino desde el atributo personalizado
+            const arduinoId = $(this).data("id");
             const nombre = $("#editNombre").val();
             const direccion_bits = $("#editDireccion").val();
             const pilon_encargado = $("#editPilonEncargado").val();
             const arduino_port = $("#EditPort").val();
 
-            // Realiza una llamada PUT a la API para actualizar la información del Arduino
             $.ajax({
-                url: `/api/arduinos/${arduinoId}`, // Aquí se incluye el ID en la URL
+                url: `/api/arduinos/${arduinoId}`,
                 method: "PUT",
                 data: {
                     nombre,
@@ -111,7 +102,7 @@ $(document).ready(function () {
             });
         });
 
-        // Al enviar el formulario de creación
+        // CREATE 
         $("#createArduinoForm").submit(function (event) {
             event.preventDefault();
 
@@ -120,7 +111,6 @@ $(document).ready(function () {
             const pilon_encargado = $("#pilon_encargado").val();
             const arduino_port = $("#arduino_port").val();
 
-            // Realiza una llamada POST a la API para crear un nuevo Arduino
             fetch(`/api/arduinos`, {
                 method: 'POST',
                 headers: {
@@ -145,7 +135,7 @@ $(document).ready(function () {
                 });
         });
 
-        // Cargar opciones de pilones al select
+        // PILONES 
         $.get("/api/pilones", function (data) {
             const pilonSelect = document.getElementById("pilon_encargado");
             data.forEach(function (pilon) {

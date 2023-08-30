@@ -1,6 +1,6 @@
 .card {
   width: 420px;
-  height: 475px;
+  height: 455px;
   position: relative;
   padding: 25px;
   background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3ed3cc6 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
@@ -126,12 +126,13 @@
 }
 
 .temp {
-  width: 250px;
-  height: 250px;
   margin-top: 0px;
   border-radius: 120px;
   display: inline;
   position: absolute;
+  width: 320px;
+  height: 0px;
+  scale: 0.6;
 }
 
 .tempbg {
@@ -139,11 +140,12 @@
 }
 
 .hum {
-  width: 250px;
-  height: 250px;
+  width: 320px;
+  height: 0px;
   border-radius: 150px 0px 150px 150px;
   display: inline;
   position: absolute;
+  scale: 0.6;
 }
 
 .humbg {
@@ -219,18 +221,9 @@
   margin-right: 15px;
 }
 
-.checkbox-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
-}
-
-.checkbox-list label {
-  position: relative;
-  padding-left: 25px;
-  cursor: pointer;
-}
-
-input[type=checkbox] {
-  transform: scale(1.7);
+.card_title{
+  font-size: 30px;
+  font-weight: 600;
+  margin-right: 150px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

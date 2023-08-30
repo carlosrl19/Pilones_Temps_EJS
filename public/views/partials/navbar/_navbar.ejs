@@ -57,6 +57,14 @@
                 </li>
 
                 <!-- If ? view show some things -->
+                <% if (currentUrl==='/' ) { %>
+                    <li>
+                        <a class="nav-link" style="background-color: #87ff8d; color: black; border-radius: 20px;">
+                            <img src="../../../../resources/images/sync.png" class="image_rotate" width="25" height="25"> Sync data
+                        </a>
+                    </li>
+                    <% } %>
+
                 <% if (currentUrl==='/pilones_list' ) { %>
                     <li class="nav-item">
                         <a>

@@ -1,23 +1,36 @@
 $(document).ready(function () {
-    $('button:contains("Show pilones list and save")').click(function () {
+    $('button:contains("Show pilones list")').click(function () {
         $('#pilonList').modal('show');
     });
 
     const pilonCheckboxList = $("#pilonCheckboxList");
     const searchInput = $("#searchInput");
+    const pilonInfoContainer = $(".pilon_info");
+
+    function updatePilonInfo(pilon) {
+        pilonInfoContainer.html(`
+            <p>Pilón's name:<strong> ${pilon.nombre}</strong></p>
+            <p>Pilón's propierty:<strong> ${pilon.finca}</strong></p>
+            <p>Pilón's tobacco stage:<strong> ${pilon.variedad}</strong></p>
+            <p>Pilón's pn:<strong> ${pilon.pn}</strong></p>
+            <p>Pilón's minimum allowed temperature:<strong> ${pilon.temp_min} ºC</strong></p>
+            <p>Pilón's maximum allowed temperature:<strong> ${pilon.temp_max} ºC</strong></p>
+            <p>Pilón's entry date:<strong> ${new Date(pilon.fecha_ingreso).toISOString().slice(0, 10)}</strong></p>
+        `);
+    }
 
     $.get("/api/pilones", function (data) {
         const generateCheckboxes = function (pilons) {
-            pilonCheckboxList.empty(); // Clear previous content
+            pilonCheckboxList.empty();
 
             pilons.forEach(function (pilon) {
                 const checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
                 checkbox.name = "opcion";
-                checkbox.value = pilon.id; // Set the pilon's ID as the checkbox value
+                checkbox.value = pilon.id;
 
                 const label = document.createElement("label");
-                label.textContent = pilon.nombre + ' - ' + pilon.finca; // Use the pilon's name
+                label.textContent = pilon.nombre + ' - ' + pilon.finca;
 
                 const div = document.createElement("div");
                 div.appendChild(checkbox);
@@ -27,11 +40,19 @@ $(document).ready(function () {
             });
         };
 
-        // Generate checkboxes for initial data
         generateCheckboxes(data);
 
         $("input[name='opcion']").on("change", function () {
             $("input[name='opcion']").not(this).prop("checked", false);
+
+            const selectedPilonId = $(this).val();
+            if (selectedPilonId) {
+                $.get(`/api/pilones/${selectedPilonId}`, function (pilon) {
+                    updatePilonInfo(pilon);
+                });
+            } else {
+                pilonInfoContainer.empty();
+            }
         });
 
         searchInput.on("input", function () {

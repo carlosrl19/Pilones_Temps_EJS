@@ -13,7 +13,7 @@ button {
     letter-spacing: .8px;
     line-height: 20px;
     margin: 0;
-    margin-top: -25%;
+    margin-top: -49%;
     outline: none;
     overflow: visible;
     padding: 13px 19px;
@@ -26,9 +26,9 @@ button {
     -webkit-user-select: none;
     vertical-align: middle;
     white-space: nowrap;
-   }
-   
-   button:after {
+}
+
+button:after {
     background-clip: padding-box;
     background-color: #1CB0F6;
     border: solid transparent;
@@ -41,24 +41,38 @@ button {
     right: 0;
     top: 0;
     z-index: -1;
-   }
-   
-   button:main, button:focus {
+}
+
+button:main,
+button:focus {
     user-select: auto;
-   }
-   
-   button:hover:not(:disabled) {
+}
+
+button:hover:not(:disabled) {
     filter: brightness(1.1);
-   }
-   
-   button:disabled {
+}
+
+button:disabled {
     cursor: auto;
-   }
-   
-   button:active:after {
+}
+
+button:active:after {
     border-width: 0 0 0px;
-   }
-   
-   button:active {
+}
+
+button:active {
     padding-bottom: 10px;
-   }
+}
+
+
+.pilon_info {
+    margin: -33%;
+    border: 2px solid #ba90274f;
+    background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3a43c85 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
+    border-radius: 20px;
+    padding: 20px;
+    width: 490px;
+    margin-left: 31%;
+    text-align: left;
+    box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.03), 0px 39px 39px rgba(0, 0, 0, 0.05), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
