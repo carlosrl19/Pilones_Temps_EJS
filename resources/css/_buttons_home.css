@@ -1,40 +1,66 @@
-.button {
-    margin-top: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 6px 12px;
-    gap: 8px;
-    height: 46px;
-    width: 180px;
-    border: none;
-    background: #9d41de33;
+button {
+    appearance: button;
+    background-color: #490c41;
+    border: solid transparent;
     border-radius: 20px;
+    border-width: 0 0 6px;
+    box-sizing: border-box;
+    color: #FFFFFF;
     cursor: pointer;
-}
-
-.lable {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
     line-height: 20px;
-    font-size: 17px;
-    color: #5D41DE;
-    font-family: sans-serif;
-    letter-spacing: 1px;
+    margin: 20px;
+    outline: none;
+    overflow: visible;
+    padding: 13px 19px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
-.button:hover {
-    background: #5e41de4d;
+button:after {
+    background-clip: padding-box;
+    background-color: #941b84;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
 }
 
-.button:hover .svg-icon {
-    animation: spin 2s linear infinite;
+button:main,
+button:focus {
+    user-select: auto;
 }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+button:hover:not(:disabled) {
+    filter: brightness(1.1);
+    scale: 1.05;
+    transition: 600ms;
+}
 
-    100% {
-        transform: rotate(360deg);
-    }
+button:disabled {
+    cursor: auto;
+}
+
+button:active:after {
+    border-width: 0 0 0px;
+}
+
+button:active {
+    padding-bottom: 10px;
 }

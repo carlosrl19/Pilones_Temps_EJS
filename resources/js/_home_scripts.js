@@ -22,7 +22,7 @@ fetch('/api/pilones')
           ${'Temp. max: ' + pilon.temp_max}<br>
         </p>
         <div class="card__date">${new Date(pilon.fecha_ingreso).toISOString().slice(0, 10)}</div>
-        <div class="card__footer">78 ºC | 25%</div>
+        <div class="card__footer"></div>
       `;
 
             card.innerHTML = cardContent;
@@ -30,6 +30,29 @@ fetch('/api/pilones')
 
             card.classList.add('card', `pilon-${pilon.id}`);
         }
+
+        const socket = io();
+
+        socket.on('sensorData', (data) => {
+            const parts = data.split(', ');
+            if (parts.length === 2) {
+                const temperaturePart = parts[0];
+                const humidityPart = parts[1];
+
+                const temperatureKeyValue = temperaturePart.split(':');
+                const humidityKeyValue = humidityPart.split(':');
+
+                if (temperatureKeyValue.length === 2 && humidityKeyValue.length === 2) {
+                    const temperature = temperatureKeyValue[1].trim();
+                    const humidity = humidityKeyValue[1].trim();
+
+                    const cardFooters = document.querySelectorAll('.card__footer');
+                    cardFooters.forEach(cardFooter => {
+                        cardFooter.innerHTML = `${temperature}º <br> ${humidity}`;
+                    })
+                }
+            }
+        });
 
         const totalPages = Math.ceil(pilones.length / cardsPerPage);
 
