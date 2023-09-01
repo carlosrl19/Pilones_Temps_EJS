@@ -49,42 +49,59 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li>
-                    <a class="nav-link" href="/FAQ" id="faq">
-                        FAQs
-                    </a>
-                </li>
 
-                <!-- If ? view show some things -->
-                <% if (currentUrl==='/' ) { %>
-                    <li>
-                        <a class="nav-link" style="background-color: #87ff8d; color: black; border-radius: 20px;">
-                            <img src="../../../../resources/images/sync.png" class="image_rotate" width="25" height="25"> Sync data
-                        </a>
-                    </li>
-                    <% } %>
+                    <!-- If ? view show some things -->
+                    <% if (currentUrl == '/' || currentUrl == '/individual_arduino') { %>
+                <li>
+                    <div class="mt-2">
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-navbar" style="margin-left: 15px;"
+                                data-bs-toggle="dropdown">More
+                                options ...</a>
+                            <div class="dropdown-menu" style="padding: 8px; border-radius: 20px;">
+                                <a class="nav-link"
+                                    style="background-color: #87ff8d4d; color: black; border-radius: 20px; font-size: 14px; font-weight: 600;">
+                                    <img src="../../../../resources/images/sync.png" width="20" height="20"> Sync
+                                    data
+                                </a>
+
+                                <a style="background-color: #e4de805e; color: black; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
+                                    class="nav-link" id="fullscreenButton" onclick="alternarPantallaCompleta()"><img
+                                        src="../../../../resources/images/fullscreen.png" width="20" height="20">
+                                    Fullscreen</a>
+
+                                <a style="background-color: #e48c805e; color: black; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
+                                    class="nav-link" href="/FAQ" id="faq"><img
+                                        src="../../../../resources/images/faq.png" width="20" height="20">
+                                    FAQs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <% } %>
 
                 <% if (currentUrl==='/pilones_list' ) { %>
                     <li class="nav-item">
                         <a>
-                            <button type="button" class="nav-link px-2" style="color: #87e7ff;" data-bs-toggle="modal"
-                                data-bs-target="#createPilonModal"><i class="bi bi-patch-plus"></i> Add new pilón
+                            <button type="button" class="nav-link px-2" style="color: #87e7ff;"
+                                data-bs-toggle="modal" data-bs-target="#createPilonModal"><i
+                                    class="bi bi-patch-plus"></i> Add new pilón
                             </button>
                         </a>
                     </li>
-                    <% } %>
+                <% } %>
 
-                        <% if (currentUrl==='/arduino_list' ) { %>
-                            <li class="nav-item">
-                                <a>
-                                    <button type="button" class="nav-link px-2" style="color: #87ff8d;"
-                                        data-bs-toggle="modal" data-bs-target="#createArduinoModal"><i
-                                            class="bi bi-patch-plus"></i> Add new
-                                        arduino</button>
-                                </a>
-                            </li>
-                            <% } %>
+                <% if (currentUrl==='/arduino_list' ) { %>
+                    <li class="nav-item">
+                        <a>
+                            <button type="button" class="nav-link px-2" style="color: #87ff8d;"
+                                data-bs-toggle="modal" data-bs-target="#createArduinoModal"><i
+                                    class="bi bi-patch-plus"></i> Add new
+                                arduino</button>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
         </div>
     </div>
@@ -93,4 +110,34 @@
 <!-- Scripts to disable context menu -->
 <script>
     document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+<script>
+    // Función para alternar la pantalla completa
+    function alternarPantallaCompleta() {
+        // Verificar si el navegador está en modo de pantalla completa
+        if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+            // Salir del modo de pantalla completa
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { // Firefox
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { // Chrome, Safari y Opera
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { // Internet Explorer
+                document.msExitFullscreen();
+            }
+        } else {
+            // Activar el modo de pantalla completa
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari y Opera
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { // Internet Explorer
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+    }
 </script>
