@@ -24,19 +24,21 @@ $(document).ready(function () {
             pilonCheckboxList.empty();
 
             pilons.forEach(function (pilon) {
-                const checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                checkbox.name = "opcion";
-                checkbox.value = pilon.id;
+                if (pilon.estado !== "Finished") {
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.name = "opcion";
+                    checkbox.value = pilon.id;
 
-                const label = document.createElement("label");
-                label.textContent = pilon.nombre + ' - ' + pilon.finca;
+                    const label = document.createElement("label");
+                    label.textContent = pilon.nombre + ' - ' + pilon.finca;
 
-                const div = document.createElement("div");
-                div.appendChild(checkbox);
-                div.appendChild(label);
+                    const div = document.createElement("div");
+                    div.appendChild(checkbox);
+                    div.appendChild(label);
 
-                pilonCheckboxList.append(div);
+                    pilonCheckboxList.append(div);
+                }
             });
         };
 

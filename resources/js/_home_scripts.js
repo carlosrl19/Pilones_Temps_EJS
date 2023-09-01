@@ -10,7 +10,6 @@ fetch('/api/pilones')
         for (let i = 0; i < pilones.length; i++) {
             const pilon = pilones[i];
 
-            // Agrega esta condición para evitar crear tarjetas con estado "Finished"
             if (pilon.estado !== "Finished") {
                 const card = document.createElement('div');
                 card.classList.add('card');
