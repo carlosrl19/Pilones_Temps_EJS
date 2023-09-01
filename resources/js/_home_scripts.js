@@ -9,26 +9,30 @@ fetch('/api/pilones')
 
         for (let i = 0; i < pilones.length; i++) {
             const pilon = pilones[i];
-            const card = document.createElement('div');
-            card.classList.add('card');
 
-            const cardContent = `
-        <h3 class="card__title">${pilon.nombre}</h3>
-        <p class="card__content">
-          ${'Property: ' + pilon.finca}<br>
-          ${'Variety: ' + pilon.variedad}<br>
-          ${'PN: ' + pilon.pn}<br>
-          ${'Temp. min: ' + pilon.temp_min}<br>
-          ${'Temp. max: ' + pilon.temp_max}<br>
-        </p>
-        <div class="card__date">${new Date(pilon.fecha_ingreso).toISOString().slice(0, 10)}</div>
-        <div class="card__footer"></div>
-      `;
+            // Agrega esta condición para evitar crear tarjetas con estado "Finished"
+            if (pilon.estado !== "Finished") {
+                const card = document.createElement('div');
+                card.classList.add('card');
 
-            card.innerHTML = cardContent;
-            container.appendChild(card);
+                const cardContent = `
+                    <h3 class="card__title">${pilon.nombre}</h3>
+                    <p class="card__content">
+                        ${'Property: ' + pilon.finca}<br>
+                        ${'Variety: ' + pilon.variedad}<br>
+                        ${'PN: ' + pilon.pn}<br>
+                        ${'Temp. min: ' + pilon.temp_min}<br>
+                        ${'Temp. max: ' + pilon.temp_max}<br>
+                    </p>
+                    <div class="card__date">${new Date(pilon.fecha_ingreso).toISOString().slice(0, 10)}</div>
+                    <div class="card__footer"></div>
+                `;
 
-            card.classList.add('card', `pilon-${pilon.id}`);
+                card.innerHTML = cardContent;
+                container.appendChild(card);
+
+                card.classList.add('card', `pilon-${pilon.id}`);
+            }
         }
 
         const socket = io();
