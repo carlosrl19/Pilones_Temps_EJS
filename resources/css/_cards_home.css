@@ -1,76 +1,114 @@
-.container{
+.container {
   width: 100%;
 }
 
 .card {
-    --border-radius: 0.75rem;
-    --primary-color: #901a80;
-    --secondary-color: #3c3852;
-    width: 210px;
-    font-family: "Arial";
-    padding: 1rem;
-    cursor: pointer;
-    border-radius: var(--border-radius);
-    background: #f1f1f3;
-    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 9%);
-    position: relative;
-    border: 4px solid #b8b8b83d;
+  --border-radius: 0.75rem;
+  --primary-color: #901a80;
+  --secondary-color: #3c3852;
+  width: 210px;
+  font-family: "Arial";
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  background: #f1f1f3;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 9%);
+  position: relative;
+  border: 4px solid #b8b8b83d;
+}
+
+.card__footer {
+  font-size: 20px;
+  color: rgb(2, 2, 20);
+  border: 4px solid #d6d6d6;
+  box-shadow: 8px 8px 0px rgba(62, 62, 62, 0.09);
+  border-radius: 20px;
+}
+
+.card>*+* {
+  margin-top: 1.1em;
+}
+
+.card .card__content {
+  color: var(--secondary-color);
+  font-size: 0.86rem;
+}
+
+.card .card__title {
+  padding: 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.card .card__date {
+  color: #6e6b80;
+  font-size: 0.8rem;
+}
+
+.card .card__arrow {
+  position: absolute;
+  background: var(--primary-color);
+  padding: 0.4rem;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  bottom: 0;
+  right: 0;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card svg {
+  transition: 0.2s;
+}
+
+/* hover */
+.card:hover .card__title {
+  color: var(--primary-color);
+}
+
+.card:hover .card__arrow {
+  background: #111;
+}
+
+.card:hover .card__arrow svg {
+  transform: translateX(3px);
+}
+
+/*Temperature and cards colors*/
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
   }
-  
-  .card__footer{
-    font-size: 20px;
-    color: rgb(2, 2, 20);
-    border: 4px solid #d6d6d6;
-    box-shadow: 8px 8px 0px rgba(62, 62, 62, 0.09);
-    border-radius: 20px;
+
+  50% {
+    transform: scale(1.05);
   }
-  .card > * + * {
-    margin-top: 1.1em;
+
+  100% {
+    transform: scale(1);
   }
-  
-  .card .card__content {
-    color: var(--secondary-color);
-    font-size: 0.86rem;
-  }
-  
-  .card .card__title {
-    padding: 0;
-    font-size: 1.3rem;
-    font-weight: bold;
-  }
-  
-  .card .card__date {
-    color: #6e6b80;
-    font-size: 0.8rem;
-  }
-  
-  .card .card__arrow {
-    position: absolute;
-    background: var(--primary-color);
-    padding: 0.4rem;
-    border-top-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    bottom: 0;
-    right: 0;
-    transition: 0.2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .card svg {
-    transition: 0.2s;
-  }
-  
-  /* hover */
-  .card:hover .card__title {
-    color: var(--primary-color);
-  }
-  
-  .card:hover .card__arrow {
-    background: #111;
-  }
-  
-  .card:hover .card__arrow svg {
-    transform: translateX(3px);
-  }
+}
+
+.high-temperature .card__footer {
+  background: #f60f0fd3;
+  animation: pulseAnimation 1s infinite;
+  color: white;
+  font-weight: bold;
+}
+
+.low-temperature .card__footer {
+  background-color: #4fd6f8;
+  animation: pulseAnimation 1s infinite;
+  color: white;
+  font-weight: bold;
+  border: 4px solid #00698336;
+}
+
+.success-temperature .card__footer{
+  background-color: #33bd51;
+  color: white;
+  font-weight: bold;
+  border: 4px solid #00330b39;
+}

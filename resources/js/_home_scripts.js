@@ -50,9 +50,30 @@ fetch('/api/pilones')
                     const humidity = humidityKeyValue[1].trim();
 
                     const cardFooters = document.querySelectorAll('.card__footer');
-                    cardFooters.forEach(cardFooter => {
+                    cardFooters.forEach((cardFooter, index) => {
                         cardFooter.innerHTML = `${temperature}º <br> ${humidity}`;
-                    })
+
+                        const pilonId = cardFooter.parentElement.classList[1].split('-')[1];
+                        const pilon = pilones.find(p => p.id == pilonId);
+
+                        if (parseFloat(temperature) > pilon.temp_max) {
+                            cardFooter.parentElement.classList.add('high-temperature');
+                            cardFooter.parentElement.classList.remove('low-temperature');
+                            cardFooter.parentElement.classList.remove('success-temperature');
+                        } 
+                        
+                        else if (parseFloat(temperature) < pilon.temp_min) {
+                            cardFooter.parentElement.classList.add('low-temperature');
+                            cardFooter.parentElement.classList.remove('high-temperature');
+                            cardFooter.parentElement.classList.remove('success-temperature');
+                        } 
+                        
+                        else {
+                            cardFooter.parentElement.classList.add('success-temperature');
+                            cardFooter.parentElement.classList.remove('high-temperature');
+                            cardFooter.parentElement.classList.remove('low-temperature');
+                        }
+                    });
                 }
             }
         });
