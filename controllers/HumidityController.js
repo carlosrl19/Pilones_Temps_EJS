@@ -55,8 +55,6 @@ const humiditiesController = {
             throw new Error('Error saving humidity data');
         }
     },
-
-    // Add other functions as needed
 };
 
 module.exports = humiditiesController;

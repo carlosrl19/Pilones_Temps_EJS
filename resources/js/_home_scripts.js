@@ -1,19 +1,20 @@
 const paginationContainer = document.querySelector('.pagination');
 const container = document.querySelector('.card-container');
 const cardsPerPage = 16;
+let selectedCard = null;
 
 fetch('/api/pilones')
     .then(response => response.json())
     .then(data => {
         const pilones = data;
-
+        
         for (let i = 0; i < pilones.length; i++) {
             const pilon = pilones[i];
-
+        
             if (pilon.estado !== "Finished") {
                 const card = document.createElement('div');
                 card.classList.add('card');
-
+        
                 const cardContent = `
                     <h3 class="card__title">${pilon.nombre}</h3>
                     <p class="card__content">
@@ -26,13 +27,24 @@ fetch('/api/pilones')
                     <div class="card__date">${new Date(pilon.fecha_ingreso).toISOString().slice(0, 10)}</div>
                     <div class="card__footer"></div>
                 `;
-
+        
                 card.innerHTML = cardContent;
+        
+                card.addEventListener('click', () => {
+                    if (selectedCard) {
+                        selectedCard.classList.remove('card-clicked');
+                        console.log('Selected card:', selectedCard.classList);
+                    }
+        
+                    card.classList.add('card-clicked');
+                    selectedCard = card;
+                });
+        
                 container.appendChild(card);
-
+        
                 card.classList.add('card', `pilon-${pilon.id}`);
             }
-        }
+        }        
 
         const socket = io();
 
@@ -51,7 +63,7 @@ fetch('/api/pilones')
 
                     const cardFooters = document.querySelectorAll('.card__footer');
                     cardFooters.forEach((cardFooter, index) => {
-                        cardFooter.innerHTML = `${temperature}º <br> ${humidity}`;
+                        cardFooter.innerHTML = `${temperature}º ${humidity}`;
 
                         const pilonId = cardFooter.parentElement.classList[1].split('-')[1];
                         const pilon = pilones.find(p => p.id == pilonId);

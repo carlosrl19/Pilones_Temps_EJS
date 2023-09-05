@@ -15,14 +15,16 @@
   box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 9%);
   position: relative;
   border: 4px solid #b8b8b83d;
+  transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .card__footer {
-  font-size: 20px;
+  font-size: 18px;
   color: rgb(2, 2, 20);
   border: 4px solid #d6d6d6;
   box-shadow: 8px 8px 0px rgba(62, 62, 62, 0.09);
   border-radius: 20px;
+  padding: 8px;
 }
 
 .card>*+* {
@@ -106,9 +108,20 @@
   border: 4px solid #00698336;
 }
 
-.success-temperature .card__footer{
+.success-temperature .card__footer {
   background-color: #33bd51;
   color: white;
   font-weight: bold;
   border: 4px solid #00330b39;
+}
+
+.card-clicked {
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 1s ease-out;
+  color: white;
+  background: #aeaeae8c;
+  box-shadow: 5px 10px #36363664;
+  border: 2px solid #111
 }
