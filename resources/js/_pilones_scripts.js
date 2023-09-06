@@ -13,7 +13,7 @@ $(document).ready(function () {
                     <td>${pilón.temp_max}</td>
                     <td>${fechaIngreso}</td>
                     <td>${pilón.estado}</td>
-                    <td>${pilón.asignado}</td>
+                    <td>${pilón.arduino_asignado}</td>
                     <td>
                         <button class="btn btn-primary btn-sm edit-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal">Edit</button>
                         <button class="btn btn-danger btn-sm delete-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#deletePilonModal">Delete</button>
@@ -22,7 +22,28 @@ $(document).ready(function () {
             `);
         });
 
-        $('#myTable').DataTable();
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                dom: 'lBfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Export to Excel',
+                        className: 'btn btn-primary dt-buttons btnExcel'
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print / Save PDF',
+                        className: 'btn btn-secondary dt-buttons btnPrint',
+                        exportOptions: {
+                            modifier: {
+                                selected: null
+                            }
+                        }
+                    }
+                ],
+            });
+        });
 
         // DELETE BUTTON
         $("#pilonList").on("click", ".delete-btn", function () {

@@ -6,6 +6,7 @@ $(document).ready(function () {
                     <td>${arduino.nombre}</td>
                     <td>${arduino.direccion_bits}</td>
                     <td>${arduino.arduino_port}</td>
+                    <td>${arduino.pilon_encargado}</td>
                     <td>
                         <button class="btn btn-primary btn-sm edit-btn" data-id="${arduino.id}" data-toggle="modal" data-target="#editArduinoModal">Edit</button>
                         <button class="btn btn-danger btn-sm delete-btn" data-id="${arduino.id}" data-toggle="modal" data-target="#deleteArduinoModal">Delete</button>
@@ -14,7 +15,26 @@ $(document).ready(function () {
             `);
         });
 
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            dom: 'lBfrtip',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: 'Export to Excel',
+                    className: 'btn btn-primary dt-buttons btnExcel'
+                },
+                {
+                    extend: 'print',
+                    text: 'Print / Save PDF',
+                    className: 'btn btn-secondary dt-buttons btnPrint',
+                    exportOptions: {
+                        modifier: {
+                            selected: null
+                        }
+                    }
+                }
+            ],
+        });
 
         // DELETE
         $("#arduinosList").on("click", ".delete-btn", function () {

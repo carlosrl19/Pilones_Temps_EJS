@@ -49,7 +49,7 @@ router.put('/:arduinoId', async (req, res) => {
         const updateQuery = 'UPDATE arduinos SET nombre = ?, direccion_bits = ?, pilon_encargado = ?, arduino_port = ? WHERE id = ?';
         await db.query(updateQuery, [nombre, direccion_bits, pilon_encargado, arduino_port, arduinoId]);
 
-        const updatePilonesQuery = 'UPDATE pilones SET asignado = ? WHERE id = ?';
+        const updatePilonesQuery = 'UPDATE pilones SET arduino_asignado = ? WHERE id = ?';
         await db.query(updatePilonesQuery, [arduinoId, pilon_encargado]);
 
         res.sendStatus(200); // Envía una respuesta exitosa al cliente

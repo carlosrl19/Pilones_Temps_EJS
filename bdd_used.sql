@@ -2,6 +2,8 @@ CREATE DATABASE pilones_temps;
 
 use pilones_temps;
 
+SELECT * FROM pilones;
+
 -- Crear la tabla pilones
 CREATE TABLE pilones (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,7 +16,8 @@ CREATE TABLE pilones (
     temp_max INT,
     fecha_ingreso DATE,
     estado VARCHAR(12),
-    asignado VARCHAR(12)
+    arduino_asignado INT,
+    FOREIGN KEY (arduino_asignado) REFERENCES arduinos(id)
 );
 
 -- Crear la tabla temperaturas
@@ -48,6 +51,8 @@ CREATE TABLE arduinos (
     arduino_port VARCHAR(12),
     FOREIGN KEY (pilon_encargado) REFERENCES pilones(id)
 );
+
+SELECT * FROM pilones WHERE id = 2;
 
 INSERT INTO arduinos (nombre, direccion_bits, pilon_encargado, arduino_port)
 VALUES

@@ -38,7 +38,7 @@ done
 valores=${valores%,}
 
 # Construir el script SQL
-echo "INSERT INTO pilones (nombre, variedad, finca, etapa, pn, temp_min, temp_max, fecha_ingreso, estado, asignado)" >> $archivo_sql
+echo "INSERT INTO pilones (nombre, variedad, finca, etapa, pn, temp_min, temp_max, fecha_ingreso, estado, arduino_asignado)" >> $archivo_sql
 echo "VALUES" >> $archivo_sql
 echo "$valores;" >> $archivo_sql
 

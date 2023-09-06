@@ -43,7 +43,7 @@ const arduinosController = {
             const insertQuery = 'INSERT INTO arduinos (nombre, direccion_bits, pilon_encargado, arduino_port) VALUES (?, ?, ?, ?)';
             const [result] = await connection.execute(insertQuery, [nombre, direccion_bits, pilon_encargado, arduino_port]);
 
-            const updateQuery = 'UPDATE pilones SET asignado = ? WHERE id = ?';
+            const updateQuery = 'UPDATE pilones SET arduino_asignado = ? WHERE id = ?';
             await connection.execute(updateQuery, [result.insertId, pilon_encargado]);
 
             connection.end();
@@ -53,7 +53,6 @@ const arduinosController = {
             throw new Error('Error creating arduino: ' + error.message);
         }
     },
-
 
     // Arduino's update
     updateArduino: async (arduinoId, nombre, direccion_bits, pilon_encargado, arduino_port) => {
