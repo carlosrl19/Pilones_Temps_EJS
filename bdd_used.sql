@@ -1,8 +1,17 @@
-CREATE DATABASE pilones_temps;
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS pilones_temps;
 
-use pilones_temps;
+-- Usar la base de datos
+USE pilones_temps;
 
-SELECT * FROM pilones;
+-- Crear la tabla arduinos
+CREATE TABLE arduinos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) UNIQUE,
+    direccion_bits VARCHAR(16) UNIQUE,
+    pilon_encargado INT UNIQUE,
+    arduino_port VARCHAR(12)
+);
 
 -- Crear la tabla pilones
 CREATE TABLE pilones (
@@ -11,7 +20,7 @@ CREATE TABLE pilones (
     variedad VARCHAR(255),
     finca VARCHAR(255),
     etapa INT,
-    pn decimal(8,3) NOT NULL,
+    pn DECIMAL(8,3) NOT NULL,
     temp_min INT,
     temp_max INT,
     fecha_ingreso DATE,
@@ -32,7 +41,7 @@ CREATE TABLE temperaturas (
     FOREIGN KEY (pilon_encargado) REFERENCES pilones(id) ON DELETE CASCADE
 );
 
--- Crear la tabla humedadf
+-- Crear la tabla humedad
 CREATE TABLE humedad (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pilon_encargado INT,
@@ -41,19 +50,3 @@ CREATE TABLE humedad (
     lectura FLOAT,
     FOREIGN KEY (pilon_encargado) REFERENCES pilones(id) ON DELETE CASCADE
 );
-
--- Crear la tabla arduinos
-CREATE TABLE arduinos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) unique,
-    direccion_bits VARCHAR(16) UNIQUE,
-    pilon_encargado INT UNIQUE,
-    arduino_port VARCHAR(12),
-    FOREIGN KEY (pilon_encargado) REFERENCES pilones(id)
-);
-
-SELECT * FROM pilones WHERE id = 2;
-
-INSERT INTO arduinos (nombre, direccion_bits, pilon_encargado, arduino_port)
-VALUES
-    ('Arduino 01', '28BEFD79970003AA', 3, '/dev/ttyACM0');
