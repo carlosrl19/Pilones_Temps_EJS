@@ -15,12 +15,8 @@ $(document).ready(function () {
                     <td>${pilón.estado}</td>
                     <td>${pilón.arduino_asignado}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm details-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#editArduinoModal"><img
-                        src="../../../../resources/images/details.png" width="30" height="30"></button></button>
-                        <button class="btn btn-primary btn-sm edit-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal"><img
-                        src="../../../../resources/images/edit.png" width="30" height="30"></button>
-                        <button class="btn btn-danger btn-sm delete-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#deletePilonModal"><img
-                        src="../../../../resources/images/delete.png" width="30" height="30"></button></button>
+                        <button class="btn btn-primary btn-sm edit-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal">Edit</button>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#deletePilonModal">Delete</button>
                     </td>
                 </tr>
             `);
@@ -49,7 +45,7 @@ $(document).ready(function () {
                 ],
             });
         });
-        
+
         // DELETE BUTTON
         $("#pilonList").on("click", ".delete-btn", function () {
             const pilonId = $(this).data("id");
