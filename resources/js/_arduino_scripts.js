@@ -8,6 +8,8 @@ $(document).ready(function () {
                     <td>${arduino.arduino_port}</td>
                     <td>${arduino.pilon_encargado}</td>
                     <td>
+                        <button class="btn btn-primary btn-sm details-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${arduino.id}" data-toggle="modal" data-target="#editArduinoModal"><img
+                        src="../../../../resources/images/details.png" width="30" height="30"></button></button>
                         <button class="btn btn-primary btn-sm edit-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${arduino.id}" data-toggle="modal" data-target="#editArduinoModal"><img
                         src="../../../../resources/images/edit.png" width="30" height="30"></button></button>
                         <button class="btn btn-danger btn-sm delete-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${arduino.id}" data-toggle="modal" data-target="#deleteArduinoModal"><img
