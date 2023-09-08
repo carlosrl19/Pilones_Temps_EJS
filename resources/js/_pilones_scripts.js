@@ -15,8 +15,10 @@ $(document).ready(function () {
                     <td>${pilón.estado}</td>
                     <td>${pilón.arduino_asignado}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm edit-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal">Edit</button>
-                        <button class="btn btn-danger btn-sm delete-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#deletePilonModal">Delete</button>
+                        <button class="btn btn-primary btn-sm edit-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal"><img
+                        src="../../../../resources/images/edit.png" width="30" height="30"></button>
+                        <button class="btn btn-danger btn-sm delete-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#deletePilonModal"><img
+                        src="../../../../resources/images/delete.png" width="30" height="30"></button></button>
                     </td>
                 </tr>
             `);
@@ -29,16 +31,17 @@ $(document).ready(function () {
                     {
                         extend: 'excelHtml5',
                         text: 'Export to Excel',
-                        className: 'btn btn-primary dt-buttons btnExcel'
+                        className: 'btn btn-primary dt-buttons btnExcel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                        }
                     },
                     {
                         extend: 'print',
                         text: 'Print / Save PDF',
                         className: 'btn btn-secondary dt-buttons btnPrint',
                         exportOptions: {
-                            modifier: {
-                                selected: null
-                            }
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                         }
                     }
                 ],

@@ -1,6 +1,8 @@
 -- Crear la base de datos
 CREATE DATABASE IF NOT EXISTS pilones_temps;
 
+DESCRIBE pilones;
+
 -- Usar la base de datos
 USE pilones_temps;
 
@@ -25,6 +27,11 @@ CREATE TABLE pilones (
     temp_max INT,
     fecha_ingreso DATE,
     estado VARCHAR(12),
+    corte INT,
+    clase VARCHAR (255),
+    fecha_virdado DATE,
+    fecha_mojado DATE,
+    tipo_tabaco VARCHAR(255),
     arduino_asignado INT,
     FOREIGN KEY (arduino_asignado) REFERENCES arduinos(id)
 );

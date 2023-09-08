@@ -8,8 +8,10 @@ $(document).ready(function () {
                     <td>${arduino.arduino_port}</td>
                     <td>${arduino.pilon_encargado}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm edit-btn" data-id="${arduino.id}" data-toggle="modal" data-target="#editArduinoModal">Edit</button>
-                        <button class="btn btn-danger btn-sm delete-btn" data-id="${arduino.id}" data-toggle="modal" data-target="#deleteArduinoModal">Delete</button>
+                        <button class="btn btn-primary btn-sm edit-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${arduino.id}" data-toggle="modal" data-target="#editArduinoModal"><img
+                        src="../../../../resources/images/edit.png" width="30" height="30"></button></button>
+                        <button class="btn btn-danger btn-sm delete-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${arduino.id}" data-toggle="modal" data-target="#deleteArduinoModal"><img
+                        src="../../../../resources/images/delete.png" width="30" height="30"></button></button>
                     </td>
                 </tr>
             `);
@@ -21,16 +23,17 @@ $(document).ready(function () {
                 {
                     extend: 'excelHtml5',
                     text: 'Export to Excel',
-                    className: 'btn btn-primary dt-buttons btnExcel'
+                    className: 'btn btn-primary dt-buttons btnExcel',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
                 },
                 {
                     extend: 'print',
                     text: 'Print / Save PDF',
                     className: 'btn btn-secondary dt-buttons btnPrint',
                     exportOptions: {
-                        modifier: {
-                            selected: null
-                        }
+                        columns: [0, 1, 2, 3]
                     }
                 }
             ],

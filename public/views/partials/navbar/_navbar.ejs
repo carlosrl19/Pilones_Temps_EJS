@@ -112,12 +112,10 @@
     document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
 
+<!-- Fullscreen mode -->
 <script>
-    // Función para alternar la pantalla completa
     function alternarPantallaCompleta() {
-        // Verificar si el navegador está en modo de pantalla completa
         if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-            // Salir del modo de pantalla completa
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             } else if (document.mozCancelFullScreen) { // Firefox
@@ -128,7 +126,6 @@
                 document.msExitFullscreen();
             }
         } else {
-            // Activar el modo de pantalla completa
             if (document.documentElement.requestFullscreen) {
                 document.documentElement.requestFullscreen();
             } else if (document.documentElement.mozRequestFullScreen) { // Firefox

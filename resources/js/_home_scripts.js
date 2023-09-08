@@ -87,9 +87,6 @@ function crearCardsConTemperatura() {
                         const temperature = temperatureKeyValue[1].trim();
                         const humidity = humidityKeyValue[1].trim();
 
-                        console.log('Temperature:', temperature);
-                        console.log('Humidity:', humidity);
-
                         const cardFooters = document.querySelectorAll('.card__footer');
                         cardFooters.forEach((cardFooter, index) => {
                             const pilonId = cardFooter.parentElement.classList[1].split('-')[1];

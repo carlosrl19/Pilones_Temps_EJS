@@ -68,7 +68,7 @@ button:active {
 .pilon_info {
     margin: -33%;
     border: 2px solid #ba90274f;
-    background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3a43c85 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
+    background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3a43c54 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
     border-radius: 20px;
     padding: 20px;
     width: 490px;

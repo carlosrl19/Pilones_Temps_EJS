@@ -22,16 +22,17 @@ fetch('/api/humidities')
                     {
                         extend: 'excelHtml5',
                         text: 'Export to Excel',
-                        className: 'btn btn-primary dt-buttons btnExcel'
+                        className: 'btn btn-primary dt-buttons btnExcel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3]
+                        }
                     },
                     {
                         extend: 'print',
                         text: 'Print / Save PDF',
                         className: 'btn btn-secondary dt-buttons btnPrint',
                         exportOptions: {
-                            modifier: {
-                                selected: null
-                            }
+                            columns: [0, 1, 2, 3]
                         }
                     }
                 ],

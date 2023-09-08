@@ -29,7 +29,7 @@ button {
 
 button:after {
     background-clip: padding-box;
-    background-color: #941b84;
+    background-color: #ab1f98;
     border: solid transparent;
     border-radius: 16px;
     border-width: 0 0 4px;

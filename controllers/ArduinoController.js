@@ -62,6 +62,9 @@ const arduinosController = {
             const updateQuery = 'UPDATE arduinos SET nombre = ?, direccion_bits = ?, pilon_encargado = ?, arduino_port = ? WHERE id = ?';
             await connection.execute(updateQuery, [nombre, direccion_bits, pilon_encargado, arduino_port, arduinoId]);
 
+            const updatePilonesQuery = 'UPDATE pilones SET arduino_asignado = ? WHERE id = ?';
+            await connection.execute(updatePilonesQuery, [arduinoId, pilon_encargado]);
+
             connection.end();
 
             // Add more logic if it's needed

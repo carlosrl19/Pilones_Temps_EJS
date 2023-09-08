@@ -3,7 +3,7 @@
   height: 455px;
   position: relative;
   padding: 25px;
-  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #f3ed3cc6 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
+  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #fff71d56 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
   box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.03), 0px 39px 39px rgba(0, 0, 0, 0.05), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
   transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
@@ -16,7 +16,7 @@
 }
 
 .card2 {
-  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #3cd8f3c6 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
+  background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #3cd8f33d 0%, rgba(255, 255, 255, 0) 71.88%), #FFFFFF;
 }
 
 .card-container {
@@ -222,7 +222,7 @@
 }
 
 .card_title{
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 600;
   margin-right: 150px;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

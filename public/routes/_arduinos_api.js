@@ -52,7 +52,7 @@ router.put('/:arduinoId', async (req, res) => {
         const updatePilonesQuery = 'UPDATE pilones SET arduino_asignado = ? WHERE id = ?';
         await db.query(updatePilonesQuery, [arduinoId, pilon_encargado]);
 
-        res.sendStatus(200); // Envía una respuesta exitosa al cliente
+        res.sendStatus(200);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error updating Arduino', details: error.message });
