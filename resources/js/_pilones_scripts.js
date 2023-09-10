@@ -15,8 +15,12 @@ $(document).ready(function () {
                     <td>${pilón.estado}</td>
                     <td>${pilón.arduino_asignado}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm edit-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal">Edit</button>
-                        <button class="btn btn-danger btn-sm delete-btn" data-id="${pilón.id}" data-toggle="modal" data-target="#deletePilonModal">Delete</button>
+                        <button class="btn btn-primary btn-sm details-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#detailsPilonModal"><img
+                        src="../../../../resources/images/details.png" width="30" height="30"></button></button>
+                        <button class="btn btn-primary btn-sm edit-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal"><img
+                        src="../../../../resources/images/edit.png" width="30" height="30"></button></button>
+                        <button class="btn btn-danger btn-sm delete-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#deletePilonModal"><img
+                        src="../../../../resources/images/delete.png" width="30" height="30"></button></button>
                     </td>
                 </tr>
             `);
@@ -182,6 +186,31 @@ $(document).ready(function () {
             } catch (error) {
                 console.error('Error creating pilón:', error);
             }
+        });
+
+        // DETAILS MODAL
+        $("#pilonList").on("click", ".details-btn", function () {
+            const pilonId = $(this).data("id");
+            console.log('Selected pilón with ID', pilonId);
+
+            $.get(`/api/pilones/${pilonId}`, function (pilon) {
+                // Limpia cualquier contenido anterior en el modal
+                $("#detailsPilonModal .modal-body").empty();
+
+                // Crea elementos HTML para mostrar los detalles del pilón
+                const detailsContainer = $("#detailsPilonModal .modal-body");
+                detailsContainer.append(`<p><strong>Pilón's name:</strong> ${pilon.nombre}</p>`);
+                detailsContainer.append(`<p><strong>Farm source:</strong> ${pilon.finca}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco variety:</strong> ${pilon.variedad}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco stage:</strong> Stage ${pilon.etapa}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco PN:</strong> ${pilon.pn}</p>`);
+                detailsContainer.append(`<p><strong>Minimun accepted temperature:</strong> ${pilon.temp_min}</p>`);
+                detailsContainer.append(`<p><strong>Maximum accepted temperature:</strong> ${pilon.temp_max}</p>`);
+                detailsContainer.append(`<p><strong>Pilón state:</strong> ${pilon.estado}</p>`);
+
+                // Abre el modal
+                $("#detailsPilonModal").modal("show");
+            });
         });
     });
 });
