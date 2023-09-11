@@ -119,9 +119,9 @@
   -webkit-transition: background-color 2s ease-out;
   -moz-transition: background-color 2s ease-out;
   -o-transition: background-color 2s ease-out;
-  transition: background-color 1s ease-out;
+  transition: background-color 2s ease-out;
   color: white;
   background: #aeaeae8c;
-  box-shadow: 5px 10px #36363664;
-  border: 2px solid #111
+  box-shadow: 8px 10px #36363664;
+  border: 2px solid #111;
 }

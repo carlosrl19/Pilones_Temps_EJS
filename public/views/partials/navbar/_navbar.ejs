@@ -51,7 +51,7 @@
                     </div>
 
                     <!-- If ? view show some things -->
-                    <% if (currentUrl == '/' || currentUrl == '/individual_arduino') { %>
+                    <% if (currentUrl=='/' || currentUrl=='/individual_arduino' ) { %>
                 <li>
                     <div class="mt-2">
                         <div class="dropdown">
@@ -61,7 +61,8 @@
                             <div class="dropdown-menu" style="padding: 8px; border-radius: 20px;">
                                 <a class="nav-link"
                                     style="background-color: #87ff8d4d; color: black; border-radius: 20px; font-size: 14px; font-weight: 600;">
-                                    <img src="../../../../resources/images/sync.png" width="20" height="20"> Sync
+                                    <img src="../../../../resources/images/sync.png" width="20" height="20">
+                                    Sync
                                     data
                                 </a>
 
@@ -81,27 +82,38 @@
                 </li>
                 <% } %>
 
-                <% if (currentUrl==='/pilones_list' ) { %>
-                    <li class="nav-item">
-                        <a>
-                            <button type="button" class="nav-link px-2" style="color: #87e7ff;"
-                                data-bs-toggle="modal" data-bs-target="#createPilonModal"><i
-                                    class="bi bi-patch-plus"></i> Add new pilón
-                            </button>
-                        </a>
-                    </li>
-                <% } %>
+                    <% if (currentUrl==='/pilones_list' ) { %>
+                        <li class="nav-item">
+                            <a>
+                                <button type="button" class="nav-link px-2" style="color: #87e7ff;"
+                                    data-bs-toggle="modal" data-bs-target="#createPilonModal"><i
+                                        class="bi bi-patch-plus"></i> Add new pilón
+                                </button>
+                            </a>
+                        </li>
+                        <% } %>
 
-                <% if (currentUrl==='/arduino_list' ) { %>
-                    <li class="nav-item">
-                        <a>
-                            <button type="button" class="nav-link px-2" style="color: #87ff8d;"
-                                data-bs-toggle="modal" data-bs-target="#createArduinoModal"><i
-                                    class="bi bi-patch-plus"></i> Add new
-                                arduino</button>
-                        </a>
-                    </li>
-                <% } %>
+                            <% if (currentUrl==='/arduino_list' ) { %>
+                                <li class="nav-item">
+                                    <a>
+                                        <button type="button" class="nav-link px-2" style="color: #87ff8d;"
+                                            data-bs-toggle="modal" data-bs-target="#createArduinoModal"><i
+                                                class="bi bi-patch-plus"></i> Add new
+                                            arduino</button>
+                                    </a>
+                                </li>
+                                <% } %>
+
+                                    <% if (currentUrl=='/' ) { %>
+                                        <li class="nav-item">
+                                            <a>
+                                                <a type="button" id="openFilterModal" class="nav-link px-2"
+                                                    style="color: #87e7ff;"><i class="bi bi-funnel"></i>
+                                                    Filters
+                                                </a>
+                                            </a>
+                                        </li>
+                                        <% } %>
             </ul>
         </div>
     </div>

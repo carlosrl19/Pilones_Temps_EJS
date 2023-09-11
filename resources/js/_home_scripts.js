@@ -116,6 +116,7 @@ function crearCardsConTemperatura() {
                 }
             });
 
+            
             const totalPages = Math.ceil(pilones.length / cardsPerPage);
 
             for (let i = 1; i <= totalPages; i++) {
@@ -157,6 +158,7 @@ function crearCardsConTemperatura() {
             }
 
             showPage(1);
+
         })
         .catch(error => {
             const errorModalBody = $("#errorModal").find(".modal-body");
