@@ -36,15 +36,15 @@ const pilonesController = {
     },
 
     // Pilon's create
-    createPilon: async (nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado) => {
+    createPilon: async (nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado) => {
         try {
             const connection = await mysql.createConnection(dbConfig);
 
             const insertQuery = `
-            INSERT INTO pilones (nombre, variedad, finca, etapa, pn, temp_min, temp_max, fecha_ingreso, estado)
-            VALUES (?, ?, ?, ?, ?, ?, ?, CURDATE(), ?)`;
+            INSERT INTO pilones (nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, fecha_ingreso, estado)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURDATE(), ?)`;
 
-            await connection.execute(insertQuery, [nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado]);
+            await connection.execute(insertQuery, [nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado]);
 
             connection.end();
         } catch (error) {
@@ -53,23 +53,29 @@ const pilonesController = {
     },
 
     // Pilon's update
-    updatePilones: async (pilonId, nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado) => {
+    updatePilones: async (pilonId, nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado) => {
         try {
             const connection = await mysql.createConnection(dbConfig); // DB connection
 
             const updateQuery = `
                 UPDATE pilones
                 SET nombre = ?,
-                    variedad = ?,
                     finca = ?,
+                    variedad = ?,
+                    corte = ?,
+                    clase = ?,
+                    cosecha = ?,
                     etapa = ?,
+                    fecha_virado = ?,
+                    fecha_mojado = ?,
+                    tipo_tabaco = ?,
                     pn = ?,
                     temp_min = ?,
                     temp_max = ?,
                     estado = ?
                 WHERE id = ?`;
 
-            await connection.execute(updateQuery, [nombre, variedad, finca, etapa, pn, temp_min, temp_max, estado, pilonId]);
+            await connection.execute(updateQuery, [nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado, pilonId]);
             connection.end(); // Cierra la conexión
 
             // Add pilones update logic in pilones table if this is neccesary

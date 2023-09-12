@@ -34,6 +34,9 @@ router.get('/hum_history', (req, res) => {
 router.get('/FAQ', (req, res) => {
     res.render('faqs/faqs', { currentUrl: req.originalUrl });
 });
+router.get('/language', (req, res) => {
+    res.render('faqs/language', { currentUrl: req.originalUrl });
+});
 
 // API routes
 router.use('/api/arduinos', arduinosAPI);

@@ -80,14 +80,19 @@ $(document).ready(function () {
         // UPDATE MODAL
         $("#pilonList").on("click", ".edit-btn", function () {
             const pilonId = $(this).data("id");
-            console.log('Selected pilón with ID', pilonId);
-
+            
             $.get(`/api/pilones/${pilonId}`, function (pilón) {
                 $("#editNombre").val(pilón.nombre);
                 $("#editFinca").val(pilón.finca);
                 $("#editVariedad").val(pilón.variedad);
+                $("#editCorte").val(pilón.corte);
+                $("#editClase").val(pilón.clase);
+                $("#editCosecha").val(pilón.cosecha);
                 $("#editEtapa").val(pilón.etapa);
+                $("#editFechaVirado").val(pilón.fecha_virado);
+                $("#editFechaMojado").val(pilón.fecha_mojado);
                 $("#editPN").val(pilón.pn);
+                $("#editTipo").val(pilón.tipo_tabaco);
                 $("#editTempMin").val(pilón.temp_min);
                 $("#editTempMax").val(pilón.temp_max);
                 $("#editEstado").val(pilón.estado);
@@ -105,8 +110,14 @@ $(document).ready(function () {
             const nombre = $("#editNombre").val();
             const finca = $("#editFinca").val();
             const variedad = $("#editVariedad").val();
+            const corte = $("#editCorte").val();
+            const clase = $("#editClase").val();
+            const cosecha = $("#editCosecha").val();
             const etapa = $("#editEtapa").val();
+            const fecha_virado = $("#editFechaVirado").val();
+            const fecha_mojado = $("#editFechaMojado").val();
             const pn = $("#editPN").val();
+            const tipo_tabaco = $("#editTipo").val();
             const temp_min = $("#editTempMin").val();
             const temp_max = $("#editTempMax").val();
             const estado = $("#editEstado").val();
@@ -115,7 +126,13 @@ $(document).ready(function () {
                 nombre,
                 finca,
                 variedad,
+                corte,
+                clase,
+                cosecha,
                 etapa,
+                fecha_virado,
+                fecha_mojado,
+                tipo_tabaco,
                 pn,
                 temp_min,
                 temp_max,
@@ -149,6 +166,12 @@ $(document).ready(function () {
 
             const nombre = $("#nombre").val();
             const finca = $("#finca").val();
+            const fecha_virado = $("#fecha_virado").val();
+            const fecha_mojado = $("#fecha_mojado").val();
+            const corte = $("#corte").val();
+            const clase = $("#clase").val();
+            const cosecha = $("#cosecha").val();
+            const tipo_tabaco = $("#tipo_tabaco").val();
             const variedad = $("#variedad").val();
             const etapa = $("#etapa").val();
             const pn = $("#pn").val();
@@ -159,6 +182,12 @@ $(document).ready(function () {
             const requestBody = {
                 nombre,
                 finca,
+                fecha_virado,
+                fecha_mojado,
+                corte,
+                clase,
+                cosecha,
+                tipo_tabaco,
                 variedad,
                 etapa,
                 pn,
@@ -200,9 +229,16 @@ $(document).ready(function () {
                 // Crea elementos HTML para mostrar los detalles del pilón
                 const detailsContainer = $("#detailsPilonModal .modal-body");
                 detailsContainer.append(`<p><strong>Pilón's name:</strong> ${pilon.nombre}</p>`);
+                detailsContainer.append(`<p><strong>Pilón's date entry:</strong> ${pilon.fecha_ingreso}</p>`);
                 detailsContainer.append(`<p><strong>Farm source:</strong> ${pilon.finca}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco variety:</strong> ${pilon.variedad}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco cutting:</strong> ${pilon.corte}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco class:</strong> ${pilon.clase}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco harvest:</strong> ${pilon.cosecha}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco stage:</strong> Stage ${pilon.etapa}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco turning dates:</strong> ${pilon.fecha_virado}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco wetting dates:</strong> ${pilon.fecha_mojado}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco type:</strong> ${pilon.tipo}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco PN:</strong> ${pilon.pn}</p>`);
                 detailsContainer.append(`<p><strong>Minimun accepted temperature:</strong> ${pilon.temp_min}</p>`);
                 detailsContainer.append(`<p><strong>Maximum accepted temperature:</strong> ${pilon.temp_max}</p>`);

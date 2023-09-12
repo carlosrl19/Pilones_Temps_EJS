@@ -6,7 +6,7 @@
                 <h5 class="modal-title" style="color: #ffffff;" id="createPilonModalLabel"><i
                         class="bi bi-box-arrow-down"></i> Add new pilón</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body wb">
                 <form id="createPilonForm">
                     <div class="row mb-3">
                         <label for="editNombre" class="col-sm-3 col-form-label form-label0">Pilón's name</label>
@@ -33,12 +33,60 @@
                     </div>
 
                     <div class="row mb-3">
+                        <label for="editCorte" class="col-sm-3 col-form-label form-label0">Tobacco cutting</label>
+                        <div class="col-sm-9">
+                            <input type="number" id="corte" name="corte" class="form-control" placeholder="Example: 1"
+                                required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editClase" class="col-sm-3 col-form-label form-label0">Tobacco class</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="clase" name="clase" class="form-control"
+                                placeholder="Example: Tobacco in progress" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editCosecha" class="col-sm-3 col-form-label form-label0">Tobacco harvest</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="cosecha" name="cosecha" class="form-control"
+                                placeholder="Example: 2022-2023" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
                         <label for="editEtapa" class="col-sm-3 col-form-label form-label0">Tobacco stage</label>
                         <div class="col-sm-9">
                             <input type="number" id="etapa" name="etapa" class="form-control" placeholder="Example: 1"
                                 required><br>
                         </div>
                     </div>
+
+                    <div class="row mb-3">
+                        <label for="editVirado" class="col-sm-3 col-form-label form-label0">Turning dates</label>
+                        <div class="col-sm-9">
+                            <input type="date" id="fecha_virado" name="fecha_virado" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editMojado" class="col-sm-3 col-form-label form-label0">Wetting dates</label>
+                        <div class="col-sm-9">
+                            <input type="date" id="fecha_mojado" name="fecha_mojado" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editType" class="col-sm-3 col-form-label form-label0">Tobacco type</label>
+                        <div class="col-sm-9">
+                            <select id="tipo_tabaco" name="tipo_tabaco" required class="form-control">
+                                <option value="In branch">In branch</option>
+                                <option value="Destemmed">Destemmed</option>
+                            </select>
+                        </div>
+                    </div><br>
 
                     <div class="row mb-3">
                         <label for="editPN" class="col-sm-3 col-form-label form-label0">Tobacco net weight</label>
@@ -91,27 +139,48 @@
                         class="bi bi-pencil-square"></i>
                     Update pilón</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body wb">
                 <form id="editPilonForm">
                     <input type="hidden" id="pilonId" name="pilonId">
                     <div class="row mb-3">
                         <label for="editNombre" class="col-sm-3 col-form-label form-label0">Pilón's name</label>
                         <div class="col-sm-9">
-                            <input type="text" id="editNombre" name="editNombre" class="form-control" required>
+                            <input type="text" id="editNombre" name="editNombre" class="form-control" required><br>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="editFinca" class="col-sm-3 col-form-label form-label0">Farm source</label>
                         <div class="col-sm-9">
-                            <input type="text" id="editFinca" name="editFinca" class="form-control" required>
+                            <input type="text" id="editFinca" name="editFinca" class="form-control" required><br>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="editVariedad" class="col-sm-3 col-form-label form-label0">Tobacco variety</label>
                         <div class="col-sm-9">
-                            <input type="text" id="editVariedad" name="editVariedad" class="form-control" required>
+                            <input type="text" id="editVariedad" name="editVariedad" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editCorte" class="col-sm-3 col-form-label form-label0">Tobacco cutting</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editCorte" name="editCorte" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editClase" class="col-sm-3 col-form-label form-label0">Tobacco class</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editClase" name="editClase" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editCosecha" class="col-sm-3 col-form-label form-label0">Tobacco harvest</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editCosecha" name="editCosecha" class="form-control" required><br>
                         </div>
                     </div>
 
@@ -124,7 +193,28 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="editPN" class="col-sm-3 col-form-label form-label0">Tobacco PN</label>
+                        <label for="editFechaVirado" class="col-sm-3 col-form-label form-label0">Turning dates</label>
+                        <div class="col-sm-9">
+                            <input type="date" id="editFechaVirado" name="editFechaVirado" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editFechaMojado" class="col-sm-3 col-form-label form-label0">Wetting dates</label>
+                        <div class="col-sm-9">
+                            <input type="date" id="editFechaMojado" name="editFechaMojado" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editTipo" class="col-sm-3 col-form-label form-label0">Tobacco type</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editTipo" name="editTipo" class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="editPN" class="col-sm-3 col-form-label form-label0">Tobacco net weight</label>
                         <div class="col-sm-9">
                             <input type="number" id="editPN" name="editPN" class="form-control"
                                 placeholder="PN del tabaco" required step="0.01"><br>
@@ -135,7 +225,7 @@
                         <label for="editTempMin" class="col-sm-3 col-form-label form-label0">Minimun accepted
                             temperature</label>
                         <div class="col-sm-9">
-                            <input type="number" id="editTempMin" name="editTempMin" class="form-control" required>
+                            <input type="number" id="editTempMin" name="editTempMin" class="form-control" required><br>
                         </div>
                     </div>
 
@@ -143,14 +233,14 @@
                         <label for="editTempMax" class="col-sm-3 col-form-label form-label0">Maximum accepted
                             temperature</label>
                         <div class="col-sm-9">
-                            <input type="number" id="editTempMax" name="editTempMax" class="form-control" required>
+                            <input type="number" id="editTempMax" name="editTempMax" class="form-control" required><br>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="editEstado" class="col-sm-3 col-form-label form-label0">Pilón state</label>
                         <div class="col-sm-9">
-                            <select id="editEstado" name="editEstado" required class="form-control">
+                            <select id="editEstado" name="editEstado" required class="form-control"><br>
                                 <option value="In process">In process</option>
                                 <option value="Finished">Finished</option>
                             </select>

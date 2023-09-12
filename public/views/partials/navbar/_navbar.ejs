@@ -67,9 +67,16 @@
                                 </a>
 
                                 <a style="background-color: #e4de805e; color: black; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
-                                    class="nav-link" id="fullscreenButton" onclick="alternarPantallaCompleta()"><img
-                                        src="../../../../resources/images/fullscreen.png" width="20" height="20">
-                                    Fullscreen</a>
+                                    class="nav-link" id="fullscreenButton" onclick="toggleFullscreen()">
+                                    <img src="../../../../resources/images/fullscreen.png" width="20" height="20">
+                                    Fullscreen
+                                </a>
+
+                                <a style="background-color: #9bf3ff5e; color: black; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
+                                    class="nav-link" href="/language" id="language"><img
+                                        src="../../../../resources/images/language.png" width="20" height="20">
+                                    Language
+                                </a>
 
                                 <a style="background-color: #e48c805e; color: black; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
                                     class="nav-link" href="/FAQ" id="faq"><img
@@ -124,29 +131,30 @@
     document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
 
-<!-- Fullscreen mode -->
 <script>
-    function alternarPantallaCompleta() {
-        if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) { // Firefox
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) { // Chrome, Safari y Opera
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) { // Internet Explorer
-                document.msExitFullscreen();
+    function toggleFullscreen() {
+        var doc = window.document;
+        var docEl = doc.documentElement;
+
+        var requestFullscreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullscreen || docEl.msRequestFullscreen;
+        var exitFullscreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+        if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+            if (requestFullscreen) {
+                docEl.requestFullscreen().catch(function (error) {
+                    console.log('Error al intentar habilitar el modo de pantalla completa: ', error.message);
+                });
             }
         } else {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
-                document.documentElement.mozRequestFullScreen();
-            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari y Opera
-                document.documentElement.webkitRequestFullscreen();
-            } else if (document.documentElement.msRequestFullscreen) { // Internet Explorer
-                document.documentElement.msRequestFullscreen();
+            if (exitFullscreen) {
+                doc.exitFullscreen().catch(function (error) {
+                    console.log('Error al intentar salir del modo de pantalla completa: ', error.message);
+                });
             }
         }
     }
+
+    window.onload = function () {
+        toggleFullscreen(); // Llama a la función para pantalla completa al cargar la página
+    };
 </script>
