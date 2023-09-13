@@ -66,9 +66,7 @@ const arduinosController = {
             await connection.execute(updatePilonesQuery, [arduinoId, pilon_encargado]);
 
             connection.end();
-
-            // Add more logic if it's needed
-
+            
         } catch (error) {
             throw new Error('Error updating arduino: ' + error.message);
         }

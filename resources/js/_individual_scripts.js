@@ -134,10 +134,6 @@ $(document).ready(function () {
             return;
         }
 
-        console.log("ID de Pilon seleccionado:", selectedPilonId);
-        console.log("Temperatura a guardar:", temperatureValue);
-        console.log("Humedad a guardar:", humidityValue);
-
         saveTemperatureAndHumidityData(selectedPilonId, temperatureValue, humidityValue);
         $("#pilonList").modal("hide");
         $("#successModal").modal("show");

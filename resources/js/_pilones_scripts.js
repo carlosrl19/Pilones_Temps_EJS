@@ -238,10 +238,10 @@ $(document).ready(function () {
                 detailsContainer.append(`<p><strong>Tobacco stage:</strong> Stage ${pilon.etapa}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco turning dates:</strong> ${pilon.fecha_virado}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco wetting dates:</strong> ${pilon.fecha_mojado}</p>`);
-                detailsContainer.append(`<p><strong>Tobacco type:</strong> ${pilon.tipo}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco type:</strong> ${pilon.tipo_tabaco}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco PN:</strong> ${pilon.pn}</p>`);
-                detailsContainer.append(`<p><strong>Minimun accepted temperature:</strong> ${pilon.temp_min}</p>`);
-                detailsContainer.append(`<p><strong>Maximum accepted temperature:</strong> ${pilon.temp_max}</p>`);
+                detailsContainer.append(`<p><strong>Min. accepted temperature:</strong> ${pilon.temp_min} Cº</p>`);
+                detailsContainer.append(`<p><strong>Max. accepted temperature:</strong> ${pilon.temp_max} Cº</p>`);
                 detailsContainer.append(`<p><strong>Pilón state:</strong> ${pilon.estado}</p>`);
 
                 // Abre el modal

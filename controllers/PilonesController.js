@@ -76,9 +76,7 @@ const pilonesController = {
                 WHERE id = ?`;
 
             await connection.execute(updateQuery, [nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado, pilonId]);
-            connection.end(); // Cierra la conexión
-
-            // Add pilones update logic in pilones table if this is neccesary
+            connection.end();
         } catch (error) {
             throw new Error('Error updating pilon: ' + error.message);
         }

@@ -40,22 +40,16 @@ router.get('/:arduinoId', async (req, res) => {
     }
 });
 
-// Arduino's UPDATE
 router.put('/:arduinoId', async (req, res) => {
     try {
         const arduinoId = req.params.arduinoId;
-        const { nombre, pilon_encargado, direccion_bits, arduino_port } = req.body;
+        const { nombre, pilon_encargado, direccion_bits, arduino_port} = req.body;
 
-        const updateQuery = 'UPDATE arduinos SET nombre = ?, direccion_bits = ?, pilon_encargado = ?, arduino_port = ? WHERE id = ?';
-        await db.query(updateQuery, [nombre, direccion_bits, pilon_encargado, arduino_port, arduinoId]);
-
-        const updatePilonesQuery = 'UPDATE pilones SET arduino_asignado = ? WHERE id = ?';
-        await db.query(updatePilonesQuery, [arduinoId, pilon_encargado]);
-
+        await arduinosController.updateArduino(arduinoId, nombre, direccion_bits, pilon_encargado, arduino_port);
         res.sendStatus(200);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Error updating Arduino', details: error.message });
+        res.status(500).json({ error: 'Error updating arduino', details: error.message});
     }
 });
 

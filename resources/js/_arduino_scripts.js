@@ -66,10 +66,9 @@ $(document).ready(function () {
                 });
         });
 
-        // UPDATE
+        // UPDATE MODAL
         $("#arduinosList").on("click", ".edit-btn", function () {
             const arduinoId = $(this).data("id");
-            console.log('Selected arduino with ID', arduinoId);
 
             $.get(`/api/arduinos/${arduinoId}`, function (arduino) {
                 $("#editNombre").val(arduino.nombre);
@@ -97,7 +96,7 @@ $(document).ready(function () {
         });
 
         // UPDATE => On click
-        $("#updateArduinoButton").on("click", function (event) {
+        $("#updateArduinoButton").on("click", async function (event) {
             event.preventDefault();
 
             const arduinoId = $(this).data("id");
@@ -106,23 +105,32 @@ $(document).ready(function () {
             const pilon_encargado = $("#editPilonEncargado").val();
             const arduino_port = $("#EditPort").val();
 
-            $.ajax({
-                url: `/api/arduinos/${arduinoId}`,
-                method: "PUT",
-                data: {
-                    nombre,
-                    direccion_bits,
-                    pilon_encargado,
-                    arduino_port
-                },
-                success: function (response) {
+            const requestBody = {
+                nombre,
+                direccion_bits,
+                pilon_encargado,
+                arduino_port,
+            };
+
+            try {
+                const response = await fetch(`/api/arduinos/${arduinoId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify(requestBody),
+                });
+
+                if (response.ok) {
                     $("#editArduinoModal").modal("hide");
                     location.reload();
-                },
-                error: function (error) {
-                    console.error("Error updating Arduino:", error);
+                } else {
+                    const errorData = await response.json();
+                    console.error("Error updating pilón:", errorData);
                 }
-            });
+            } catch (error) {
+                console.error("Error updating pilón:", error);
+            }
         });
 
         // CREATE 
