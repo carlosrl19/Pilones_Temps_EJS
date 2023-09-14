@@ -40,12 +40,15 @@
                             <div class="dropdown-menu" style="padding: 8px; border-radius: 20px;">
                                 <a style="background-color: #df821f25; border-radius: 20px; font-size: 14px; font-weight: 600;"
                                     href="/temperature_graphics_history" id="temp_graphics_history"
-                                    class="dropdown-item"><i class="bi bi-thermometer-half"></i> Temperature
+                                    class="dropdown-item"><img src="../../../../../../resources/images/temperatures.png"
+                                        width="32" height="32">&nbsp; Temperature
                                     graphics</a>
 
                                 <a style="background-color: #28b1e321; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
-                                    href="/humidity_graphics_history" id="hum_graphics_history" class="dropdown-item"><i
-                                        class="bi bi-droplet-half"></i> Humidity graphics</a>
+                                    href="/humidity_graphics_history" id="hum_graphics_history"
+                                    class="dropdown-item"><img src="../../../../resources/images/humidity.png"
+                                        width="32" height="32">&nbsp; Humidity
+                                    graphics</a>
                             </div>
                         </div>
                     </div>
@@ -61,26 +64,30 @@
                             <div class="dropdown-menu" style="padding: 8px; border-radius: 20px;">
                                 <a class="nav-link"
                                     style="background-color: #87ff8d4d; color: black; border-radius: 20px; font-size: 14px; font-weight: 600;">
-                                    <img src="../../../../resources/images/sync.png" width="20" height="20">
+                                    <img src="../../../../resources/images/sync.png" width="32" height="32">&nbsp;
                                     Sync
                                     data
                                 </a>
+                                
+                                <!-- 
 
                                 <a style="background-color: #e4de805e; color: black; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
                                     class="nav-link" id="fullscreenButton" onclick="toggleFullscreen()">
-                                    <img src="../../../../resources/images/fullscreen.png" width="20" height="20">
+                                    <img src="../../../../resources/images/fullscreen.png" width="32" height="32">&nbsp;
                                     Fullscreen
                                 </a>
 
+                                -->
+
                                 <a style="background-color: #9bf3ff5e; color: black; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
                                     class="nav-link" href="/language" id="language"><img
-                                        src="../../../../resources/images/language.png" width="20" height="20">
+                                        src="../../../../resources/images/language.png" width="32" height="32">&nbsp;
                                     Language
                                 </a>
 
                                 <a style="background-color: #e48c805e; color: black; border-radius: 20px; margin-top: 8px; font-size: 14px; font-weight: 600;"
                                     class="nav-link" href="/FAQ" id="faq"><img
-                                        src="../../../../resources/images/faq.png" width="20" height="20">
+                                        src="../../../../resources/images/faq.png" width="32" height="32">&nbsp;
                                     FAQs
                                 </a>
                             </div>
@@ -129,32 +136,4 @@
 <!-- Scripts to disable context menu -->
 <script>
     document.addEventListener('contextmenu', event => event.preventDefault());
-</script>
-
-<script>
-    function toggleFullscreen() {
-        var doc = window.document;
-        var docEl = doc.documentElement;
-
-        var requestFullscreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullscreen || docEl.msRequestFullscreen;
-        var exitFullscreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-
-        if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-            if (requestFullscreen) {
-                docEl.requestFullscreen().catch(function (error) {
-                    console.log('Error al intentar habilitar el modo de pantalla completa: ', error.message);
-                });
-            }
-        } else {
-            if (exitFullscreen) {
-                doc.exitFullscreen().catch(function (error) {
-                    console.log('Error al intentar salir del modo de pantalla completa: ', error.message);
-                });
-            }
-        }
-    }
-
-    window.onload = function () {
-        toggleFullscreen(); // Llama a la función para pantalla completa al cargar la página
-    };
 </script>

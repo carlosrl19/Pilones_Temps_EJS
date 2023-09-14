@@ -1,8 +1,6 @@
 -- Crear la base de datos
 CREATE DATABASE IF NOT EXISTS pilones_temps;
 
-DESCRIBE pilones;
-
 -- Usar la base de datos
 USE pilones_temps;
 
@@ -12,7 +10,7 @@ CREATE TABLE arduinos (
     nombre VARCHAR(255) UNIQUE,
     direccion_bits VARCHAR(16) UNIQUE,
     pilon_encargado INT UNIQUE,
-    arduino_port VARCHAR(12)
+    arduino_port VARCHAR(12) UNIQUE
 );
 
 -- Crear la tabla pilones

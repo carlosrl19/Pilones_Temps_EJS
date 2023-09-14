@@ -195,14 +195,16 @@
                     <div class="row mb-3">
                         <label for="editFechaVirado" class="col-sm-3 col-form-label form-label0">Turning dates</label>
                         <div class="col-sm-9">
-                            <input type="date" id="editFechaVirado" name="editFechaVirado" class="form-control" required><br>
+                            <input type="date" id="editFechaVirado" name="editFechaVirado" class="form-control"
+                                required><br>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="editFechaMojado" class="col-sm-3 col-form-label form-label0">Wetting dates</label>
                         <div class="col-sm-9">
-                            <input type="date" id="editFechaMojado" name="editFechaMojado" class="form-control" required><br>
+                            <input type="date" id="editFechaMojado" name="editFechaMojado" class="form-control"
+                                required><br>
                         </div>
                     </div>
 
@@ -272,6 +274,62 @@
     </div>
 </div>
 
+<!-- TOBACCO TURNING REGISTERS MODAL -->
+<div class="modal fade" id="turningPilonModal" tabindex="-1" aria-labelledby="turningPilonModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 90%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #69542a, #b38b47, #e6b96b);">
+                <h5 class="modal-title" style="color: #ffffff;" id="turningPilonModal"><i class="bi bi-activity"></i>
+                    Tobacco turning registers</h5>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive small">
+                    <table id="turningTable" class="display table table-striped table-sm table-bordered">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">Pilón</th>
+                                <th scope="col">Reading date</th>
+                                <th scope="col">Reading time</th>
+                                <th scope="col">Readings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TOBACCO WETTING REGISTERS MODAL -->
+<div class="modal fade" id="wettingPilonModal" tabindex="-1" aria-labelledby="wettingPilonModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 90%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #202d53, #566eb9, #80c4ff);">
+                <h5 class="modal-title" style="color: #ffffff;" id="wettingPilonModal"><i class="bi bi-activity"></i>
+                    Tobacco wetting registers</h5>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive small">
+                    <table id="wettingTable" class="display table table-striped table-sm table-bordered">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">Pilón</th>
+                                <th scope="col">Wetting date</th>
+                                <th scope="col">Wetting time</th>
+                                <th scope="col">Readings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- DELETE MODAL -->
 <div class="modal fade" id="deletePilonModal" tabindex="-1" aria-labelledby="deletePilonModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -286,7 +344,7 @@
                     temperatures stored in it.
                     temperatures obtained from it.</a><br>
                 <br><button id="deletePilonButton" class="btn btn-primary"
-                    style="background-color: rgba(201, 0, 0, 0.753);  border: 0px;" type="button"
+                    style="background-color: #c90000c0;  border: 0px;" type="button"
                     onclick="deletePilon()">Continue</button>
             </div>
         </div>

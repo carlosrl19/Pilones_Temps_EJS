@@ -45,19 +45,30 @@ function crearCardsConTemperatura() {
                     `;
 
                     card.innerHTML = cardContent;
+                    const optionsLink = document.getElementById('options');
 
                     card.addEventListener('click', () => {
                         if (selectedCard === card) {
                             card.classList.remove('card-clicked');
+                            optionsLink.style.display = 'none';
                             selectedCard = null;
                         } else {
                             if (selectedCard) {
                                 selectedCard.classList.remove('card-clicked');
+                                optionsLink.style.display = 'none';
                             }
 
                             card.classList.add('card-clicked');
+                            optionsLink.style.display = 'inline-block';
                             selectedCard = card;
+
+
                         }
+                    });
+
+                    // TURNING / WETTING MODAL
+                    $("#options").on("click", function () {
+                        $("#turningWettingModal").modal("show");
                     });
 
                     container.appendChild(card);
@@ -116,7 +127,7 @@ function crearCardsConTemperatura() {
                 }
             });
 
-            
+
             const totalPages = Math.ceil(pilones.length / cardsPerPage);
 
             for (let i = 1; i <= totalPages; i++) {

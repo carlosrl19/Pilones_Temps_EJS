@@ -12,6 +12,13 @@ $(document).ready(function () {
                     <td>${pilón.temp_min}</td>
                     <td>${pilón.temp_max}</td>
                     <td>${fechaIngreso}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm turning-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#turningPilonModal"><img
+                        src="../../../../resources/images/turning_list.png" width="30" height="30"></button></button>
+                    </td>
+                        <td><button class="btn btn-primary btn-sm wetting-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#wettingPilonModal"><img
+                        src="../../../../resources/images/wetting_list.png" width="30" height="30"></button></button>
+                    </td>
                     <td>${pilón.estado}</td>
                     <td>${pilón.arduino_asignado}</td>
                     <td>
@@ -24,6 +31,18 @@ $(document).ready(function () {
                     </td>
                 </tr>
             `);
+        });
+
+        $(document).ready(function () {
+            $('#turningTable').DataTable({
+
+            })
+        });
+
+        $(document).ready(function () {
+            $('#wettingTable').DataTable({
+
+            })
         });
 
         $(document).ready(function () {
@@ -48,6 +67,16 @@ $(document).ready(function () {
                     }
                 ],
             });
+        });
+
+        // TURNING BUTTON
+        $("#pilonList").on("click", ".turning-btn", function () {
+            $("#turningPilonModal").modal("show");
+        });
+
+        // WETTING BUTTON
+        $("#pilonList").on("click", ".wetting-btn", function () {
+            $("#wettingPilonModal").modal("show");
         });
 
         // DELETE BUTTON
@@ -80,7 +109,7 @@ $(document).ready(function () {
         // UPDATE MODAL
         $("#pilonList").on("click", ".edit-btn", function () {
             const pilonId = $(this).data("id");
-            
+
             $.get(`/api/pilones/${pilonId}`, function (pilón) {
                 $("#editNombre").val(pilón.nombre);
                 $("#editFinca").val(pilón.finca);
@@ -229,15 +258,15 @@ $(document).ready(function () {
                 // Crea elementos HTML para mostrar los detalles del pilón
                 const detailsContainer = $("#detailsPilonModal .modal-body");
                 detailsContainer.append(`<p><strong>Pilón's name:</strong> ${pilon.nombre}</p>`);
-                detailsContainer.append(`<p><strong>Pilón's date entry:</strong> ${pilon.fecha_ingreso}</p>`);
+                detailsContainer.append(`<p><strong>Pilón's entry date:</strong> ${new Date(pilon.fecha_ingreso).toISOString().slice(0, 10)}</p>`);
                 detailsContainer.append(`<p><strong>Farm source:</strong> ${pilon.finca}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco variety:</strong> ${pilon.variedad}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco cutting:</strong> ${pilon.corte}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco class:</strong> ${pilon.clase}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco harvest:</strong> ${pilon.cosecha}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco stage:</strong> Stage ${pilon.etapa}</p>`);
-                detailsContainer.append(`<p><strong>Tobacco turning dates:</strong> ${pilon.fecha_virado}</p>`);
-                detailsContainer.append(`<p><strong>Tobacco wetting dates:</strong> ${pilon.fecha_mojado}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco turning dates:</strong> ${new Date(pilon.fecha_virado).toISOString().slice(0, 10)}</p>`);
+                detailsContainer.append(`<p><strong>Tobacco wetting dates:</strong> ${new Date(pilon.fecha_mojado).toISOString().slice(0, 10)}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco type:</strong> ${pilon.tipo_tabaco}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco PN:</strong> ${pilon.pn}</p>`);
                 detailsContainer.append(`<p><strong>Min. accepted temperature:</strong> ${pilon.temp_min} Cº</p>`);

@@ -17,7 +17,6 @@ button {
     overflow: visible;
     padding: 16px;
     text-align: center;
-    text-transform: uppercase;
     touch-action: manipulation;
     transform: translateZ(0);
     transition: filter .2s;
@@ -49,7 +48,6 @@ button:focus {
 
 button:hover:not(:disabled) {
     filter: brightness(1.1);
-    scale: 1.05;
     transition: 600ms;
 }
 
@@ -63,4 +61,13 @@ button:active:after {
 
 button:active {
     padding-bottom: 10px;
+}
+
+.options{
+    padding: 12px;
+    font-weight: bold;
+    color: #000;
+    box-shadow: #00000085 0px 4px;
+    border-radius: 20px;    
+    display: none;
 }

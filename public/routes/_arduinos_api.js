@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
         res.json(arduinos);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Error al obtener los registros de arduinos' });
+        res.status(500).json({ error: 'Error obtaining arduino registers' });
     }
 });
 

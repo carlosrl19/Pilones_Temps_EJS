@@ -43,7 +43,7 @@ app.use('/hum_history', routes);
 */
 const arduinoPort = new SerialPort({ path:'/dev/ttyACM0', baudRate: 9600 }); // Create a SerialPort instance with the path to your Arduino and baud rate
 
-let incompleteData = ''; // Variable para almacenar los datos incompletos recibidos del puerto serie
+let incompleteData = ''; // Variable to store incomplete data received from serial port
 
 // Listen for data from Arduino and emit it through Socket.io
 arduinoPort.on('data', (data) => {
@@ -67,11 +67,11 @@ P U E R T O S - C O N F I G S
 
 // Puerto dev/ttyACM0
 arduinoPort.on('open', () => {
-  console.log('Serial port opened');
+  console.log('Serial port in dev/ttyACM0 opened');
 });
 
 arduinoPort.on('error', (err) => {
-  console.error('Serial port error:', err.message);
+  console.error('Serial port in dev/ttyACM0 error:', err.message);
 });
 
 // ---------------------------------------------------
