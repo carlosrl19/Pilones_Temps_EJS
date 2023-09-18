@@ -1,0 +1,73 @@
+<!-- CREATE MODAL -->
+<div class="modal fade" id="createWorkerModal" tabindex="-1" aria-labelledby="createWorkerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #82694e, #e2ba87, #fcdfb8);">
+                <h5 class="modal-title" style="color: #ffffff;" id="createWorkerModal"><i
+                        class="bi bi-box-arrow-down"></i> Add new worker</h5>
+            </div>
+            <div class="modal-body">
+                <form id="createWorkerForm">
+                    <div class="row mb-3">
+                        <label for="nombre" class="col-sm-3 col-form-label form-label0">Worker name</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="nombre" name="nombre" class="form-control"
+                                placeholder="Example: Carlos Rodriguez" required><br>
+                        </div>
+                    </div>
+
+                    <button id="createWorkerButton" class="btn btn-success" style="background: #c4a070; border: 0px;"
+                        type="submit">Save new worker</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editWorkerModal" tabindex="-1" aria-labelledby="editWorkerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #5f1155, #6e1462, #9e1c8d);">
+                <h5 class="modal-title" style="color: #ffffff;" id="editWorkerModal"><i
+                        class="bi bi-pencil-square just"></i> Update worker</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editArduinoForm">
+                    <input type="hidden" id="workerId" name="workerId">
+
+                    <div class="row mb-3">
+                        <label for="editNombre" class="col-sm-3 col-form-label form-label0">Worker name</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="editNombre" name="editNombre" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <button id="updateWorkerButton" class="btn btn-primary"
+                        style="background-color:  #721065; border: 0px;" type="submit">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="deleteWorkerModal" tabindex="-1" aria-labelledby="deleteWorkerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #890d0d, #890d0dc0, #c90000c0);"">
+                <h5 class=" modal-title" style="color: #ffffff;" id="deleteWorkerModal"><i class="bi bi-trash3"></i>
+                Delete</h5>
+            </div>
+            <div class="modal-body">
+                <a><strong>Are you sure you want to remove this worker?</strong>
+                    <br>This action is irreversible and will delete everything related to this worker.</a><br>
+                <br><button id="deleteWorkerButton" class="btn btn-primary"
+                    style="background-color: #c90000c0;  border: 0px;" type="button"
+                    onclick="deleteWorker()">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>

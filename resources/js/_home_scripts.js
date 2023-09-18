@@ -3,6 +3,7 @@ const container = document.querySelector('.card-container');
 const cardsPerPage = 16;
 let selectedCard = null;
 let datosDeArduinoAsignados = null;
+let lastUpdateTimestamps = {};
 
 function cargarDatosDeArduinoAsignados() {
     fetch('/api/arduinos')
@@ -122,6 +123,27 @@ function crearCardsConTemperatura() {
                                     cardFooter.parentElement.classList.remove('low-temperature');
                                 }
                             }
+
+                            const cardFooters = document.querySelectorAll('.card__footer');
+                            cardFooters.forEach(cardFooter => {
+                                const pilonId = cardFooter.parentElement.classList[1].split('-')[1];
+                                lastUpdateTimestamps[pilonId] = Date.now(); // Inicializa los timestamps
+                            });
+
+                            // Crea un intervalo para verificar si ha pasado más de 2 segundos desde la última actualización
+                            setInterval(() => {
+                                const currentTime = Date.now();
+                                cardFooters.forEach(cardFooter => {
+                                    const pilonId = cardFooter.parentElement.classList[1].split('-')[1];
+                                    const lastUpdate = lastUpdateTimestamps[pilonId];
+                                    if (lastUpdate && (currentTime - lastUpdate > 2000)) { // 2000 ms = 2 segundos
+                                        cardFooter.parentElement.classList.add('warning-temperature'); // Cambia el color a amarillo
+                                        cardFooter.parentElement.classList.remove('success-temperature');
+                                        cardFooter.parentElement.classList.remove('high-temperature');
+                                        cardFooter.parentElement.classList.remove('low-temperature');
+                                    }
+                                });
+                            }, 1000); // Comprueba cada segundo
                         });
                     }
                 }

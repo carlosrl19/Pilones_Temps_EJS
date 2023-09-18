@@ -40,6 +40,7 @@ router.get('/:arduinoId', async (req, res) => {
     }
 });
 
+// Arduino's UPDATE
 router.put('/:arduinoId', async (req, res) => {
     try {
         const arduinoId = req.params.arduinoId;

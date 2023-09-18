@@ -35,13 +35,15 @@ $(document).ready(function () {
 
         $(document).ready(function () {
             $('#turningTable').DataTable({
-
+                searching: false,
+                info: false
             })
         });
 
         $(document).ready(function () {
             $('#wettingTable').DataTable({
-
+                searching: false,
+                info: false
             })
         });
 
@@ -67,6 +69,11 @@ $(document).ready(function () {
                     }
                 ],
             });
+        });
+
+        // WORKERS BUTTON
+        $("#pilonList").on("click", ".turning-btn", function () {
+            $("#turningPilonModal").modal("show");
         });
 
         // TURNING BUTTON

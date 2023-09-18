@@ -105,6 +105,11 @@
                                 </button>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: #fcdfb8;" href="/worker_list" id="worker_list">
+                                <i class="bi bi-person-fill"></i> Workers
+                            </a>
+                        </li>
                         <% } %>
 
                             <% if (currentUrl==='/arduino_list' ) { %>
@@ -129,6 +134,18 @@
                                             </a>
                                         </li>
                                         <% } %>
+
+                                            <% if (currentUrl=='/worker_list' ) { %>
+                                                <li class="nav-item">
+                                                    <a>
+                                                        <button type="button" class="nav-link px-2"
+                                                            style="color: #fcdfb8;" data-bs-toggle="modal"
+                                                            data-bs-target="#createWorkerModal"><i
+                                                                class="bi bi-patch-plus"></i> Add new worker
+                                                        </button>
+                                                    </a>
+                                                </li>
+                                                <% } %>
             </ul>
         </div>
     </div>

@@ -92,6 +92,14 @@
   }
 }
 
+.warning-temperature .card__footer {
+  background: #f6ee0fd3;
+  animation: pulseAnimation 1s infinite;
+  color: black;
+  font-weight: bold;
+  border: 4px solid #85000059;
+}
+
 .high-temperature .card__footer {
   background: #f60f0fd3;
   animation: pulseAnimation 1s infinite;

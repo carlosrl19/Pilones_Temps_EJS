@@ -129,10 +129,15 @@ CREATE TABLE humedad (
 CREATE TABLE pilones_virado_mojado (
     id INT AUTO_INCREMENT PRIMARY KEY,
 	trabajo VARCHAR(255),
-    encargado VARCHAR(255),
+	encargado VARCHAR(255),
     pilon_id INT,
     task_date DATE,
     start_time TIME,
     end_time TIME,
     FOREIGN KEY (pilon_id) REFERENCES pilones(id)
+);
+
+CREATE TABLE trabajadores(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255)
 );

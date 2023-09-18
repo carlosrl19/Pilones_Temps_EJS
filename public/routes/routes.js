@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const arduinosAPI = require('./_arduinos_api');
 const pilonesAPI = require('./_pilones_api');
+const workerAPI = require('./_worker_api');
 const temperaturesAPI = require('./_temperatures_api');
 const humiditiesAPI = require('./_humidities_api');
 
@@ -18,6 +19,9 @@ router.get('/pilones_list', async (req, res) => {
 });
 router.get('/arduino_list', async (req, res) => {
     res.render('lists/arduino_list', { currentUrl: req.originalUrl });
+});
+router.get('/worker_list', async (req, res) => {
+    res.render('lists/worker_list', { currentUrl: req.originalUrl });
 });
 router.get('/temp_history', (req, res) => {
     res.render('history/temp_history', { currentUrl: req.originalUrl });
@@ -41,6 +45,7 @@ router.get('/language', (req, res) => {
 // API routes
 router.use('/api/arduinos', arduinosAPI);
 router.use('/api/pilones', pilonesAPI);
+router.use('/api/workers', workerAPI);
 router.use('/api/temperatures', temperaturesAPI);
 router.use('/api/humidities', humiditiesAPI);
 
