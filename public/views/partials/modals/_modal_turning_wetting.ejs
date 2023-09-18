@@ -4,36 +4,57 @@
     <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
         <div class="modal-content">
             <div class="modal-header" style="background: linear-gradient(to right, #68451bf0, #b6772af0, #f3a240f0);">
-                <h5 class="modal-title" style="color: #ffffff;" id="turningWettingModal"><i
-                        class="bi bi-box-arrow-down"></i> Turning / Wetting Options</h5>
+                <h5 class="modal-title" style="color: #ffffff;" id="turningWettingModal"><i class="bi bi-tools"></i>
+                    Turning / Wetting Options</h5>
             </div>
             <div class="modal-body">
                 <form id="turning_wetting_Form">
                     <div class="row mb-3">
                         <label for="turning_wetting" class="col-sm-3 col-form-label form-label0">Pilón needs a</label>
                         <div class="col-sm-9">
-                            <select class="form-control" id="turning_wetting" required>
+                            <select class="form-control" style="text-align: center;" id="turning_wetting" required>
+                                <option selected disabled readonly>Select an option</option>
                                 <option value="Turning">Turning</option>
                                 <option value="Wetting">Wetting</option>
-                            </select>
+                            </select><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="person_in_charge" class="col-sm-3 col-form-label form-label0">Person in
+                            charge</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" style="text-align: center;" id="turning_wetting" required>
+                                <option selected disabled readonly>Select the person in charge</option>
+                                <option value="Encargado A">Encargado A</option>
+                                <option value="Encargado B">Encargado B</option>
+                                <option value="Encargado C">Encargado C</option>
+                            </select><br>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="selected_pilon" class="col-sm-3 col-form-label form-label0">Selected pilón</label>
                         <div class="col-sm-9">
-                            <input type="text" id="selected_pilon" readonly class="form-control" required><br>
+                            <input type="text" id="selected_pilon" style="text-align: center;" disabled class="form-control" required><br>
                         </div>
                     </div>
-                    
+
                     <div class="row mb-3">
-                        <label for="temperature" class="col-sm-3 col-form-label form-label0">Pilón's temperature</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="temperature" readonly class="form-control" required><br>
+                        <label for="task_date" class="col-sm-3 col-form-label form-label0">Task date</label>
+                        <div class="col-sm-3">
+                            <input type="date" id="task_date" disabled name="task_date" style="text-align: center;"
+                                class="form-control" required><br>
+                        </div>
+
+                        <label for="start_time" class="col-sm-3 col-form-label form-label0">Task start time</label>
+                        <div class="col-sm-3">
+                            <input type="time" id="start_time" disabled style="text-align: center;" class="form-control"
+                                required><br>
                         </div>
                     </div>
-                
-                    <a class="btn btn-success" data-toggle="modal" data-target="#createArduinoModal"
+
+                    <a class="btn btn-success" data-toggle="modal" data-target="#turningWettingModal"
                         style="background: #b6772af0; border: 0px;">Save</a>
                 </form>
             </div>

@@ -12,15 +12,15 @@ $(document).ready(function () {
                     <td>${pilón.temp_min}</td>
                     <td>${pilón.temp_max}</td>
                     <td>${fechaIngreso}</td>
+                    <td>${pilón.estado}</td>
+                    <td>${pilón.arduino_asignado}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm turning-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#turningPilonModal"><img
-                        src="../../../../resources/images/turning_list.png" width="30" height="30"></button></button>
+                    <button class="btn btn-primary btn-sm turning-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#turningPilonModal"><img
+                    src="../../../../resources/images/turning_list.png" width="30" height="30"></button></button>
                     </td>
                         <td><button class="btn btn-primary btn-sm wetting-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#wettingPilonModal"><img
                         src="../../../../resources/images/wetting_list.png" width="30" height="30"></button></button>
                     </td>
-                    <td>${pilón.estado}</td>
-                    <td>${pilón.arduino_asignado}</td>
                     <td>
                         <button class="btn btn-primary btn-sm details-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#detailsPilonModal"><img
                         src="../../../../resources/images/details.png" width="30" height="30"></button></button>
@@ -118,8 +118,6 @@ $(document).ready(function () {
                 $("#editClase").val(pilón.clase);
                 $("#editCosecha").val(pilón.cosecha);
                 $("#editEtapa").val(pilón.etapa);
-                $("#editFechaVirado").val(pilón.fecha_virado);
-                $("#editFechaMojado").val(pilón.fecha_mojado);
                 $("#editPN").val(pilón.pn);
                 $("#editTipo").val(pilón.tipo_tabaco);
                 $("#editTempMin").val(pilón.temp_min);
@@ -143,8 +141,6 @@ $(document).ready(function () {
             const clase = $("#editClase").val();
             const cosecha = $("#editCosecha").val();
             const etapa = $("#editEtapa").val();
-            const fecha_virado = $("#editFechaVirado").val();
-            const fecha_mojado = $("#editFechaMojado").val();
             const pn = $("#editPN").val();
             const tipo_tabaco = $("#editTipo").val();
             const temp_min = $("#editTempMin").val();
@@ -159,8 +155,6 @@ $(document).ready(function () {
                 clase,
                 cosecha,
                 etapa,
-                fecha_virado,
-                fecha_mojado,
                 tipo_tabaco,
                 pn,
                 temp_min,
@@ -195,8 +189,6 @@ $(document).ready(function () {
 
             const nombre = $("#nombre").val();
             const finca = $("#finca").val();
-            const fecha_virado = $("#fecha_virado").val();
-            const fecha_mojado = $("#fecha_mojado").val();
             const corte = $("#corte").val();
             const clase = $("#clase").val();
             const cosecha = $("#cosecha").val();
@@ -211,8 +203,6 @@ $(document).ready(function () {
             const requestBody = {
                 nombre,
                 finca,
-                fecha_virado,
-                fecha_mojado,
                 corte,
                 clase,
                 cosecha,
@@ -265,8 +255,6 @@ $(document).ready(function () {
                 detailsContainer.append(`<p><strong>Tobacco class:</strong> ${pilon.clase}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco harvest:</strong> ${pilon.cosecha}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco stage:</strong> Stage ${pilon.etapa}</p>`);
-                detailsContainer.append(`<p><strong>Tobacco turning dates:</strong> ${new Date(pilon.fecha_virado).toISOString().slice(0, 10)}</p>`);
-                detailsContainer.append(`<p><strong>Tobacco wetting dates:</strong> ${new Date(pilon.fecha_mojado).toISOString().slice(0, 10)}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco type:</strong> ${pilon.tipo_tabaco}</p>`);
                 detailsContainer.append(`<p><strong>Tobacco PN:</strong> ${pilon.pn}</p>`);
                 detailsContainer.append(`<p><strong>Min. accepted temperature:</strong> ${pilon.temp_min} Cº</p>`);

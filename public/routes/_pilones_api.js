@@ -29,9 +29,9 @@ router.get('/:pilonId', async (req, res) => {
 // Pilon's CREATE
 router.post('/', async (req, res) => {
     try {
-        const { nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado } = req.body;
+        const { nombre, finca, variedad, corte, clase, cosecha, etapa, tipo_tabaco, pn, temp_min, temp_max, estado } = req.body;
 
-        await pilonesController.createPilon(nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado);
+        await pilonesController.createPilon(nombre, finca, variedad, corte, clase, cosecha, etapa, tipo_tabaco, pn, temp_min, temp_max, estado);
         res.status(201).json({ message: 'Pilon created' });
     } catch (error) {
         console.error(error);
@@ -43,9 +43,9 @@ router.post('/', async (req, res) => {
 router.put('/:pilonId', async (req, res) => {
     try {
         const pilonId = req.params.pilonId;
-        const { nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado } = req.body;
+        const { nombre, finca, variedad, corte, clase, cosecha, etapa, tipo_tabaco, pn, temp_min, temp_max, estado } = req.body;
 
-        await pilonesController.updatePilones(pilonId, nombre, finca, variedad, corte, clase, cosecha, etapa, fecha_virado, fecha_mojado, tipo_tabaco, pn, temp_min, temp_max, estado);
+        await pilonesController.updatePilones(pilonId, nombre, finca, variedad, corte, clase, cosecha, etapa, tipo_tabaco, pn, temp_min, temp_max, estado);
         res.sendStatus(200); // Envía una respuesta exitosa al cliente
     } catch (error) {
         console.error(error);

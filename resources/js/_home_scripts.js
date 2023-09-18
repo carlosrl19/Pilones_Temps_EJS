@@ -52,6 +52,7 @@ function crearCardsConTemperatura() {
                             card.classList.remove('card-clicked');
                             optionsLink.style.display = 'none';
                             selectedCard = null;
+                            document.getElementById('selected_pilon').value = '';
                         } else {
                             if (selectedCard) {
                                 selectedCard.classList.remove('card-clicked');
@@ -62,13 +63,10 @@ function crearCardsConTemperatura() {
                             optionsLink.style.display = 'inline-block';
                             selectedCard = card;
 
-
+                            // Obtiene el nombre y finca del pilón y actualiza el campo selected_pilon (turning_wetting)
+                            const pilonInfo = card.querySelector('.card__title').textContent;
+                            document.getElementById('selected_pilon').value = pilonInfo;
                         }
-                    });
-
-                    // TURNING / WETTING MODAL
-                    $("#options").on("click", function () {
-                        $("#turningWettingModal").modal("show");
                     });
 
                     container.appendChild(card);
@@ -112,10 +110,12 @@ function crearCardsConTemperatura() {
                                     cardFooter.parentElement.classList.add('high-temperature');
                                     cardFooter.parentElement.classList.remove('low-temperature');
                                     cardFooter.parentElement.classList.remove('success-temperature');
+
                                 } else if (parseFloat(temperature) < pilon.temp_min) {
                                     cardFooter.parentElement.classList.add('low-temperature');
                                     cardFooter.parentElement.classList.remove('high-temperature');
                                     cardFooter.parentElement.classList.remove('success-temperature');
+
                                 } else {
                                     cardFooter.parentElement.classList.add('success-temperature');
                                     cardFooter.parentElement.classList.remove('high-temperature');
