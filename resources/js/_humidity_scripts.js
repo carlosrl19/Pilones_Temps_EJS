@@ -36,6 +36,8 @@ fetch('/api/humidities')
                         }
                     }
                 ],
+                scrollY: "80vh",
+                scrollCollapse: true
             });
         });
     })

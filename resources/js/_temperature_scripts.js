@@ -36,6 +36,8 @@ fetch('/api/temperatures')
                         }
                     }
                 ],
+                scrollY: "80vh",
+                scrollCollapse: true
             });
         });
     })

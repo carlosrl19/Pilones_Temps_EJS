@@ -84,6 +84,9 @@ function crearCardsConTemperatura() {
 
             const socket = io();
 
+            // Objeto para realizar un seguimiento del texto anterior de los primeros 5 caracteres de cada cardFooter
+            const previousTextMap = {};
+
             socket.on('sensorData', (data) => {
                 const parts = data.split(', ');
                 if (parts.length === 2) {
@@ -122,33 +125,40 @@ function crearCardsConTemperatura() {
                                     cardFooter.parentElement.classList.remove('high-temperature');
                                     cardFooter.parentElement.classList.remove('low-temperature');
                                 }
+
+                                // Obtener el texto actual de los primeros 5 caracteres
+                                const currentText = cardFooter.textContent.substr(0, 5);
+
+                                // Verificar si el texto anterior de los primeros 5 caracteres es diferente al actual
+                                if (previousTextMap[pilonId] !== currentText) {
+                                    // El texto cambió, actualizar el timestamp
+                                    lastUpdateTimestamps[pilonId] = Date.now();
+                                }
+
+                                // Actualizar el texto anterior de los primeros 5 caracteres
+                                previousTextMap[pilonId] = currentText;
                             }
-
-                            const cardFooters = document.querySelectorAll('.card__footer');
-                            cardFooters.forEach(cardFooter => {
-                                const pilonId = cardFooter.parentElement.classList[1].split('-')[1];
-                                lastUpdateTimestamps[pilonId] = Date.now(); // Inicializa los timestamps
-                            });
-
-                            // Crea un intervalo para verificar si ha pasado más de 2 segundos desde la última actualización
-                            setInterval(() => {
-                                const currentTime = Date.now();
-                                cardFooters.forEach(cardFooter => {
-                                    const pilonId = cardFooter.parentElement.classList[1].split('-')[1];
-                                    const lastUpdate = lastUpdateTimestamps[pilonId];
-                                    if (lastUpdate && (currentTime - lastUpdate > 2000)) { // 2000 ms = 2 segundos
-                                        cardFooter.parentElement.classList.add('warning-temperature'); // Cambia el color a amarillo
-                                        cardFooter.parentElement.classList.remove('success-temperature');
-                                        cardFooter.parentElement.classList.remove('high-temperature');
-                                        cardFooter.parentElement.classList.remove('low-temperature');
-                                    }
-                                });
-                            }, 1000); // Comprueba cada segundo
                         });
                     }
                 }
             });
 
+            // Crear un intervalo para verificar si el texto de los primeros 5 caracteres no cambia
+            setInterval(() => {
+                const currentTime = Date.now();
+                const cardFooters = document.querySelectorAll('.card__footer');
+                cardFooters.forEach(cardFooter => {
+                    const pilonId = cardFooter.parentElement.classList[1].split('-')[1];
+                    const lastUpdate = lastUpdateTimestamps[pilonId];
+
+                    if (lastUpdate && (currentTime - lastUpdate > 5000)) { // 10000 ms = 10 segundos
+                        cardFooter.parentElement.classList.add('warning-temperature'); // Cambiar el color a amarillo
+                        cardFooter.parentElement.classList.remove('success-temperature');
+                        cardFooter.parentElement.classList.remove('high-temperature');
+                        cardFooter.parentElement.classList.remove('low-temperature');
+                    }
+                });
+            }, 5000); // Comprobar cada segundo
 
             const totalPages = Math.ceil(pilones.length / cardsPerPage);
 

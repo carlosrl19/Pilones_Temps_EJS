@@ -37,6 +37,8 @@ $(document).ready(function () {
                     }
                 }
             ],
+            scrollY: "80vh",
+            scrollCollapse: true
         });
 
         // DELETE
