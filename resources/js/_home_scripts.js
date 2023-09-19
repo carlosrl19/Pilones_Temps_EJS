@@ -14,7 +14,7 @@ function cargarDatosDeArduinoAsignados() {
         })
         .catch(error => {
             const errorModalBody = $("#errorModal").find(".modal-body");
-            errorModalBody.html("Error getting data from Arduino assigned: ", error);
+            errorModalBody.html("Error getting data from Arduino assigned: " + error);
             $("#errorModal").modal("show");
         });
 }
@@ -195,7 +195,7 @@ function crearCardsConTemperatura() {
         })
         .catch(error => {
             const errorModalBody = $("#errorModal").find(".modal-body");
-            errorModalBody.html('Error fetching pilones data:', error);
+            errorModalBody.html('<strong>Error fetching pilones data: </strong>' + error);
             $("#errorModal").modal("show");
         });
 }

@@ -6,6 +6,11 @@
             <div class="modal-header" style="background: linear-gradient(to right, #68451bf0, #b6772af0, #f3a240f0);">
                 <h5 class="modal-title" style="color: #ffffff;" id="turningWettingModal"><i class="bi bi-tools"></i>
                     Turning / Wetting Options</h5>
+                <a>
+                    <button type="button" class="nav-link px-2" style="color: #0f0f0f; background-color: #ffffff97; padding: 4px; border-radius: 10px" data-bs-toggle="modal"
+                        data-bs-target="#createWorkerModal"><i class="bi bi-patch-plus"></i> Add new worker
+                    </button>
+                </a>
             </div>
             <div class="modal-body">
                 <form id="turning_wetting_Form">
@@ -48,8 +53,8 @@
 
                         <label for="start_time" class="col-sm-3 col-form-label form-label0">Task start time</label>
                         <div class="col-sm-3">
-                            <input type="time" id="start_time" name="start_time" style="text-align: center;" class="form-control"
-                                required><br>
+                            <input type="time" id="start_time" name="start_time" style="text-align: center;"
+                                class="form-control" required><br>
                         </div>
 
                         <label for="end_time" class="col-sm-3 col-form-label form-label0">Task end time</label>

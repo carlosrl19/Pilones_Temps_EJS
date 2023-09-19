@@ -1,4 +1,5 @@
-button {
+#saveTemps,
+#saveAllTemps {
     appearance: button;
     background-color: #490c41;
     border: solid transparent;
@@ -26,7 +27,8 @@ button {
     white-space: nowrap;
 }
 
-button:after {
+#saveTemps:after,
+#saveAllTemps:after {
     background-clip: padding-box;
     background-color: #ab1f98;
     border: solid transparent;
@@ -41,33 +43,45 @@ button:after {
     z-index: -1;
 }
 
-button:main,
-button:focus {
+#saveTemps:main,
+#saveAllTemps:main,
+#saveTemps:focus,
+#saveAllTemps:focus {
     user-select: auto;
 }
 
-button:hover:not(:disabled) {
+#saveTemps:hover:not(:disabled),
+#saveAllTemps:hover:not(:disabled) {
     filter: brightness(1.1);
     transition: 600ms;
 }
 
-button:disabled {
+#saveTemps:disabled,
+#saveAllTemps:disabled {
     cursor: auto;
 }
 
-button:active:after {
+#saveTemps:active:after,
+#saveAllTemps:active:after {
     border-width: 0 0 0px;
 }
 
-button:active {
+#saveTemps:active,
+#saveAllTemps:active {
     padding-bottom: 10px;
 }
 
-.options{
+.options {
     padding: 12px;
     font-weight: bold;
     color: #000;
     box-shadow: #00000085 0px 4px;
-    border-radius: 20px;    
+    border-radius: 20px;
     display: none;
+}
+
+#saveTurningWettingButton {
+    background-color: #da8e31f0;
+    border-radius: 10px;
+    border: none;
 }
