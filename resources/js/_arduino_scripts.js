@@ -37,8 +37,18 @@ $(document).ready(function () {
                     }
                 }
             ],
-            scrollY: "80vh",
-            scrollCollapse: true
+            "aoColumnDefs": [
+                { "bSearchable": true, "aTargets": [0] },
+                { "bSearchable": true, "aTargets": [1] },
+                { "bSearchable": false, "aTargets": [2] },
+                { "bSearchable": true, "aTargets": [3] },
+            ],
+            scrollY: "75vh",
+            scrollCollapse: true,
+            search: {
+                regex: true, // Enables the use of regular expressions in search
+                smart: false // Disables automatic filtering of DataTables to allow exact searches
+            }
         });
 
         // DELETE

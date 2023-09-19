@@ -47,8 +47,24 @@ $(document).ready(function () {
                         }
                     }
                 ],
-                scrollY: "80vh",
-                scrollCollapse: true
+
+                "aoColumnDefs": [
+                    { "bSearchable": true, "aTargets": [0] },
+                    { "bSearchable": true, "aTargets": [1] },
+                    { "bSearchable": true, "aTargets": [2] },
+                    { "bSearchable": true, "aTargets": [3] },
+                    { "bSearchable": false, "aTargets": [4] },
+                    { "bSearchable": false, "aTargets": [5] },
+                    { "bSearchable": false, "aTargets": [6] },
+                    { "bSearchable": true, "aTargets": [7] },
+                    { "bSearchable": false, "aTargets": [8] },
+                ],
+                scrollY: "75vh",
+                scrollCollapse: true,
+                search: {
+                    regex: true, // Enables the use of regular expressions in search
+                    smart: false // Disables automatic filtering of DataTables to allow exact searches
+                }
             });
         });
 
