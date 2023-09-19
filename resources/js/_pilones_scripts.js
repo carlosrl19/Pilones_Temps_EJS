@@ -47,7 +47,7 @@ $(document).ready(function () {
                         }
                     }
                 ],
-
+                "iDisplayLength": 25,
                 "aoColumnDefs": [
                     { "bSearchable": true, "aTargets": [0] },
                     { "bSearchable": true, "aTargets": [1] },
