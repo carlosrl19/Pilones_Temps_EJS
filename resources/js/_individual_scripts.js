@@ -12,7 +12,7 @@ $(document).ready(function () {
             <p>Pilón's name:<strong> ${pilon.nombre}</strong></p>
             <p>Pilón's propierty:<strong> ${pilon.finca}</strong></p>
             <p>Pilón's tobacco stage:<strong> ${pilon.variedad}</strong></p>
-            <p>Pilón's pn:<strong> ${pilon.pn}</strong></p>
+            <p>Pilón's net weight:<strong> ${pilon.pn}</strong></p>
             <p>Pilón's minimum allowed temperature:<strong> ${pilon.temp_min} ºC</strong></p>
             <p>Pilón's maximum allowed temperature:<strong> ${pilon.temp_max} ºC</strong></p>
             <p>Pilón's entry date:<strong> ${new Date(pilon.fecha_ingreso).toISOString().slice(0, 10)}</strong></p>

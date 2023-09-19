@@ -16,7 +16,7 @@
     margin: 20px;
     outline: none;
     overflow: visible;
-    padding: 16px;
+    padding: 15px;
     text-align: center;
     touch-action: manipulation;
     transform: translateZ(0);
@@ -53,7 +53,7 @@
 #saveTemps:hover:not(:disabled),
 #saveAllTemps:hover:not(:disabled) {
     filter: brightness(1.1);
-    transition: 600ms;
+    transition: 200ms;
 }
 
 #saveTemps:disabled,

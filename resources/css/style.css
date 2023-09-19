@@ -131,18 +131,22 @@ h2 {
 
 .btnExcel{
   background-color: #0e7a32;
+  border: none;
   color: #ffffff;
 }
 .btnExcel:hover{
   background-color: #119b3f;
+  border: none;
   color: #ffffff;
 }
 .btnPrint{
-  background-color: rgb(124, 124, 124);
+  background-color: #c72222;
+  border: none;
   color: #ffffff;
 }
 .btnPrint:hover{
-  background-color: rgb(145, 144, 144);
+  background-color: #e92d2d;
+  border: none;
   color: #ffffff;
 }
 
