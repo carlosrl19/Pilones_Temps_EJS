@@ -42,8 +42,8 @@ router.get('/hum_history', (req, res) => {
 router.get('/FAQ', (req, res) => {
     res.render('faqs/faqs', { currentUrl: req.originalUrl });
 });
-router.get('/language', (req, res) => {
-    res.render('faqs/language', { currentUrl: req.originalUrl });
+router.get('/not_implement_yet', (req, res) => {
+    res.render('faqs/not_implement_yet', { currentUrl: req.originalUrl });
 });
 
 // API routes
