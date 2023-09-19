@@ -173,7 +173,20 @@
     </div>
 </nav>
 
-<!-- Scripts to disable context menu -->
+<!-- Script to disable context menu -->
 <script>
     document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+<!-- Script to add bold style to currentUrl nav-item -->
+<script>
+    var currentUrl = window.location.pathname;
+    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    navLinks.forEach(function (link) {
+        if (link.getAttribute('href') === currentUrl) {
+            link.style.fontWeight = 'bold';
+            link.style.color = 'white';
+        }
+    });
 </script>
