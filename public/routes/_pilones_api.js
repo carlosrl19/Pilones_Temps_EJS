@@ -23,7 +23,7 @@ router.get('/:pilonId', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error fetching Pilon', details: error.message });
-    }    
+    }
 });
 
 // Pilon's CREATE
@@ -62,7 +62,7 @@ router.delete('/:pilonId', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error deleting Pilon', details: error.message });
-    }    
+    }
 });
 
 module.exports = router;

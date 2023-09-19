@@ -10,9 +10,9 @@
             <div class="modal-body">
                 <form id="turning_wetting_Form">
                     <div class="row mb-3">
-                        <label for="trabajo" class="col-sm-3 col-form-label form-label0">Pilón needs</label>
+                        <label for="task" class="col-sm-3 col-form-label form-label0">Pilón needs</label>
                         <div class="col-sm-9">
-                            <select class="form-control" style="text-align: center;" id="trabajo" name="trabajo" required>
+                            <select class="form-control" style="text-align: center;" id="task" name="task" required>
                                 <option selected disabled readonly>Select an option</option>
                                 <option value="Turning">Turning</option>
                                 <option value="Wetting">Wetting</option>
@@ -21,38 +21,44 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="encargado" class="col-sm-3 col-form-label form-label0">Person in
+                        <label for="person_in_charge" class="col-sm-3 col-form-label form-label0">Person in
                             charge</label>
                         <div class="col-sm-9">
-                            <select class="form-control" style="text-align: center;" id="encargado" name="encargado" required>
+                            <select class="form-control" style="text-align: center;" id="person_in_charge"
+                                name="person_in_charge" required>
                                 <option selected disabled readonly>Select the person in charge</option>
                             </select><br>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="selected_pilon" class="col-sm-3 col-form-label form-label0">Selected pilón</label>
+                        <label for="pilon_selected" class="col-sm-3 col-form-label form-label0">Selected pilón</label>
                         <div class="col-sm-9">
-                            <input type="text" id="selected_pilon" style="text-align: center;" disabled class="form-control" required><br>
+                            <input type="text" id="pilon_selected" name="pilon_selected" style="text-align: center;"
+                                disabled class="form-control" required><br>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="task_date" class="col-sm-3 col-form-label form-label0">Task date</label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-9">
                             <input type="date" id="task_date" disabled name="task_date" style="text-align: center;"
                                 class="form-control" required><br>
                         </div>
 
                         <label for="start_time" class="col-sm-3 col-form-label form-label0">Task start time</label>
                         <div class="col-sm-3">
-                            <input type="time" id="start_time" disabled style="text-align: center;" class="form-control"
+                            <input type="time" id="start_time" name="start_time" style="text-align: center;" class="form-control"
                                 required><br>
                         </div>
-                    </div>
 
-                    <a class="btn btn-success" data-toggle="modal" data-target="#turningWettingModal"
-                        style="background: #b6772af0; border: 0px;">Save</a>
+                        <label for="end_time" class="col-sm-3 col-form-label form-label0">Task end time</label>
+                        <div class="col-sm-3">
+                            <input type="time" id="end_time" name="end_time" style="text-align: center;"
+                                class="form-control" required><br>
+                        </div>
+                    </div>
+                    <button id="saveTurningWettingButton" class="btn btn-success">Save new task</button>
                 </form>
             </div>
         </div>

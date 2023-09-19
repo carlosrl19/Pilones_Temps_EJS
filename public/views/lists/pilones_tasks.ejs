@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pilones tasks</title>
+        <%- include('../partials/cdn_head/_cdn_head') %>
+        <link rel="stylesheet" href="resources/css/_create_modal_pilones.css">
+    </head>
+
+    <body>
+        <%- include('../partials/navbar/_navbar') %>
+        <%- include('../partials/modals/_modal_pilones') %>
+
+        <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+            <div class="table-responsive small justify-content-sm-center">
+                <table id="turningTable" class="display table table-striped table-sm table-bordered">
+                    <thead class="table-success">
+                        <tr>
+                            <th scope="col">Person in charge</th>
+                            <th scope="col">Pilón task</th>
+                            <th scope="col">Pilón worked</th>
+                            <th scope="col">Task date</th>
+                            <th scope="col">Start task time</th>
+                            <th scope="col">End task time</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody id="turningBody">
+                        <!-- Records will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        
+        <!-- SCRIPTS -->
+        <script src="/resources/js/_turning_wetting_scripts.js"></script>
+    </body>
+</html>

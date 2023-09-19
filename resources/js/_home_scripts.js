@@ -66,7 +66,7 @@ function crearCardsConTemperatura() {
 
                             // Obtiene el nombre y finca del pilón y actualiza el campo selected_pilon (turning_wetting)
                             const pilonInfo = card.querySelector('.card__title').textContent;
-                            document.getElementById('selected_pilon').value = pilonInfo;
+                            document.getElementById('pilon_selected').value = pilonInfo;
                         }
                     });
 

@@ -58,7 +58,7 @@ $(document).ready(function () {
                     if (response.ok) {
                         location.reload();
                     } else {
-                        throw new Error('Error al eliminar el arduino.');
+                        throw new Error('Error deleting arduino.');
                     }
                 })
                 .catch(error => {
@@ -158,7 +158,7 @@ $(document).ready(function () {
                     if (response.ok) {
                         location.reload();
                     } else {
-                        throw new Error('Error al crear el arduino.');
+                        throw new Error('Error creating arduino.');
                     }
                 })
                 .catch(error => {

@@ -15,13 +15,6 @@ $(document).ready(function () {
                     <td>${pilón.estado}</td>
                     <td>${pilón.arduino_asignado}</td>
                     <td>
-                    <button class="btn btn-primary btn-sm turning-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#turningPilonModal"><img
-                    src="../../../../resources/images/turning_list.png" width="30" height="30"></button></button>
-                    </td>
-                        <td><button class="btn btn-primary btn-sm wetting-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#wettingPilonModal"><img
-                        src="../../../../resources/images/wetting_list.png" width="30" height="30"></button></button>
-                    </td>
-                    <td>
                         <button class="btn btn-primary btn-sm details-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#detailsPilonModal"><img
                         src="../../../../resources/images/details.png" width="30" height="30"></button></button>
                         <button class="btn btn-primary btn-sm edit-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal"><img
@@ -31,20 +24,6 @@ $(document).ready(function () {
                     </td>
                 </tr>
             `);
-        });
-
-        $(document).ready(function () {
-            $('#turningTable').DataTable({
-                searching: false,
-                info: false
-            })
-        });
-
-        $(document).ready(function () {
-            $('#wettingTable').DataTable({
-                searching: false,
-                info: false
-            })
         });
 
         $(document).ready(function () {
@@ -69,21 +48,6 @@ $(document).ready(function () {
                     }
                 ],
             });
-        });
-
-        // WORKERS BUTTON
-        $("#pilonList").on("click", ".turning-btn", function () {
-            $("#turningPilonModal").modal("show");
-        });
-
-        // TURNING BUTTON
-        $("#pilonList").on("click", ".turning-btn", function () {
-            $("#turningPilonModal").modal("show");
-        });
-
-        // WETTING BUTTON
-        $("#pilonList").on("click", ".wetting-btn", function () {
-            $("#wettingPilonModal").modal("show");
         });
 
         // DELETE BUTTON

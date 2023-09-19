@@ -125,17 +125,17 @@ CREATE TABLE humedad (
     FOREIGN KEY (pilon_encargado) REFERENCES pilones(id) ON DELETE CASCADE
 );
 
-
 CREATE TABLE pilones_virado_mojado (
     id INT AUTO_INCREMENT PRIMARY KEY,
-	trabajo VARCHAR(255),
-	encargado VARCHAR(255),
-    pilon_id INT,
+	task VARCHAR(255),
+    person_in_charge VARCHAR(255),
+    pilon_selected VARCHAR(255),
     task_date DATE,
     start_time TIME,
-    end_time TIME,
-    FOREIGN KEY (pilon_id) REFERENCES pilones(id)
+    end_time TIME
 );
+
+SELECT * FROM pilones_virado_mojado;
 
 CREATE TABLE trabajadores(
 	id INT AUTO_INCREMENT PRIMARY KEY,
