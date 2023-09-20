@@ -39,4 +39,18 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Pilon task UPDATE
+router.put('/:taskId', async (req, res) => {
+    try {
+        const taskId = req.params.taskId;
+        const { task, person_in_charge, pilon_selected, task_date, start_time, end_time} = req.body;
+
+        await pilonesTaskController.updatePilonTask(taskId, task, person_in_charge, pilon_selected, task_date, start_time, end_time);
+        res.sendStatus(200);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error updating pilón task', details: error.message});
+    }
+});
+
 module.exports = router;

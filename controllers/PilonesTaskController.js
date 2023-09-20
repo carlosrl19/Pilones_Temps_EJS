@@ -53,6 +53,22 @@ const pilonesTaskController = {
         }
     },
 
+    // Pilon task UPDATE
+    updatePilonTask: async (taskId, task, person_in_charge, pilon_selected, task_date, start_time, end_time) => {
+        try {
+            const connection = await mysql.createConnection(dbConfig); // DB connection
+
+            // Actualiza la tarea con el nombre del responsable en lugar del ID
+            const updateQuery = 'UPDATE pilones_virado_mojado SET task = ?, person_in_charge = ?, pilon_selected = ?, task_date = ?, start_time = ?, end_time = ? WHERE id = ?';
+            await connection.execute(updateQuery, [task, person_in_charge, pilon_selected, task_date, start_time, end_time, taskId]);
+
+            connection.end();
+
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    },
+
     // More functions
 };
 

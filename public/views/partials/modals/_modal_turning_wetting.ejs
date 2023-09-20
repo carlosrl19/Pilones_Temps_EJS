@@ -7,8 +7,10 @@
                 <h5 class="modal-title" style="color: #ffffff;" id="turningWettingModal"><i class="bi bi-tools"></i>
                     Turning / Wetting Options</h5>
                 <a>
-                    <button type="button" class="nav-link px-2" style="color: #0f0f0f; background-color: #ffffff97; padding: 4px; border-radius: 10px" data-bs-toggle="modal"
-                        data-bs-target="#createWorkerModal"><i class="bi bi-patch-plus"></i> Add new worker
+                    <button type="button" class="nav-link px-2"
+                        style="color: #0f0f0f; background-color: #ffffff97; padding: 4px; border-radius: 10px"
+                        data-bs-toggle="modal" data-bs-target="#createWorkerModal"><i class="bi bi-patch-plus"></i> Add
+                        new worker
                     </button>
                 </a>
             </div>
@@ -64,6 +66,75 @@
                         </div>
                     </div>
                     <button id="saveTurningWettingButton" class="btn btn-success">Save new task</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- UPDATE MODAL -->
+<div class="modal fade" id="editPilonTaskModal" tabindex="-1" aria-labelledby="editPilonTaskModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #5f1155, #6e1462, #9e1c8d);">
+                <h5 class="modal-title" style="color: #ffffff;" id="editPilonTaskModal"><i
+                        class="bi bi-pencil-square just"></i> Update pilón task</h5>
+            </div>
+            <div class="modal-body">
+                <form id="turning_wetting_Form">
+                    <div class="row mb-3">
+                        <label for="editTask" class="col-sm-3 col-form-label form-label0">Pilón needs</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" style="text-align: center;" id="editTask" name="editTask"
+                                required>
+                                <option selected disabled readonly>Select an option</option>
+                                <option value="Turning">Turning</option>
+                                <option value="Wetting">Wetting</option>
+                            </select><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="EditPerson_in_charge" class="col-sm-3 col-form-label form-label0">Person in
+                            charge</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" style="text-align: center;" id="EditPerson_in_charge"
+                                name="EditPerson_in_charge" required>
+                            </select><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="EditPilon_selected" class="col-sm-3 col-form-label form-label0">Selected
+                            pilón</label>
+                        <div class="col-sm-9">
+                            <input type="text" id="EditPilon_selected" name="EditPilon_selected"
+                                style="text-align: center;" disabled class="form-control" required><br>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="EditTask_date" class="col-sm-3 col-form-label form-label0">Task date</label>
+                        <div class="col-sm-9">
+                            <input type="date" id="EditTask_date" disabled name="EditTask_date"
+                                style="text-align: center;" class="form-control" required><br>
+                        </div>
+
+                        <label for="EditStart_time" class="col-sm-3 col-form-label form-label0">Task start time</label>
+                        <div class="col-sm-3">
+                            <input type="time" id="EditStart_time" name="EditStart_time" style="text-align: center;"
+                                class="form-control" disabled required><br>
+                        </div>
+
+                        <label for="EditEnd_time" class="col-sm-3 col-form-label form-label0">Task end time</label>
+                        <div class="col-sm-3">
+                            <input type="time" id="EditEnd_time" name="EditEnd_time" style="text-align: center;"
+                                class="form-control" required><br>
+                        </div>
+                    </div>
+                    <button id="updateTurningWettingButton" style="background-color: #9e1c8d; border-radius: 10px; border: none;
+                " class="btn btn-success">Save changes</button>
                 </form>
             </div>
         </div>

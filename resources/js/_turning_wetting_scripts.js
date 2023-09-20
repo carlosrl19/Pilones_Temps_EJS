@@ -7,7 +7,7 @@ $(document).ready(function () {
     $.get("/api/pilones_task", function (data) {
         data.forEach(function (pilonTask) {
             const task_date = new Date(pilonTask.task_date).toISOString().split('T')[0]; // UTC format
-            $("#turningBody").append(`
+            $("#tasksList").append(`
                 <tr>
                     <td>${pilonTask.person_in_charge}</td>
                     <td>${pilonTask.task}</td>
@@ -63,6 +63,80 @@ $(document).ready(function () {
                 }
             });
         });
+    });
+
+    // UPDATE MODAL
+    $("#tasksList").on("click", ".edit-btn", function () {
+        const taskId = $(this).data("id");
+
+        $.get(`/api/pilones_task/${taskId}`, function (task) {
+            $("#editTask").val(task.task);
+            $("#EditPilon_selected").val(task.pilon_selected);
+            $("#EditTask_date").val(formattedDate);
+            const formattedDate = new Date(task.task_date).toISOString().split('T')[0];
+
+            $.get("/api/workers", function (data) {
+                const person_in_chargeSelect = document.getElementById("EditPerson_in_charge");
+                person_in_chargeSelect.innerHTML = "";
+
+                data.forEach(function (worker) {
+                    const option = document.createElement("option");
+                    option.value = worker.nombre;
+                    option.textContent = worker.nombre;
+                    person_in_chargeSelect.appendChild(option);
+                });
+
+                person_in_chargeSelect.value = task.person_in_charge;
+
+                $("#EditStart_time").val(task.start_time);
+                $("#EditEnd_time").val(task.end_time);
+
+                $("#editPilonTaskModal").modal("show");
+                $("#updateTurningWettingButton").data("id", taskId);
+            });
+        });
+    });
+
+    // UPDATE => On click
+    $("#updateTurningWettingButton").on("click", async function (event) {
+        event.preventDefault();
+
+        const taskId = $(this).data("id");
+        const task = $("#editTask").val();
+        const person_in_charge = $("#EditPerson_in_charge").val();
+        const pilon_selected = $("#EditPilon_selected").val();
+        const task_date = $("#EditTask_date").val();
+        const start_time = $("#EditStart_time").val();
+        const end_time = $("#EditEnd_time").val();
+
+        const requestBody = {
+            task,
+            person_in_charge,
+            pilon_selected,
+            task_date,
+            start_time,
+            end_time,
+        };
+
+        try {
+            const response = await fetch(`/api/pilones_task/${taskId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(requestBody),
+            });
+
+            if (response.ok) {
+                $("#editPilonTaskModal").modal("hide");
+                location.reload();
+            } else {
+                const errorData = await response.json();
+                console.error("Error updating pilón task:", errorData);
+            }
+        } catch (error) {
+            console.error("Error updating pilón task:", error);
+        }
     });
 
     // CREATE 
