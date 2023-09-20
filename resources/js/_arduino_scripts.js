@@ -37,7 +37,7 @@ $(document).ready(function () {
                     }
                 }
             ],
-            "iDisplayLength": 25,
+            "iDisplayLength": 100,
             "aoColumnDefs": [
                 { "bSearchable": true, "aTargets": [0] },
                 { "bSearchable": true, "aTargets": [1] },
@@ -47,8 +47,8 @@ $(document).ready(function () {
             scrollY: "75vh",
             scrollCollapse: true,
             search: {
-                regex: true, // Enables the use of regular expressions in search
-                smart: false // Disables automatic filtering of DataTables to allow exact searches
+                regex: true, 
+                smart: false 
             }
         });
 

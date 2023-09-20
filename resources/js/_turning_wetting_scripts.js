@@ -46,7 +46,7 @@ $(document).ready(function () {
                         }
                     }
                 ],
-                "iDisplayLength": 25,
+                "iDisplayLength": 100,
                 "aoColumnDefs": [
                     { "bSearchable": true, "aTargets": [0] },
                     { "bSearchable": true, "aTargets": [1] },
@@ -58,8 +58,8 @@ $(document).ready(function () {
                 scrollY: "75vh",
                 scrollCollapse: true,
                 search: {
-                    regex: true, // Enables the use of regular expressions in search
-                    smart: false // Disables automatic filtering of DataTables to allow exact searches
+                    regex: true,
+                    smart: false
                 }
             });
         });
@@ -72,8 +72,9 @@ $(document).ready(function () {
         $.get(`/api/pilones_task/${taskId}`, function (task) {
             $("#editTask").val(task.task);
             $("#EditPilon_selected").val(task.pilon_selected);
-            $("#EditTask_date").val(formattedDate);
+            
             const formattedDate = new Date(task.task_date).toISOString().split('T')[0];
+            $("#EditTask_date").val(formattedDate);
 
             $.get("/api/workers", function (data) {
                 const person_in_chargeSelect = document.getElementById("EditPerson_in_charge");
