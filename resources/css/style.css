@@ -8,17 +8,7 @@ body {
   width: 80%;
 }
 
-@keyframes pulseAnimation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+
 
 .card.pulsate {
   animation: pulseAnimation 1s infinite;
@@ -36,10 +26,6 @@ h2 {
   font-size: 30px;
 }
 
-.grafica {
-  margin-top: 2%;
-}
-
 .temp {
   text-align: center;
   margin-top: 10%;
@@ -47,34 +33,18 @@ h2 {
   color: #490c41;
 }
 
-.cardTemp {
-  width: 70%;
-  border: #ffffff;
-}
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+  }
 
-.DropLote {
-  width: 38%;
-}
+  50% {
+    transform: scale(1.05);
+  }
 
-.searcher {
-  width: 270px;
-}
-
-.barra a:hover {
-  background-color: gray;
-  color: black;
-}
-
-.containerHistorial {
-  width: 80%;
-}
-
-.tableHT {
-  margin: 2%;
-}
-
-.containerHT {
-  width: 2%;
+  100% {
+    transform: scale(1);
+  }
 }
 
 * {
@@ -88,12 +58,12 @@ h2 {
   /* Para navegadores estándar */
 }
 
-.dropdown-toggle-navbar{
+.dropdown-toggle-navbar {
   text-decoration: none;
   color: #ffffffd8;
 }
 
-.dropdown-toggle-navbar:hover{
+.dropdown-toggle-navbar:hover {
   color: #fff;
   font-weight: bold;
 }
@@ -118,7 +88,8 @@ h2 {
   padding-bottom: 5px;
   font-size: small;
 }
-.btnCreate{
+
+.btnCreate {
   background-color: #56a1cf;
   color: #ffffff;
   font-size: small;
@@ -129,22 +100,25 @@ h2 {
   border-radius: 10px 0 0 10px;
 }
 
-.btnExcel{
+.btnExcel {
   background-color: #0e7a32;
   border: none;
   color: #ffffff;
 }
-.btnExcel:hover{
+
+.btnExcel:hover {
   background-color: #119b3f;
   border: none;
   color: #ffffff;
 }
-.btnPrint{
+
+.btnPrint {
   background-color: #c72222;
   border: none;
   color: #ffffff;
 }
-.btnPrint:hover{
+
+.btnPrint:hover {
   background-color: #e92d2d;
   border: none;
   color: #ffffff;
@@ -162,9 +136,9 @@ h2 {
   appearance: none;
   background-color: #bbb;
   transition: all .3s;
- }
- 
- .check::before {
+}
+
+.check::before {
   content: '';
   position: absolute;
   border: solid #fff;
@@ -179,31 +153,31 @@ h2 {
   transform: rotate(0deg);
   transition: all .3s;
   transform-origin: center center;
- }
- 
- .check:checked {
+}
+
+.check:checked {
   animation: a .3s ease-in forwards;
   background-color: rgb(120, 190, 120);
- }
- 
- .check:checked::before {
+}
+
+.check:checked::before {
   opacity: 1;
   transform: rotate(405deg);
- }
- 
- @keyframes a {
+}
+
+@keyframes a {
   0% {
-   opacity: 1;
-   transform: scale(1) rotateY(0deg);
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
   }
- 
+
   50% {
-   opacity: 0;
-   transform: scale(.8) rotateY(180deg);
+    opacity: 0;
+    transform: scale(.8) rotateY(180deg);
   }
- 
+
   100% {
-   opacity: 1;
-   transform: scale(1) rotateY(360deg);
+    opacity: 1;
+    transform: scale(1) rotateY(360deg);
   }
- }
+}
