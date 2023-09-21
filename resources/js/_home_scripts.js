@@ -126,16 +126,12 @@ function crearCardsConTemperatura() {
                                     cardFooter.parentElement.classList.remove('low-temperature');
                                 }
 
-                                // Obtener el texto actual de los primeros 5 caracteres
                                 const currentText = cardFooter.textContent.substr(0, 5);
 
-                                // Verificar si el texto anterior de los primeros 5 caracteres es diferente al actual
                                 if (previousTextMap[pilonId] !== currentText) {
-                                    // El texto cambió, actualizar el timestamp
                                     lastUpdateTimestamps[pilonId] = Date.now();
                                 }
 
-                                // Actualizar el texto anterior de los primeros 5 caracteres
                                 previousTextMap[pilonId] = currentText;
                             }
                         });
@@ -143,7 +139,6 @@ function crearCardsConTemperatura() {
                 }
             });
 
-            // Crear un intervalo para verificar si el texto de los primeros 5 caracteres no cambia
             setInterval(() => {
                 const currentTime = Date.now();
                 const cardFooters = document.querySelectorAll('.card__footer');
@@ -151,14 +146,14 @@ function crearCardsConTemperatura() {
                     const pilonId = cardFooter.parentElement.classList[1].split('-')[1];
                     const lastUpdate = lastUpdateTimestamps[pilonId];
 
-                    if (lastUpdate && (currentTime - lastUpdate > 5000)) { // 10000 ms = 10 segundos
-                        cardFooter.parentElement.classList.add('warning-temperature'); // Cambiar el color a amarillo
+                    if (lastUpdate && (currentTime - lastUpdate > 2000)) { // 2000 ms = 2 seconds
+                        cardFooter.parentElement.classList.add('warning-temperature');
                         cardFooter.parentElement.classList.remove('success-temperature');
                         cardFooter.parentElement.classList.remove('high-temperature');
                         cardFooter.parentElement.classList.remove('low-temperature');
                     }
                 });
-            }, 5000); // Comprobar cada segundo
+            }, 2000); // Every 2 seconds
 
             const totalPages = Math.ceil(pilones.length / cardsPerPage);
 

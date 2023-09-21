@@ -130,7 +130,8 @@ CREATE TABLE pilones_virado_mojado (
 	task VARCHAR(255),
     person_in_charge VARCHAR(255),
     pilon_selected VARCHAR(255),
-    task_date DATE,
+    task_start_date DATE,
+    task_end_date DATE,
     start_time TIME,
     end_time TIME
 );

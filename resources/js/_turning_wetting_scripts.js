@@ -3,22 +3,30 @@ $("#options").on("click", function () {
     $("#turningWettingModal").modal("show");
 });
 
+$("#tasksList").on("click", ".graphics-btn", function () {
+    $("#turningWettingGraphicsModal").modal("show");
+});
+
 $(document).ready(function () {
     $.get("/api/pilones_task", function (data) {
         data.forEach(function (pilonTask) {
-            const task_date = new Date(pilonTask.task_date).toISOString().split('T')[0]; // UTC format
+            const task_start_date = new Date(pilonTask.task_start_date).toISOString().split('T')[0]; // UTC format
+            const task_end_date = new Date(pilonTask.task_end_date).toISOString().split('T')[0]; // UTC format
             $("#tasksList").append(`
                 <tr>
                     <td>${pilonTask.person_in_charge}</td>
                     <td>${pilonTask.task}</td>
                     <td>${pilonTask.pilon_selected}</td>
-                    <td>${task_date}</td>
+                    <td>${task_start_date}</td>
                     <td>${pilonTask.start_time}</td>
+                    <td>${task_end_date}</td>
                     <td>${pilonTask.end_time}</td>                   
                     <td>
-                        <button class="btn btn-primary btn-sm edit-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilonTask.id}" data-toggle="modal" data-target="#editPilonTaskModal"><img
+                        <button class="btn btn-danger btn-sm graphics-btn" style="background-color: transparent; border: none;" data-id="${pilonTask.id}" data-toggle="modal" data-target="#turningWettingGraphicsModal"><img
+                        src="../../../../resources/images/graphics.png" width="30" height="30"></button></button>
+                        <button class="btn btn-primary btn-sm edit-btn" style="background-color: transparent; border: none;" data-id="${pilonTask.id}" data-toggle="modal" data-target="#editPilonTaskModal"><img
                         src="../../../../resources/images/edit.png" width="30" height="30"></button></button>
-                        <button class="btn btn-danger btn-sm delete-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilonTask.id}" data-toggle="modal" data-target="#deletePilonTaskModal"><img
+                        <button class="btn btn-danger btn-sm delete-btn" style="background-color: transparent; border: none;" data-id="${pilonTask.id}" data-toggle="modal" data-target="#deletePilonTaskModal"><img
                         src="../../../../resources/images/delete.png" width="30" height="30"></button></button>
                     </td>
                 </tr>
@@ -72,9 +80,12 @@ $(document).ready(function () {
         $.get(`/api/pilones_task/${taskId}`, function (task) {
             $("#editTask").val(task.task);
             $("#EditPilon_selected").val(task.pilon_selected);
-            
-            const formattedDate = new Date(task.task_date).toISOString().split('T')[0];
-            $("#EditTask_date").val(formattedDate);
+
+            const formattedStartDate = new Date(task.task_start_date).toISOString().split('T')[0];
+            $("#EditTask_Start_Date").val(formattedStartDate);
+
+            const formattedEndDate = new Date(task.task_end_date).toISOString().split('T')[0];
+            $("#EditTask_End_Date").val(formattedEndDate);
 
             $.get("/api/workers", function (data) {
                 const person_in_chargeSelect = document.getElementById("EditPerson_in_charge");
@@ -106,7 +117,8 @@ $(document).ready(function () {
         const task = $("#editTask").val();
         const person_in_charge = $("#EditPerson_in_charge").val();
         const pilon_selected = $("#EditPilon_selected").val();
-        const task_date = $("#EditTask_date").val();
+        const task_start_date = $("#EditTask_Start_Date").val();
+        const task_end_date = $("#EditTask_End_Date").val();
         const start_time = $("#EditStart_time").val();
         const end_time = $("#EditEnd_time").val();
 
@@ -114,7 +126,8 @@ $(document).ready(function () {
             task,
             person_in_charge,
             pilon_selected,
-            task_date,
+            task_start_date,
+            task_end_date,
             start_time,
             end_time,
         };
@@ -147,7 +160,8 @@ $(document).ready(function () {
         const task = $("#task").val();
         const person_in_charge = $("#person_in_charge").val();
         const pilon_selected = $("#pilon_selected").val();
-        const task_date = $("#task_date").val();
+        const task_start_date = $("#task_start_date").val();
+        const task_end_date = $("#task_end_date").val();
         const start_time = $("#start_time").val();
         const end_time = $("#end_time").val();
 
@@ -160,7 +174,8 @@ $(document).ready(function () {
                 task,
                 person_in_charge,
                 pilon_selected,
-                task_date,
+                task_start_date,
+                task_end_date,
                 start_time,
                 end_time,
             })

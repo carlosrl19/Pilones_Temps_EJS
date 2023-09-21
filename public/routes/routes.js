@@ -12,36 +12,43 @@ const humiditiesAPI = require('./_humidities_api');
 router.get('/', (req, res) => {
     res.render('home/home', { currentUrl: req.originalUrl });
 });
+
 router.get('/individual_arduino', (req, res) => {
     res.render('home/individual_home', { currentUrl: req.originalUrl });
 });
+
 router.get('/pilones_list', async (req, res) => {
     res.render('lists/pilones_list', { currentUrl: req.originalUrl });
 });
-router.get('/pilones_tasks', async (req, res) => {
-    res.render('lists/pilones_tasks', { currentUrl: req.originalUrl });
+
+router.get('/tasks_list', async (req, res) => {
+    res.render('tasks/pilones_tasks_list', { currentUrl: req.originalUrl });
 });
+
 router.get('/arduino_list', async (req, res) => {
     res.render('lists/arduino_list', { currentUrl: req.originalUrl });
 });
+
 router.get('/worker_list', async (req, res) => {
     res.render('lists/worker_list', { currentUrl: req.originalUrl });
 });
+
 router.get('/temp_history', (req, res) => {
     res.render('history/temp_history', { currentUrl: req.originalUrl });
 });
+
 router.get('/temperature_graphics_history', (req, res) => {
     res.render('graphics/temp_graphics', { currentUrl: req.originalUrl });
 });
+
 router.get('/humidity_graphics_history', (req, res) => {
     res.render('graphics/hum_graphics', { currentUrl: req.originalUrl });
 });
+
 router.get('/hum_history', (req, res) => {
     res.render('history/humidity_history', { currentUrl: req.originalUrl });
 });
-router.get('/FAQ', (req, res) => {
-    res.render('faqs/faqs', { currentUrl: req.originalUrl });
-});
+
 router.get('/not_implement_yet', (req, res) => {
     res.render('faqs/not_implement_yet', { currentUrl: req.originalUrl });
 });

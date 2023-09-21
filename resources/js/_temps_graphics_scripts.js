@@ -87,6 +87,8 @@ selectPilon.addEventListener("change", actualizarGrafica);
 fechaInicialSelector.addEventListener("change", actualizarGrafica);
 fechaFinalSelector.addEventListener("change", actualizarGrafica);
 
+fechaFinalSelector.max = new Date().toISOString().split("T")[0];
+
 function actualizarGrafica() {
     var pilonId = selectPilon.value;
     var fechaInicial = fechaInicialSelector.value;

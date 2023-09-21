@@ -37,15 +37,15 @@ const pilonesTaskController = {
     },
 
     // Pilon task CREATE
-    createPilonTask: async (task, person_in_charge, pilon_selected, task_date, start_time, end_time) => {
+    createPilonTask: async (task, person_in_charge, pilon_selected, task_start_date, task_end_date, start_time, end_time) => {
         try {
             const connection = await mysql.createConnection(dbConfig);
 
             const insertQuery = `
-                INSERT INTO pilones_virado_mojado (task, person_in_charge, pilon_selected, task_date, start_time, end_time)
-                VALUES (?, ?, ?, ?, ?, ?)`;
+                INSERT INTO pilones_virado_mojado (task, person_in_charge, pilon_selected, task_start_date, task_end_date, start_time, end_time)
+                VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-            await connection.execute(insertQuery, [task, person_in_charge, pilon_selected, task_date, start_time, end_time]);
+            await connection.execute(insertQuery, [task, person_in_charge, pilon_selected, task_start_date, task_end_date, start_time, end_time]);
 
             connection.end();
         } catch (error) {
@@ -54,13 +54,12 @@ const pilonesTaskController = {
     },
 
     // Pilon task UPDATE
-    updatePilonTask: async (taskId, task, person_in_charge, pilon_selected, task_date, start_time, end_time) => {
+    updatePilonTask: async (taskId, task, person_in_charge, pilon_selected, task_start_date, task_end_date, start_time, end_time) => {
         try {
             const connection = await mysql.createConnection(dbConfig); // DB connection
 
-            // Actualiza la tarea con el nombre del responsable en lugar del ID
-            const updateQuery = 'UPDATE pilones_virado_mojado SET task = ?, person_in_charge = ?, pilon_selected = ?, task_date = ?, start_time = ?, end_time = ? WHERE id = ?';
-            await connection.execute(updateQuery, [task, person_in_charge, pilon_selected, task_date, start_time, end_time, taskId]);
+            const updateQuery = 'UPDATE pilones_virado_mojado SET task = ?, person_in_charge = ?, pilon_selected = ?, task_start_date = ?, task_end_date = ?, start_time = ?, end_time = ? WHERE id = ?';
+            await connection.execute(updateQuery, [task, person_in_charge, pilon_selected, task_start_date, task_end_date, start_time, end_time, taskId]);
 
             connection.end();
 

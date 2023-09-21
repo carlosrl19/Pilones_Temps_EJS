@@ -30,4 +30,5 @@ span.choose {
 
 input[type=checkbox] {
     transform: scale(2.09);
+    clip-path: circle(46% at 50% 50%);
 }

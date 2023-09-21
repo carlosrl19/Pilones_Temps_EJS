@@ -29,6 +29,7 @@ app.use('/individual_arduino', routes);
 app.use('/arduino_list', routes);
 app.use('/worker_list', routes);
 app.use('/pilones_list', routes);
+app.use('/tasks_list', routes);
 app.use('/graphics_history', routes);
 app.use('/temp_history', routes);
 app.use('/hum_history', routes);
