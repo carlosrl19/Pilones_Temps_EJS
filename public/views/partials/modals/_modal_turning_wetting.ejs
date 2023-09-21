@@ -71,8 +71,9 @@
                                 class="form-control" required><br>
                         </div>
 
-                        <label for="task_start_temp" class="col-sm-3 col-form-label form-label0 hidden-label">Actual
-                            temperature</label>
+                        <label for="task_start_temp" class="col-sm-3 col-form-label form-label0 hidden-label">Before
+                            task
+                            temp</label>
                         <div class="col-sm-9 hidden-label">
                             <input type="text" id="task_start_temp" name="task_start_temp" style="text-align: center;"
                                 disabled class="form-control" required><br>
@@ -96,10 +97,11 @@
             </div>
             <div class="modal-body">
                 <form id="turning_wetting_Form">
+
                     <div class="row mb-3">
                         <label for="editTask" class="col-sm-3 col-form-label form-label0">Pilón needs</label>
                         <div class="col-sm-9">
-                            <select class="form-control" style="text-align: center;" id="editTask" name="editTask"
+                            <select disabled class="form-control" style="text-align: center;" id="editTask" name="editTask"
                                 required>
                                 <option selected disabled readonly>Select an option</option>
                                 <option value="Turning">Turning</option>
@@ -152,9 +154,28 @@
                             <input type="time" id="EditEnd_time" name="EditEnd_time" style="text-align: center;"
                                 class="form-control" required><br>
                         </div>
+
+                        <label for="EditTask_start_temp" class="col-sm-3 col-form-label form-label0 hidden-label">Before
+                            task
+                            temp</label>
+                        <div class="col-sm-9 hidden-label">
+                            <input type="text" id="EditTask_start_temp" name="EditTask_start_temp"
+                                style="text-align: center; background-color: #ff00003b;" disabled class="form-control"
+                                required><br>
+                        </div>
+
+                        <label for="EditTask_end_temp" class="col-sm-3 col-form-label form-label0 hidden-label">After
+                            task
+                            temp</label>
+                        <div class="col-sm-9 hidden-label">
+                            <input type="text" id="EditTask_end_temp" name="EditTask_end_temp"
+                                style="text-align: center; background-color: #0dff003b;" disabled class="form-control"
+                                required><br>
+                        </div>
                     </div>
-                    <button id="updateTurningWettingButton" style="background-color: #9e1c8d; border-radius: 10px; border: none;
-                " class="btn btn-success">Save changes</button>
+                    <button id="updateTurningWettingButton"
+                        style="background-color: #9e1c8d; border-radius: 10px; border: none;"
+                        class="btn btn-success">Save changes</button>
                 </form>
             </div>
         </div>

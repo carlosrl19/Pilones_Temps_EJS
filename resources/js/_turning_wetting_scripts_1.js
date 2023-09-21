@@ -101,6 +101,7 @@ $(document).ready(function () {
 
                 $("#EditStart_time").val(task.start_time);
                 $("#EditEnd_time").val(task.end_time);
+                $("#EditTask_start_temp").val(task.task_start_temp + ' Cº');
 
                 $("#editPilonTaskModal").modal("show");
                 $("#updateTurningWettingButton").data("id", taskId);
