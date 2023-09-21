@@ -1,3 +1,8 @@
+// TURNING / WETTING MODAL
+$("#pilonList").on("click", ".graphics-btn", function () {
+    $("#turningWettingGraphicsModal").modal("show");
+});
+
 $(document).ready(function () {
     $.get("/api/pilones", function (data) {
         data.forEach(function (pilón) {
@@ -15,6 +20,8 @@ $(document).ready(function () {
                     <td>${pilón.estado}</td>
                     <td>${pilón.arduino_asignado}</td>
                     <td>
+                        <button class="btn btn-danger btn-sm graphics-btn" style="background-color: transparent; border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#turningWettingGraphicsModal"><img
+                        src="../../../../resources/images/graphics.png" width="30" height="30"></button></button>
                         <button class="btn btn-primary btn-sm details-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#detailsPilonModal"><img
                         src="../../../../resources/images/details.png" width="30" height="30"></button></button>
                         <button class="btn btn-primary btn-sm edit-btn" style="background-color: rgba(255,255,255,0); border: none;" data-id="${pilón.id}" data-toggle="modal" data-target="#editPilonModal"><img
@@ -62,7 +69,7 @@ $(document).ready(function () {
                 scrollY: "75vh",
                 scrollCollapse: true,
                 search: {
-                    regex: true, 
+                    regex: true,
                     smart: false
                 }
             });

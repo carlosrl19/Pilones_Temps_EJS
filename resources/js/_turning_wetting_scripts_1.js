@@ -22,8 +22,6 @@ $(document).ready(function () {
                     <td>${task_end_date}</td>
                     <td>${pilonTask.end_time}</td>                   
                     <td>
-                        <button class="btn btn-danger btn-sm graphics-btn" style="background-color: transparent; border: none;" data-id="${pilonTask.id}" data-toggle="modal" data-target="#turningWettingGraphicsModal"><img
-                        src="../../../../resources/images/graphics.png" width="30" height="30"></button></button>
                         <button class="btn btn-primary btn-sm edit-btn" style="background-color: transparent; border: none;" data-id="${pilonTask.id}" data-toggle="modal" data-target="#editPilonTaskModal"><img
                         src="../../../../resources/images/edit.png" width="30" height="30"></button></button>
                         <button class="btn btn-danger btn-sm delete-btn" style="background-color: transparent; border: none;" data-id="${pilonTask.id}" data-toggle="modal" data-target="#deletePilonTaskModal"><img

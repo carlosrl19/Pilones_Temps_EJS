@@ -1,0 +1,68 @@
+<!-- GRAPHICS / REGISTERS MODAL -->
+<div class="modal fade" id="turningWettingGraphicsModal" tabindex="-1"
+    aria-labelledby="turningWettingGraphicsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 85%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #420b48d6, #841790bb, #ad17bd90);">
+                <h5 class="modal-title" style="color: #ffffff;" id="turningWettingGraphicsModal"><i
+                        class="bi bi-graph-up"></i> Pilón tasks / registers graphics</h5>
+                <div class="type_task">
+                    <label><strong><i class="bi bi-eye"></i>&nbsp;Tasks: </strong></label>
+                    <input type="checkbox" id="turning" />
+                    <label for="turning">&nbsp;&nbsp;Turning tasks&nbsp;&nbsp;</label>
+
+                    <input type="checkbox" id="wetting" />
+                    <label for="wetting">&nbsp;&nbsp;Wetting tasks&nbsp;&nbsp;</label>
+                </div>
+            </div>
+            <div class="modal-body" style="overflow-y: auto; height: 80vh;">
+                <form id="turning_wetting_graphics_form">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 mt-1">
+                                <div class="show_info">
+                                    <h4 style="text-decoration: underline;">&nbsp;&nbsp;Task information&nbsp;&nbsp;
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="container container_info">
+                                <div class="row task_info">
+                                    <div class="col-4 task_info_left text-muted">
+                                        <strong>Turning tasks: </strong> 5<br>
+                                    </div>
+
+                                    <div class="col-4 task_info_center text-muted">
+                                        <strong>Best temperature changes: </strong> 34ºC to 21ºC <br>
+                                        <strong>Max temp before turning tasks: </strong> 45 ºC <br>
+                                    </div>
+                                    <div class="col-4 task_info_right text-muted mb-2">
+                                        <strong>Best temperature changes: </strong> 34ºC to 21ºC <br>
+                                        <strong>Max temp before turning tasks: </strong> 45 ºC <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-12 mt-2">
+                                <canvas id="myChart"
+                                    style="min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></canvas>
+                            </div>
+                        </div>
+
+                        <script>
+                            $(document).ready(function () {
+                                $(".show_info").click(function () {
+                                    $(".task_info").toggleClass("show");
+                                });
+                            });
+                        </script>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
