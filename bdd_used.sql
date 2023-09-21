@@ -128,6 +128,8 @@ CREATE TABLE humedad (
 CREATE TABLE pilones_virado_mojado (
     id INT AUTO_INCREMENT PRIMARY KEY,
 	task VARCHAR(255),
+    task_start_temp FLOAT,
+    task_end_temp FLOAT,
     person_in_charge VARCHAR(255),
     pilon_selected VARCHAR(255),
     task_start_date DATE,

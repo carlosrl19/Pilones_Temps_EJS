@@ -18,10 +18,12 @@ for (var i = 0; i < checkboxes.length; i++) {
 
         // Show / Hide task_info div
         var task_info_div = document.getElementById("task_info");
-
+        
+        // Styles added / removed
         if (this.checked) {
             task_info_div.style.opacity = "1";
             task_info_div.style.transition = "opacity 2.5s ease-in-out";
+
         } else {
             task_info_div.style.opacity = "0";
             task_info_div.style.transition = "opacity 2.5s ease-in-out";

@@ -48,12 +48,14 @@ function crearCardsConTemperatura() {
                     card.innerHTML = cardContent;
                     const optionsLink = document.getElementById('options');
 
+
                     card.addEventListener('click', () => {
                         if (selectedCard === card) {
                             card.classList.remove('card-clicked');
                             optionsLink.style.display = 'none';
                             selectedCard = null;
                             document.getElementById('selected_pilon').value = '';
+                            document.getElementById('task_start_temp').value = ''; // Limpiar el campo al deseleccionar
                         } else {
                             if (selectedCard) {
                                 selectedCard.classList.remove('card-clicked');
@@ -64,9 +66,24 @@ function crearCardsConTemperatura() {
                             optionsLink.style.display = 'inline-block';
                             selectedCard = card;
 
-                            // Obtiene el nombre y finca del pilón y actualiza el campo selected_pilon (turning_wetting)
+                            // Get the pilón name to selected_pilon (turning_wetting)
                             const pilonInfo = card.querySelector('.card__title').textContent;
                             document.getElementById('pilon_selected').value = pilonInfo;
+
+                            // Obtener la temperatura del card y asignarla al campo task_start_temp
+                            const cardFooter = card.querySelector('.card__footer');
+                            const temperatureAndHumidity = cardFooter.textContent.match(/\d+\.\d+/g);
+
+                            if (temperatureAndHumidity && temperatureAndHumidity.length === 2) {
+                                const temperature = parseFloat(temperatureAndHumidity[0]);
+
+                                if (!isNaN(temperature)) {
+                                    const taskStartTempInput = document.getElementById('task_start_temp');
+                                    taskStartTempInput.value = temperature.toFixed(2); // Ajusta la precisión decimal si es necesario
+                                } else {
+                                    console.error('Invalid temperature data format');
+                                }
+                            }
                         }
                     });
 

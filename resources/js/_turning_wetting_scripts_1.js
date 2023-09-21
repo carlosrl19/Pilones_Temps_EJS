@@ -17,6 +17,7 @@ $(document).ready(function () {
                     <td>${pilonTask.person_in_charge}</td>
                     <td>${pilonTask.task}</td>
                     <td>${pilonTask.pilon_selected}</td>
+                    <td>${pilonTask.task_start_temp} Cº</td>
                     <td>${task_start_date}</td>
                     <td>${pilonTask.start_time}</td>
                     <td>${task_end_date}</td>
@@ -159,6 +160,7 @@ $(document).ready(function () {
         const person_in_charge = $("#person_in_charge").val();
         const pilon_selected = $("#pilon_selected").val();
         const task_start_date = $("#task_start_date").val();
+        const task_start_temp = $("#task_start_temp").val();
         const task_end_date = $("#task_end_date").val();
         const start_time = $("#start_time").val();
         const end_time = $("#end_time").val();
@@ -173,6 +175,7 @@ $(document).ready(function () {
                 person_in_charge,
                 pilon_selected,
                 task_start_date,
+                task_start_temp,
                 task_end_date,
                 start_time,
                 end_time,

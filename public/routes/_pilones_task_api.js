@@ -29,9 +29,9 @@ router.get('/:taskId', async (req, res) => {
 // Pilon task CREATE
 router.post('/', async (req, res) => {
     try {
-        const { task, person_in_charge, pilon_selected, task_start_date, task_end_date, start_time, end_time } = req.body;
+        const { task, person_in_charge, pilon_selected, task_start_date, task_start_temp, task_end_date, start_time, end_time } = req.body;
 
-        await pilonesTaskController.createPilonTask(task, person_in_charge, pilon_selected, task_start_date, task_end_date, start_time, end_time);
+        await pilonesTaskController.createPilonTask(task, person_in_charge, pilon_selected, task_start_date, task_start_temp, task_end_date, start_time, end_time);
         res.status(201).json({ message: 'Task created' });
     } catch (error) {
         console.error(error);
