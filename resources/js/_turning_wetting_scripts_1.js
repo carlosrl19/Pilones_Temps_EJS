@@ -2,7 +2,6 @@
 $("#options").on("click", function () {
     $("#turningWettingModal").modal("show");
 });
-
 $("#tasksList").on("click", ".graphics-btn", function () {
     $("#turningWettingGraphicsModal").modal("show");
 });
@@ -143,7 +142,7 @@ $(document).ready(function () {
 
             if (response.ok) {
                 $("#editPilonTaskModal").modal("hide");
-                location.reload();
+                $("#successModal").modal("show");
             } else {
                 const errorData = await response.json();
                 console.error("Error updating pilón task:", errorData);
@@ -184,13 +183,22 @@ $(document).ready(function () {
         })
             .then(response => {
                 if (response.ok) {
-                    location.reload();
+                    $("#turningWettingModal").modal("hide");
+
+                    const successModalBody = $("#successTaskModal").find(".modal-body");
+                    successModalBody.html("Pilón task created correctly.");
+                    $("#successTaskModal").modal("show");
                 } else {
                     throw new Error('Error creating new task.');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
+                $("#turningWettingModal").modal("hide");
+
+                const errorModalBody = $("#errorModal").find(".modal-body");
+                errorModalBody.html(error);
+                $("#errorModal").modal("show");
             });
     });
 });

@@ -101,8 +101,8 @@
                     <div class="row mb-3">
                         <label for="editTask" class="col-sm-3 col-form-label form-label0">Pilón needs</label>
                         <div class="col-sm-9">
-                            <select disabled class="form-control" style="text-align: center;" id="editTask" name="editTask"
-                                required>
+                            <select disabled class="form-control" style="text-align: center;" id="editTask"
+                                name="editTask" required>
                                 <option selected disabled readonly>Select an option</option>
                                 <option value="Turning">Turning</option>
                                 <option value="Wetting">Wetting</option>
@@ -155,10 +155,10 @@
                                 class="form-control" required><br>
                         </div>
 
-                        <label for="EditTask_start_temp" class="col-sm-3 col-form-label form-label0 hidden-label">Before
+                        <label for="EditTask_start_temp" class="col-sm-3 col-form-label form-label0">Before
                             task
-                            temp</label>
-                        <div class="col-sm-9 hidden-label">
+                        </label>
+                        <div class="col-sm-9">
                             <input type="text" id="EditTask_start_temp" name="EditTask_start_temp"
                                 style="text-align: center; background-color: #ff00003b;" disabled class="form-control"
                                 required><br>
@@ -166,7 +166,7 @@
 
                         <label for="EditTask_end_temp" class="col-sm-3 col-form-label form-label0 hidden-label">After
                             task
-                            temp</label>
+                        </label>
                         <div class="col-sm-9 hidden-label">
                             <input type="text" id="EditTask_end_temp" name="EditTask_end_temp"
                                 style="text-align: center; background-color: #0dff003b;" disabled class="form-control"
@@ -176,7 +176,47 @@
                     <button id="updateTurningWettingButton"
                         style="background-color: #9e1c8d; border-radius: 10px; border: none;"
                         class="btn btn-success">Save changes</button>
+
+                    <button id="finishTaskButton"
+                        style="background-color: #000000; color: #ffffff; border-radius: 10px; border: 2px solid #000;"
+                        class="btn btn-success">Finish task proccess</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successTaskModal" tabindex="-1" aria-labelledby="successTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(to right, #154c29f0, #1d8943f0, #2cdb69f0);">
+                <h5 class="modal-title" style="color: #ffffff;" id="successTaskModalLabel"><i class="bi bi-check-lg"></i>
+                    Success</h5>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <a class="nav-link" style="background-color: #0046436c; padding: 5px; border-radius: 10px; color: white"
+                    href="/tasks_list">&nbsp;Task list&nbsp;</a>
+                <button type="button" class="btn"
+                    style="background-color: #d34646d1; padding: 5px; border-radius: 10px; color: white;"
+                    data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ERROR MODAL -->
+<div class="modal fade" id="errorTaskModal" tabindex="-1" role="dialog" aria-labelledby="errorTaskModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: rgba(201, 0, 0, 0.753); color: #ffffff;">
+                <h5 class="modal-title" id="errorTaskModalLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
             </div>
         </div>
     </div>

@@ -126,7 +126,11 @@ $(document).ready(function () {
             })
                 .then(response => {
                     if (response.ok) {
-                        location.reload();
+                        $("#createWorkerModal").modal("hide");
+
+                        const successModalBody = $("#successWorkerModal").find(".modal-body");
+                        successModalBody.html("New worker created correctly.");
+                        $("#successWorkerModal").modal("show");
                     } else {
                         throw new Error('Error creating new worker.');
                     }
