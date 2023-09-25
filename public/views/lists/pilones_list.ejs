@@ -1,46 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Pilones</title>
-        <%- include('../partials/cdn_head/_cdn_head') %>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pilones</title>
+    <%- include('../partials/cdn_head/_cdn_head') %>
         <link rel="stylesheet" href="resources/css/_create_modal_pilones.css">
         <link rel="stylesheet" href="resources/css/_turning_wetting_tasks.css">
-    </head>
+</head>
 
-    <body>
-        <%- include('../partials/navbar/_navbar') %>
+<body>
+    <%- include('../partials/navbar/_navbar') %>
         <%- include('../partials/modals/_modal_pilones') %>
-        <%- include('../partials/modals/_modal_workers') %>
-        <%- include('../partials/modals/_modal_turning_wetting_graphics') %>
+            <%- include('../partials/modals/_modal_workers') %>
+                <%- include('../partials/modals/_modal_turning_wetting_graphics') %>
 
-        <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
-            <div class="table-responsive small justify-content-sm-center">
-                <table id="myTable" class="display table table-striped table-sm table-bordered">
-                    <thead class="table-success">
-                        <tr>
-                            <th scope="col">Pilon`s name</th>
-                            <th scope="col">Tobacco variety</th>
-                            <th scope="col">Source</th>
-                            <th scope="col">Tobacco stage</th>
-                            <th scope="col">PN</th>
-                            <th scope="col">Min temperature</th>
-                            <th scope="col">Max temperature</th>
-                            <th scope="col">Entry date</th>
-                            <th scope="col">State</th>
-                            <th scope="col">Arduino assigned</th>
-                            <th scope="col">Options</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pilonList">
-                        <!-- Records will be added here dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </main>
-        
-        <!-- SCRIPTS -->
-        <script src="/resources/js/_pilones_scripts.js"></script>
-        <script src="/resources/js/_turning_wetting_scripts_3.js"></script>
-    </body>
+                    <div class="mt-2 toggle-div">
+                        Show/Hide: <a class="toggle-vis" data-column="0">Pilón's name</a> -
+                        <a class="toggle-vis" data-column="1">Tobacco variety </a> -
+                        <a class="toggle-vis" data-column="2">Source</a> -
+                        <a class="toggle-vis" data-column="3">Tobacco stage</a> -
+                        <a class="toggle-vis" data-column="4">PN</a>
+                        <a class="toggle-vis" data-column="5">Min temp</a>
+                        <a class="toggle-vis" data-column="6">Max temp</a>
+                        <a class="toggle-vis" data-column="7">Entry date</a>
+                        <a class="toggle-vis" data-column="8">State</a>
+                        <a class="toggle-vis" data-column="9">Arduino assigned</a>
+                    </div>
+
+                    <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+                        <div class="table-responsive small justify-content-sm-center">
+                            <table id="myTable" class="display table table-striped table-sm table-bordered">
+                                <thead class="table-success">
+                                    <tr>
+                                        <th scope="col">Pilon`s name</th>
+                                        <th scope="col">Tobacco variety</th>
+                                        <th scope="col">Source</th>
+                                        <th scope="col">Tobacco stage</th>
+                                        <th scope="col">PN</th>
+                                        <th scope="col">Min temperature</th>
+                                        <th scope="col">Max temperature</th>
+                                        <th scope="col">Entry date</th>
+                                        <th scope="col">State</th>
+                                        <th scope="col">Arduino assigned</th>
+                                        <th scope="col">Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pilonList">
+                                    <!-- Records will be added here dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </main>
+
+                    <!-- SCRIPTS -->
+                    <script src="/resources/js/_pilones_scripts.js"></script>
+                    <script src="/resources/js/_turning_wetting_scripts_3.js"></script>
+</body>
+
 </html>

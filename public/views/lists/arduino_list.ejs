@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Arduinos</title>
@@ -8,28 +9,36 @@
 
 <body>
     <%- include('../partials/navbar/_navbar') %>
-    <%- include('../partials/modals/_modal_arduinos') %>
+        <%- include('../partials/modals/_modal_arduinos') %>
 
-    <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
-        <div class="table-responsive small justify-content-sm-center">
-            <table id="myTable" class="display table table-striped table-sm table-bordered">
-                <thead class="table-success">
-                    <tr>
-                        <th scope="col">Arduino's name</th>
-                        <th scope="col">DS18B20 64 bits </th>
-                        <th scope="col">Connected to PC port</th>
-                        <th scope="col">ID Pilón</th>
-                        <th scope="col">Options</th>
-                    </tr>
-                </thead>
-                <tbody id="arduinosList">
-                    <!-- Records will be added here dynamically -->
-                </tbody>           
-            </table>
-        </div>
-    </main>
+            <div class="mt-2 toggle-div">
+                Show/Hide: <a class="toggle-vis" data-column="0">Arduino's name</a> -
+                <a class="toggle-vis" data-column="1">DS18B20 64 bits</a> -
+                <a class="toggle-vis" data-column="2">PC port</a> -
+                <a class="toggle-vis" data-column="3">ID pilón</a>
+            </div>
 
-    <!-- SCRIPTS -->
-    <script src="/resources/js/_arduino_scripts.js"></script>
+            <main class="col-md-10 ms-sm-auto col-lg-12 px-md-4 mt-2">
+                <div class="table-responsive small justify-content-sm-center">
+                    <table id="myTable" class="display table table-striped table-sm table-bordered">
+                        <thead class="table-success">
+                            <tr>
+                                <th scope="col">Arduino's name</th>
+                                <th scope="col">DS18B20 64 bits </th>
+                                <th scope="col">Connected to PC port</th>
+                                <th scope="col">ID Pilón</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody id="arduinosList">
+                            <!-- Records will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+            <!-- SCRIPTS -->
+            <script src="/resources/js/_arduino_scripts.js"></script>
 </body>
+
 </html>

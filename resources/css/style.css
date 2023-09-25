@@ -8,8 +8,6 @@ body {
   width: 80%;
 }
 
-
-
 .card.pulsate {
   animation: pulseAnimation 1s infinite;
 }
@@ -180,4 +178,30 @@ h2 {
     opacity: 1;
     transform: scale(1) rotateY(360deg);
   }
+}
+
+/*
+# ********************
+# SHOW / HIDE COLUMNS
+# ********************
+*/
+
+.toggle-div{
+  background-color: #dedede4e;
+  padding: 5px;
+}
+
+.active-option, .toggle-vis {
+  background-color: #376b3783;
+  padding: 3px;
+  font-size: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.inactive-option {
+  background-color: #f8f9fa;
+  text-decoration: none;
+  color: #000;
 }

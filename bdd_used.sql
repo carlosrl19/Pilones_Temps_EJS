@@ -68,8 +68,7 @@ CREATE TABLE pilones_turning_wetting (
 
 */
 
--- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS pilones_temps;
+CREATE DATABASE pilones_temps;
 
 -- Usar la base de datos
 USE pilones_temps;
@@ -128,16 +127,17 @@ CREATE TABLE humedad (
 CREATE TABLE pilones_virado_mojado (
     id INT AUTO_INCREMENT PRIMARY KEY,
 	task VARCHAR(255),
-    task_start_temp FLOAT,
-    task_end_temp FLOAT,
     person_in_charge VARCHAR(255),
     pilon_selected VARCHAR(255),
     task_start_date DATE,
-    task_end_date DATE,
     start_time TIME,
-    end_time TIME
+    task_start_temp FLOAT,
+    task_end_date DATE,
+    end_time TIME,
+	task_end_temp FLOAT
 );
 
+SELECT * FROM pilones;
 SELECT * FROM pilones_virado_mojado;
 
 CREATE TABLE trabajadores(

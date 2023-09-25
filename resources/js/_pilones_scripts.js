@@ -73,6 +73,28 @@ $(document).ready(function () {
                     smart: false
                 }
             });
+            
+            // Show/Hide columns
+            const table = $('#myTable').DataTable();
+
+            $('a.toggle-vis').on('click', function (e) {
+                e.preventDefault();
+
+                let columnIdx = $(this).data('column');
+                let column = table.column(columnIdx);
+
+                // Toggle the visibility
+                column.visible(!column.visible());
+
+                // Change color of options
+                if (column.visible()) {
+                    $(this).addClass('active-option');
+                    $(this).removeClass('inactive-option');
+                } else {
+                    $(this).removeClass('active-option');
+                    $(this).addClass('inactive-option');
+                }
+            });
         });
 
         // DELETE BUTTON
