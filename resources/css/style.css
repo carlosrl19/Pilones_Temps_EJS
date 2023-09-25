@@ -187,8 +187,10 @@ h2 {
 */
 
 .toggle-div{
+  color: gray;
   background-color: #dedede4e;
   padding: 5px;
+  font-size: 17px;
 }
 
 .active-option, .toggle-vis {
@@ -201,7 +203,7 @@ h2 {
 }
 
 .inactive-option {
-  background-color: #f8f9fa;
+  background-color: #dedede4e;
   text-decoration: none;
-  color: #000;
+  color: #646464;
 }

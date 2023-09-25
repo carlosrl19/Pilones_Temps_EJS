@@ -1,3 +1,8 @@
+/* 
+
+Script to load data, update, save and delete on table and connect with API to this tasks.
+*/
+
 // TURNING / WETTING MODAL
 $("#options").on("click", function () {
     $("#turningWettingModal").modal("show");

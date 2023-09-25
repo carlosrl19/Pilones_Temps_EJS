@@ -1,3 +1,10 @@
+/* 
+
+Script to autoselected task_date, start_date. 
+Also, this script is used to load workers data with api/workers.
+
+*/
+
 // AUTOSELECTED DATE (task_date)
 $(document).ready(function () {
     var now = new Date();

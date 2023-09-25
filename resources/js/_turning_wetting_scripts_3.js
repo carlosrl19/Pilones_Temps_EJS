@@ -1,3 +1,9 @@
+/* 
+
+Script to tasks modal in pilones list.
+
+*/
+
 // Checkbox script
 var showInfoElement = document.querySelector('.show_info');
 var containerInfoElement = document.querySelector('.container_info');
@@ -30,6 +36,9 @@ for (var i = 0; i < checkboxes.length; i++) {
         }
     });
 }
+
+// Task information script: This script will change dinamically the task information.
+
 
 // Chart.JS script
 const ctx = document.getElementById('myChart').getContext('2d');

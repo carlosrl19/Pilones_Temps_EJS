@@ -51,9 +51,7 @@
 
 .type_task input[type="checkbox"]:checked+label {
     background-color: #3939397a;
-    border: 2px solid #ffffff96;
     border-radius: 20px;
-    transform: scale(1.1);
 }
 
 .type_task input[type="checkbox"]:checked+label:after {
