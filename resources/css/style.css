@@ -186,14 +186,15 @@ h2 {
 # ********************
 */
 
-.toggle-div{
+.toggle-div {
   color: gray;
   background-color: #dedede4e;
   padding: 5px;
   font-size: 17px;
 }
 
-.active-option, .toggle-vis {
+.active-option,
+.toggle-vis {
   background-color: #376b3783;
   padding: 3px;
   font-size: 15px;
@@ -206,4 +207,5 @@ h2 {
   background-color: #dedede4e;
   text-decoration: none;
   color: #646464;
+  text-decoration: line-through;
 }
